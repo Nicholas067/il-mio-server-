@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Nicolascassese.it</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Nunito','Segoe UI',sans-serif;min-height:100vh}
+.screen{min-height:100vh;display:none}
+.screen.active{display:flex}
+.bg-blue{background:linear-gradient(135deg,#0f2d5c 0%,#1a4d8f 50%,#2563c0 100%);align-items:center;justify-content:center;min-height:100vh}
+.card{background:#fff;border-radius:18px;padding:38px 36px;box-shadow:0 24px 64px rgba(0,0,0,.25);width:90%;max-width:480px;animation:fadeUp .4s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.logo-area{text-align:center;margin-bottom:28px}
+.logo-icon{font-size:48px;margin-bottom:6px;display:block}
+.logo-title{font-size:26px;font-weight:900;color:#1a4d8f;letter-spacing:-1px}
+.btn-home{background:linear-gradient(135deg,#1a4d8f,#2563c0);color:#fff;border:none;border-radius:12px;padding:16px 20px;width:100%;cursor:pointer;font-size:15px;font-weight:700;font-family:'Nunito',sans-serif;text-align:left;display:flex;align-items:center;gap:12px;margin-bottom:12px;transition:all .2s}
+.btn-home:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,99,192,.4)}
+.accordion-body{background:#eff6ff;border-radius:12px;padding:14px;margin-bottom:12px;margin-top:-8px;animation:fadeUp .3s ease}
+.opt-card{background:#fff;border-radius:10px;padding:16px;margin-bottom:10px;box-shadow:0 2px 8px rgba(0,0,0,.07)}
+.opt-title{font-weight:800;color:#0f2d5c;font-size:12px;text-transform:uppercase;letter-spacing:.3px;margin-bottom:6px}
+.opt-desc{color:#555;font-size:13px;margin-bottom:12px;line-height:1.5}
+.opt-btn{background:linear-gradient(135deg,#1a4d8f,#2563c0);color:#fff;border:none;border-radius:7px;padding:8px 14px;cursor:pointer;font-size:12px;font-weight:700;font-family:'Nunito',sans-serif;transition:all .2s}
+.opt-btn:hover{opacity:.85}
+.form-label{font-weight:700;color:#0f2d5c;display:block;margin-bottom:6px;font-size:14px}
+.form-input{width:100%;padding:13px 14px;border:2px solid #bfdbfe;border-radius:10px;font-size:15px;font-family:'Nunito',sans-serif;outline:none;transition:border-color .2s}
+.form-input:focus{border-color:#2563c0}
+.form-hint{font-size:12px;color:#94a3b8;margin-top:4px}
+.btn-primary{background:linear-gradient(135deg,#0f2d5c,#2563c0);color:#fff;border:none;border-radius:10px;padding:13px 20px;cursor:pointer;font-size:15px;font-weight:700;font-family:'Nunito',sans-serif;width:100%;margin-top:14px;transition:all .2s}
+.btn-primary:hover{opacity:.9;transform:translateY(-1px)}
+.btn-secondary-outline{background:#fff;color:#374151;border:2px solid #e2e8f0;border-radius:10px;padding:13px 20px;cursor:pointer;font-size:14px;font-weight:700;font-family:'Nunito',sans-serif;transition:all .2s}
+.btn-google{background:#fff;color:#374151;border:2px solid #e2e8f0;border-radius:12px;padding:14px 20px;width:100%;cursor:pointer;font-size:15px;font-weight:700;font-family:'Nunito',sans-serif;display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:14px;transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.btn-google:hover{background:#f8fafc;box-shadow:0 4px 16px rgba(0,0,0,.1);transform:translateY(-1px)}
+.btn-create{background:linear-gradient(135deg,#0f2d5c,#2563c0);color:#fff;border:none;border-radius:12px;padding:14px 20px;width:100%;cursor:pointer;font-size:15px;font-weight:700;font-family:'Nunito',sans-serif;display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:10px;transition:all .2s}
+.btn-create:hover{opacity:.9;transform:translateY(-1px)}
+.divider{display:flex;align-items:center;gap:12px;margin:16px 0;color:#94a3b8;font-size:13px;font-weight:600}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:#e2e8f0}
+.info-box{background:#eff6ff;border-left:4px solid #2563c0;border-radius:0 10px 10px 0;padding:14px 16px;margin-bottom:20px}
+.user-badge{background:#eff6ff;border:2px solid #2563c0;border-radius:10px;padding:10px 16px;text-align:center;margin-bottom:20px;color:#0f2d5c;font-weight:700}
+.error-msg{color:#dc2626;font-size:13px;margin-top:8px;font-weight:600}
+.link-btn{background:none;border:none;color:#2563c0;cursor:pointer;font-size:14px;text-decoration:underline;font-family:'Nunito',sans-serif;margin-top:10px;width:100%;text-align:center;display:block}
+.fm-layout{background:#f1f5f9;min-height:100vh;flex-direction:column}
+.fm-topbar{background:#fff;border-bottom:2px solid #e2e8f0;padding:10px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.fm-title{font-weight:800;font-size:17px;color:#0f2d5c}
+.fm-search{padding:7px 12px;border:1.5px solid #d1d5db;border-radius:8px;font-size:13px;font-family:'Nunito',sans-serif;width:180px;outline:none}
+.fm-search:focus{border-color:#2563c0}
+.btn-upload{background:#2563c0;color:#fff;border:none;border-radius:7px;padding:8px 14px;cursor:pointer;font-size:13px;font-weight:700;font-family:'Nunito',sans-serif;transition:all .2s}
+.btn-new{background:#0f2d5c;color:#fff;border:none;border-radius:7px;padding:8px 14px;cursor:pointer;font-size:13px;font-weight:700;font-family:'Nunito',sans-serif;transition:all .2s}
+.btn-settings-top{background:#64748b;color:#fff;border:none;border-radius:7px;padding:8px 12px;cursor:pointer;font-size:13px;transition:all .2s}
+.fm-content{padding:20px}
+.fm-table-wrap{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+table{width:100%;border-collapse:collapse}
+thead tr{background:#f8fafc;border-bottom:2px solid #e2e8f0}
+th{padding:12px 16px;text-align:left;font-size:12px;font-weight:800;color:#374151;text-transform:uppercase;letter-spacing:.5px}
+tbody tr{border-bottom:1px solid #f1f5f9;transition:background .15s}
+tbody tr:hover{background:#f8fafc}
+tbody tr.selected-row{background:#eff6ff}
+td{padding:10px 16px;font-size:13px;color:#374151}
+.td-name{display:flex;align-items:center;gap:8px;font-weight:600}
+.td-name.folder{color:#2563c0}
+.perms-link{color:#2563c0;font-family:'JetBrains Mono',monospace}
+.action-btns{display:flex;gap:5px}
+.abtn{border:none;border-radius:5px;padding:5px 8px;cursor:pointer;font-size:12px;transition:all .2s}
+.abtn:hover{opacity:.8;transform:translateY(-1px)}
+.abtn-dl{background:#2563c0;color:#fff}
+.abtn-edit{background:#10b981;color:#fff}
+.abtn-copy{background:#f59e0b;color:#fff}
+.abtn-del{background:#ef4444;color:#fff}
+.fm-footer{font-size:12px;color:#64748b;margin-top:10px;padding:0 4px}
+.bulk-actions{margin-top:10px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.bulk-btn{background:#f8fafc;border:1.5px solid #d1d5db;border-radius:6px;padding:6px 12px;cursor:pointer;font-size:12px;color:#374151;font-family:'Nunito',sans-serif;font-weight:600;transition:all .2s}
+.bulk-btn:hover{background:#e2e8f0}
+.bulk-btn.danger{background:#fef2f2;color:#dc2626;border-color:#fca5a5}
+.fm-version{margin-left:auto;font-size:11px;color:#94a3b8}
+.settings-wrap{padding:20px;max-width:800px}
+.settings-card{background:#fff;border-radius:12px;padding:28px;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+.settings-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+.settings-title{font-size:17px;font-weight:800;color:#0f2d5c}
+.btn-cancel-s{background:#fef2f2;color:#dc2626;border:1.5px solid #fca5a5;border-radius:7px;padding:7px 16px;cursor:pointer;font-size:13px;font-weight:700;font-family:'Nunito',sans-serif}
+.settings-row{display:flex;align-items:center;padding:14px 0;border-bottom:1px solid #f1f5f9}
+.settings-label{flex:1;font-weight:600;color:#374151;font-size:14px}
+.settings-select{padding:8px 12px;border:2px solid #bfdbfe;border-radius:7px;font-size:14px;font-family:'Nunito',sans-serif;min-width:200px;outline:none}
+.toggle{width:48px;height:26px;border-radius:13px;cursor:pointer;position:relative;transition:background .2s;border:none}
+.toggle-thumb{width:22px;height:22px;background:#fff;border-radius:50%;position:absolute;top:2px;transition:left .2s;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.btn-save{background:#2563c0;color:#fff;border:none;border-radius:8px;padding:11px 26px;cursor:pointer;font-weight:700;font-size:14px;font-family:'Nunito',sans-serif;margin-top:20px;transition:all .2s}
+.settings-note{color:#9ca3af;font-size:12px;margin-top:10px}
+.dialog-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;z-index:9999}
+.dialog-box{background:#fff;border-radius:14px;padding:28px;min-width:320px;box-shadow:0 24px 60px rgba(0,0,0,.3)}
+.dialog-title{font-weight:800;color:#0f2d5c;font-size:17px;margin-bottom:16px}
+.dialog-btns{display:flex;gap:10px;margin-top:14px}
+.dialog-cancel{flex:1;padding:10px;border:1.5px solid #d1d5db;border-radius:8px;cursor:pointer;font-family:'Nunito',sans-serif;font-weight:600;background:#fff;font-size:14px}
+.dialog-ok{flex:1;padding:10px;background:#2563c0;color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:700;font-family:'Nunito',sans-serif;font-size:14px}
+</style>
+</head>
+<body>
+
+<!-- SCREEN 1: HOME -->
+<div class="screen bg-blue active" id="sc-home">
+  <div class="card">
+    <div class="logo-area">
+      <span class="logo-icon">🖥️</span>
+      <div class="logo-title">Nicolascassese.it</div>
+    </div>
+    <button class="btn-home" onclick="toggleAccordion()">
+      <span>💻</span><span style="flex:1">Come sviluppare</span><span id="acc-arrow">▼</span>
+    </button>
+    <div id="accordion" style="display:none" class="accordion-body">
+      <div class="opt-card">
+        <div class="opt-title">⭐ Opzione 1 — Online (File Manager)</div>
+        <div class="opt-desc">Modifica i file direttamente dal browser senza installare nulla. Adatta per modifiche rapide o per chi non ha un computer personale configurato.</div>
+        <button class="opt-btn" onclick="goTo('sc-login')">Apri File Manager</button>
+      </div>
+      <div class="opt-card">
+        <div class="opt-title">🖥️ Opzione 2 — Computer di Scuola (VSCode + Cartella Remota)</div>
+        <div class="opt-desc">Dai PC scolastici connetti al dominio, la cartella remota viene montata come cartella locale. Installa l'estensione VSCode per aprirla nell'editor.</div>
+        <button class="opt-btn">Estensione vscode-open-remote</button>
+      </div>
+      <div class="opt-card">
+        <div class="opt-title">🔒 Opzione 3 — Computer Personale (VSCode + SSH)</div>
+        <div class="opt-desc">Da casa o da qualsiasi PC con accesso SSH al server, usa l'estensione <strong>Remote - SSH</strong> di VSCode per modificare i file direttamente sul server.</div>
+        <button class="opt-btn">Estensione Remote - SSH</button>
+      </div>
+      <div class="opt-card">
+        <div class="opt-title">📦 Opzione 4 — Computer Personale (PHP Locale + Deploy)</div>
+        <div class="opt-desc">Installa PHP localmente, sviluppa sul tuo PC, poi carica i file con lo script <code style="background:#f1f5f9;padding:2px 5px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:12px">deploy.sh</code>:<br><br>
+        <code style="background:#0f2d5c;color:#7dd3fc;padding:5px 10px;border-radius:5px;font-family:'JetBrains Mono',monospace;font-size:12px;display:inline-block">./deploy.sh nome.cognome</code></div>
+        <button class="opt-btn">Scarica deploy.sh</button>
+      </div>
+    </div>
+    <button class="btn-home" onclick="goTo('sc-login')">
+      <span>🔗</span><span>Link diretto ai tuoi file</span>
+    </button>
+  </div>
+</div>
+
+<!-- SCREEN 2: LOGIN -->
+<div class="screen bg-blue" id="sc-login">
+  <div class="card">
+    <div class="logo-area" style="margin-bottom:20px">
+      <span class="logo-icon" style="font-size:36px">🖥️</span>
+      <div class="logo-title" style="font-size:22px">Nicolascassese.it</div>
+    </div>
+    <h2 style="text-align:center;color:#0f2d5c;font-size:20px;font-weight:800;margin-bottom:6px">Accedi al tuo account</h2>
+    <p style="text-align:center;color:#64748b;font-size:13px;margin-bottom:24px">Scegli come vuoi accedere</p>
+    <button class="btn-google" onclick="loginGoogle()">
+      <svg width="22" height="22" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.36-8.16 2.36-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+      Accedi con Google
+    </button>
+    <div class="divider">oppure</div>
+    <button class="btn-create" onclick="goTo('sc-register')">✨ Crea un account</button>
+    <div style="text-align:center;margin-top:6px">
+      <span style="font-size:13px;color:#94a3b8">Hai già un account? </span>
+      <button class="link-btn" style="display:inline;width:auto;margin:0" onclick="goTo('sc-login1')">Accedi con email</button>
+    </div>
+    <button class="link-btn" onclick="goTo('sc-home')" style="margin-top:16px;color:#94a3b8">← Torna alla home</button>
+  </div>
+</div>
+
+<!-- SCREEN 3: LOGIN STEP 1 -->
+<div class="screen bg-blue" id="sc-login1">
+  <div class="card">
+    <h2 style="text-align:center;color:#0f2d5c;font-size:26px;font-weight:800;margin-bottom:5px">File Manager</h2>
+    <p style="text-align:center;color:#64748b;font-size:14px;font-weight:600;margin-bottom:22px">Step 1: Inserisci il tuo username</p>
+    <div class="info-box"><strong>ℹ️ Informazione:</strong><br><span style="font-size:14px;color:#444">Inserisci il tuo username per accedere al file manager.<br>Nel prossimo step dovrai inserire la password.</span></div>
+    <label class="form-label">Username</label>
+    <input class="form-input" id="inp-username" placeholder="" autocomplete="off" onkeydown="if(event.key==='Enter')step1Next()"/>
+    <div class="form-hint">Esempio: nome.cognome</div>
+    <div style="display:flex;gap:10px;margin-top:16px">
+      <button class="btn-secondary-outline" onclick="goTo('sc-login')" style="flex:1">← Indietro</button>
+      <button class="btn-primary" onclick="step1Next()" style="flex:2;margin-top:0">Continua →</button>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN 4: LOGIN STEP 2 -->
+<div class="screen bg-blue" id="sc-login2">
+  <div class="card">
+    <h2 style="text-align:center;color:#0f2d5c;font-size:26px;font-weight:800;margin-bottom:5px">File Manager</h2>
+    <p style="text-align:center;color:#64748b;font-size:14px;font-weight:600;margin-bottom:18px">Step 2: Inserisci la password</p>
+    <div class="user-badge"><strong>Utente:</strong> <span id="badge-user"></span></div>
+    <label class="form-label">Username</label>
+    <input class="form-input" id="disp-username" style="background:#f8fafc;color:#64748b" readonly/>
+    <div style="height:12px"></div>
+    <label class="form-label">Password</label>
+    <input class="form-input" id="inp-password" type="password" onkeydown="if(event.key==='Enter')doLogin()"/>
+    <div id="login-error" class="error-msg" style="display:none"></div>
+    <button class="btn-primary" onclick="doLogin()">Accedi</button>
+    <button class="link-btn" onclick="changeUser()">Cambia utente</button>
+    <div style="margin-top:16px;background:#f0fdf4;border-radius:8px;padding:10px 14px;font-size:12px;color:#166534;border:1px solid #bbf7d0">
+      💡 <strong>Demo:</strong> username: <code>mario.rossi</code> — password: <code>demo2024</code>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN 5: REGISTER -->
+<div class="screen bg-blue" id="sc-register">
+  <div class="card">
+    <div style="text-align:center;color:#0f2d5c;font-size:24px;font-weight:800;margin-bottom:4px">✨ Crea Account</div>
+    <div style="text-align:center;color:#64748b;font-size:13px;font-weight:600;margin-bottom:22px">Registrati su Nicolascassese.it</div>
+    <label class="form-label">Nome completo</label>
+    <input class="form-input" id="reg-name" placeholder="Es. Mario Rossi" style="margin-bottom:12px"/>
+    <label class="form-label">Username</label>
+    <input class="form-input" id="reg-user" placeholder="Es. mario.rossi" style="margin-bottom:4px"/>
+    <div class="form-hint" style="margin-bottom:12px">Esempio: nome.cognome</div>
+    <label class="form-label">Email</label>
+    <input class="form-input" id="reg-email" type="email" placeholder="Es. mario@scuola.it" style="margin-bottom:12px"/>
+    <label class="form-label">Password</label>
+    <input class="form-input" id="reg-pass" type="password" placeholder="Minimo 8 caratteri" style="margin-bottom:12px"/>
+    <label class="form-label">Conferma Password</label>
+    <input class="form-input" id="reg-pass2" type="password" placeholder="Ripeti la password"/>
+    <div id="reg-error" class="error-msg" style="display:none"></div>
+    <button class="btn-primary" onclick="doRegister()">🚀 Crea Account</button>
+    <button class="link-btn" onclick="goTo('sc-login')" style="margin-top:10px;color:#94a3b8">← Torna al login</button>
+  </div>
+</div>
+
+<!-- SCREEN 6: FILE MANAGER -->
+<div class="screen fm-layout" id="sc-filemanager">
+  <div class="fm-topbar">
+    <span class="fm-title">📁 File Manager</span>
+    <button onclick="goTo('sc-home')" style="background:none;border:none;font-size:20px;cursor:pointer">🏠</button>
+    <div style="flex:1"></div>
+    <input class="fm-search" id="fm-search" placeholder="🔍 Cerca..." oninput="renderTable()"/>
+    <input type="file" id="file-upload" multiple style="display:none" onchange="handleUpload(event)"/>
+    <button class="btn-upload" onclick="document.getElementById('file-upload').click()">⬆️ Upload</button>
+    <button class="btn-new" onclick="showNewDialog()">➕ New Item</button>
+    <button class="btn-settings-top" onclick="goTo('sc-settings')">⚙️</button>
+    <span style="font-size:13px;font-weight:700;color:#0f2d5c">👤 <span id="fm-username"></span></span>
+  </div>
+  <div class="fm-content">
+    <div class="fm-table-wrap">
+      <table>
+        <thead><tr>
+          <th style="width:36px"><input type="checkbox" id="chk-all" onchange="toggleAll(this)"/></th>
+          <th>Name</th><th>Size</th><th>Modified</th>
+          <th id="th-perms">Perms</th><th id="th-owner">Owner</th><th>Actions</th>
+        </tr></thead>
+        <tbody id="fm-tbody"></tbody>
+      </table>
+    </div>
+    <div class="fm-footer" id="fm-footer"></div>
+    <div class="bulk-actions">
+      <button class="bulk-btn" onclick="selectAll()">☑️ Select all</button>
+      <button class="bulk-btn" onclick="unselectAll()">⬜ Unselect all</button>
+      <button class="bulk-btn" onclick="invertSelection()">🔄 Invert Selection</button>
+      <button class="bulk-btn danger" onclick="deleteSelected()">🗑️ Delete</button>
+      <button class="bulk-btn">📦 Zip</button>
+      <button class="bulk-btn">📁 Tar</button>
+      <button class="bulk-btn">📋 Copy</button>
+      <span class="fm-version">Nicolascassese File Manager 1.0</span>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN 7: SETTINGS -->
+<div class="screen fm-layout" id="sc-settings">
+  <div class="fm-topbar">
+    <span class="fm-title">📁 File Manager</span>
+    <button onclick="goTo('sc-filemanager')" style="background:none;border:none;font-size:20px;cursor:pointer">🏠</button>
+  </div>
+  <div class="settings-wrap">
+    <div class="settings-card">
+      <div class="settings-header">
+        <div class="settings-title">⚙️ Settings</div>
+        <button class="btn-cancel-s" onclick="goTo('sc-filemanager')">✖️ Cancel</button>
+      </div>
+      <div class="settings-row"><span class="settings-label">Language</span>
+        <select class="settings-select"><option>Italiano</option><option selected>English</option><option>Español</option></select></div>
+      <div class="settings-row"><span class="settings-label">Error Reporting</span>
+        <button class="toggle" id="tog-error" onclick="toggleSetting('error')" style="background:#d1d5db"><div class="toggle-thumb" style="left:2px"></div></button></div>
+      <div class="settings-row"><span class="settings-label">Show Hidden Files</span>
+        <button class="toggle" id="tog-hidden" onclick="toggleSetting('hidden')" style="background:#2563c0"><div class="toggle-thumb" style="left:24px"></div></button></div>
+      <div class="settings-row"><span class="settings-label">Hide Perms/Owner columns</span>
+        <button class="toggle" id="tog-perms" onclick="toggleSetting('perms')" style="background:#d1d5db"><div class="toggle-thumb" style="left:2px"></div></button></div>
+      <div class="settings-row"><span class="settings-label">Theme</span>
+        <select class="settings-select"><option selected>Light</option><option>Dark</option><option>Auto</option></select></div>
+      <button class="btn-save" onclick="saveSettings()">✅ Save</button>
+      <p class="settings-note">* Sometimes the save action may not work on the first try, so please attempt it again.</p>
+    </div>
+  </div>
+</div>
+
+<!-- NEW ITEM DIALOG -->
+<div id="dialog-overlay" class="dialog-overlay" style="display:none">
+  <div class="dialog-box">
+    <div class="dialog-title">➕ Nuova Cartella / Nuovo File</div>
+    <div style="display:flex;gap:8px;margin-bottom:12px">
+      <button id="type-folder" onclick="setItemType('folder')" style="flex:1;padding:8px;border-radius:7px;border:2px solid #2563c0;background:#eff6ff;color:#0f2d5c;cursor:pointer;font-weight:700;font-family:'Nunito',sans-serif;font-size:13px">📁 Cartella</button>
+      <button id="type-file" onclick="setItemType('file')" style="flex:1;padding:8px;border-radius:7px;border:2px solid #d1d5db;background:#fff;color:#374151;cursor:pointer;font-weight:700;font-family:'Nunito',sans-serif;font-size:13px">📄 File</button>
+    </div>
+    <input class="form-input" id="new-name" placeholder="Nome..." onkeydown="if(event.key==='Enter')createItem()"/>
+    <div id="file-content-wrap" style="display:none;margin-top:10px">
+      <textarea id="file-content" placeholder="Contenuto (opzionale)..." style="width:100%;padding:10px;border:2px solid #bfdbfe;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:12px;resize:vertical;min-height:80px;outline:none"></textarea>
+    </div>
+    <div class="dialog-btns">
+      <button class="dialog-cancel" onclick="closeDialog()">Annulla</button>
+      <button class="dialog-ok" onclick="createItem()">Crea</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" style="position:fixed;bottom:30px;right:30px;background:#0f2d5c;color:#fff;padding:14px 22px;border-radius:12px;font-weight:700;font-size:14px;display:none;z-index:99999;box-shadow:0 8px 24px rgba(0,0,0,.3)">✅ <span id="toast-msg"></span></div>
+
+<script>
+let currentScreen='sc-home',loggedUser='',newItemType='folder';
+let settings={hidePerms:false};
+const demoUsers={'mario.rossi':'demo2024','admin':'admin123','luigi.bianchi':'scuola2025'};
+let registeredUsers={...demoUsers};
+let files=[
+  {id:1,name:'progetti',type:'folder',rawSize:0,modified:fmtDate(new Date()),perms:'0775',owner:'mario.rossi:sc1-mario.rossi',selected:false},
+  {id:2,name:'index.php',type:'file',rawSize:2048,modified:fmtDate(new Date(Date.now()-86400000)),perms:'0644',owner:'mario.rossi:sc1-mario.rossi',selected:false},
+  {id:3,name:'style.css',type:'file',rawSize:512,modified:fmtDate(new Date(Date.now()-172800000)),perms:'0644',owner:'mario.rossi:sc1-mario.rossi',selected:false},
+];
+function fmtDate(d){return d.toLocaleDateString('it-IT')+' '+d.toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'});}
+function fmtSize(b){if(!b)return'-';if(b<1024)return b+' B';if(b<1048576)return Math.round(b/1024)+' KB';return (b/1048576).toFixed(1)+' MB';}
+function goTo(id){document.getElementById(currentScreen).classList.remove('active');currentScreen=id;document.getElementById(id).classList.add('active');if(id==='sc-filemanager')renderTable();}
+function showToast(msg){const t=document.getElementById('toast');document.getElementById('toast-msg').textContent=msg;t.style.display='block';setTimeout(()=>t.style.display='none',2800);}
+function toggleAccordion(){const a=document.getElementById('accordion');const ar=document.getElementById('acc-arrow');const o=a.style.display==='none';a.style.display=o?'block':'none';ar.textContent=o?'▲':'▼';}
+function loginGoogle(){loggedUser='utente.google';document.getElementById('fm-username').textContent='utente.google (Google)';showToast('Accesso Google simulato ✅');goTo('sc-filemanager');}
+function step1Next(){const u=document.getElementById('inp-username').value.trim();if(!u){alert('Inserisci uno username!');return;}loggedUser=u;document.getElementById('badge-user').textContent=u;document.getElementById('disp-username').value=u;document.getElementById('inp-password').value='';document.getElementById('login-error').style.display='none';goTo('sc-login2');}
+function doLogin(){const p=document.getElementById('inp-password').value;const e=document.getElementById('login-error');if(registeredUsers[loggedUser]===p){e.style.display='none';document.getElementById('fm-username').textContent=loggedUser;goTo('sc-filemanager');}else{e.textContent='❌ Credenziali non valide. Prova: mario.rossi / demo2024';e.style.display='block';}}
+function changeUser(){loggedUser='';document.getElementById('inp-username').value='';document.getElementById('inp-password').value='';document.getElementById('login-error').style.display='none';goTo('sc-login');}
+function doRegister(){const name=document.getElementById('reg-name').value.trim();const user=document.getElementById('reg-user').value.trim();const email=document.getElementById('reg-email').value.trim();const pass=document.getElementById('reg-pass').value;const pass2=document.getElementById('reg-pass2').value;const err=document.getElementById('reg-error');if(!name||!user||!email||!pass){err.textContent='❌ Compila tutti i campi!';err.style.display='block';return;}if(pass!==pass2){err.textContent='❌ Le password non coincidono!';err.style.display='block';return;}if(pass.length<8){err.textContent='❌ Password minimo 8 caratteri!';err.style.display='block';return;}if(registeredUsers[user]){err.textContent='❌ Username già esistente!';err.style.display='block';return;}registeredUsers[user]=pass;loggedUser=user;document.getElementById('fm-username').textContent=user;err.style.display='none';showToast('Account creato! 🎉');goTo('sc-filemanager');}
+function renderTable(){const q=(document.getElementById('fm-search')?.value||'').toLowerCase();const tbody=document.getElementById('fm-tbody');const filtered=files.filter(f=>f.name.toLowerCase().includes(q));const h=settings.hidePerms;document.getElementById('th-perms').style.display=h?'none':'';document.getElementById('th-owner').style.display=h?'none':'';if(!filtered.length){tbody.innerHTML=`<tr><td colspan="7" style="text-align:center;padding:40px;color:#94a3b8">📭 Nessun file trovato</td></tr>`;}else{tbody.innerHTML=filtered.map(f=>{const ic=f.type==='folder'?'📁':getIcon(f.name);const sz=f.type==='folder'?'Folder':fmtSize(f.rawSize);const pc=h?'':`<td class="perms-link">${f.perms}</td>`;const oc=h?'':`<td style="color:#64748b;font-size:12px">${f.owner}</td>`;return`<tr class="${f.selected?'selected-row':''}"><td><input type="checkbox" ${f.selected?'checked':''} onchange="toggleSelect(${f.id},this)"/></td><td><div class="td-name ${f.type==='folder'?'folder':''}">${ic} ${f.name}</div></td><td style="color:#64748b;font-size:13px">${sz}</td><td style="color:#64748b;font-size:13px">${f.modified}</td>${pc}${oc}<td><div class="action-btns"><button class="abtn abtn-dl">⬇️</button><button class="abtn abtn-edit">✏️</button><button class="abtn abtn-copy">📋</button><button class="abtn abtn-del" onclick="deleteFile(${f.id})">🗑️</button></div></td></tr>`;}).join('');}const fol=files.filter(f=>f.type==='folder').length;const fc=files.filter(f=>f.type!=='folder').length;const ts=files.filter(f=>f.type!=='folder').reduce((a,b)=>a+b.rawSize,0);document.getElementById('fm-footer').textContent=`Full Size: ${fmtSize(ts)} | File: ${fc} | Folder: ${fol}`;}
+function getIcon(n){const m={php:'🐘',js:'📜',css:'🎨',html:'🌐',json:'📋',txt:'📝',md:'📝',jpg:'🖼️',png:'🖼️',zip:'📦',sql:'🗄️',py:'🐍'};return m[n.split('.').pop().toLowerCase()]||'📄';}
+function toggleSelect(id,cb){const f=files.find(x=>x.id===id);if(f)f.selected=cb.checked;}
+function toggleAll(cb){files.forEach(f=>f.selected=cb.checked);renderTable();}
+function selectAll(){files.forEach(f=>f.selected=true);renderTable();}
+function unselectAll(){files.forEach(f=>f.selected=false);renderTable();}
+function invertSelection(){files.forEach(f=>f.selected=!f.selected);renderTable();}
+function deleteSelected(){if(!files.some(f=>f.selected)){alert('Seleziona almeno un file!');return;}if(confirm('Eliminare i file selezionati?')){files=files.filter(f=>!f.selected);renderTable();showToast('File eliminati!');}}
+function deleteFile(id){if(confirm('Eliminare?')){files=files.filter(f=>f.id!==id);renderTable();showToast('File eliminato!');}}
+function handleUpload(e){Array.from(e.target.files).forEach(f=>files.push({id:Date.now()+Math.random(),name:f.name,type:'file',rawSize:f.size,modified:fmtDate(new Date()),perms:'0644',owner:loggedUser+':sc1-'+loggedUser,selected:false}));e.target.value='';renderTable();showToast('File caricato!');}
+function showNewDialog(){setItemType('folder');document.getElementById('new-name').value='';document.getElementById('file-content').value='';document.getElementById('dialog-overlay').style.display='flex';setTimeout(()=>document.getElementById('new-name').focus(),100);}
+function closeDialog(){document.getElementById('dialog-overlay').style.display='none';}
+function setItemType(t){newItemType=t;const fb=document.getElementById('type-file');const db=document.getElementById('type-folder');const cw=document.getElementById('file-content-wrap');if(t==='folder'){db.style.borderColor='#2563c0';db.style.background='#eff6ff';db.style.color='#0f2d5c';fb.style.borderColor='#d1d5db';fb.style.background='#fff';fb.style.color='#374151';cw.style.display='none';}else{fb.style.borderColor='#2563c0';fb.style.background='#eff6ff';fb.style.color='#0f2d5c';db.style.borderColor='#d1d5db';db.style.background='#fff';db.style.color='#374151';cw.style.display='block';}}
+function createItem(){const n=document.getElementById('new-name').value.trim();if(!n){alert('Inserisci un nome!');return;}const c=document.getElementById('file-content').value;files.push({id:Date.now(),name:n,type:newItemType,rawSize:newItemType==='file'?new Blob([c]).size:0,modified:fmtDate(new Date()),perms:newItemType==='folder'?'0755':'0644',owner:loggedUser+':sc1-'+loggedUser,selected:false});closeDialog();renderTable();showToast(newItemType==='folder'?'Cartella creata!':'File creato!');}
+const toggleState={error:false,hidden:true,perms:false};
+function toggleSetting(k){toggleState[k]=!toggleState[k];const b=document.getElementById('tog-'+k);const th=b.querySelector('.toggle-thumb');b.style.background=toggleState[k]?'#2563c0':'#d1d5db';th.style.left=toggleState[k]?'24px':'2px';if(k==='perms'){settings.hidePerms=toggleState[k];renderTable();}}
+function saveSettings(){settings.hidePerms=toggleState.perms;renderTable();showToast('Impostazioni salvate!');goTo('sc-filemanager');}
+document.getElementById('dialog-overlay').addEventListener('click',function(e){if(e.target===this)closeDialog();});
+</script>
+</body>
+</html>
