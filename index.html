@@ -11,140 +11,142 @@ body{font-family:'Nunito','Segoe UI',sans-serif;min-height:100vh}
 .screen{min-height:100vh;display:none}
 .screen.active{display:flex}
 .bg-blue{background:linear-gradient(135deg,#0f2d5c 0%,#1a4d8f 50%,#2563c0 100%);align-items:center;justify-content:center;min-height:100vh}
-.card{background:#fff;border-radius:18px;padding:38px 36px;box-shadow:0 24px 64px rgba(0,0,0,.25);width:90%;max-width:480px;animation:fadeUp .4s ease}
+#sc-gate{background:linear-gradient(135deg,#0f2d5c,#2563c0);align-items:center;justify-content:center;flex-direction:column}
+.gate-card{background:#fff;border-radius:16px;padding:32px 28px;width:90%;max-width:400px;box-shadow:0 24px 60px rgba(0,0,0,.35);animation:fadeUp .4s ease}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.gate-logo{text-align:center;margin-bottom:20px}
+.gate-icon{font-size:44px;display:block;margin-bottom:6px}
+.gate-title{font-size:22px;font-weight:900;color:#1a4d8f}
+.gate-sub{text-align:center;color:#64748b;font-size:13px;margin-bottom:22px;font-weight:600}
+.gate-label{font-size:13px;font-weight:700;color:#0f2d5c;display:block;margin-bottom:5px}
+.gate-input{width:100%;padding:11px 14px;border:2px solid #bfdbfe;border-radius:9px;font-size:14px;font-family:'Nunito',sans-serif;outline:none;transition:all .2s;margin-bottom:13px}
+.gate-input:focus{border-color:#2563c0;box-shadow:0 0 0 3px rgba(37,99,192,.1)}
+.gate-input.shake{animation:shake .3s ease;border-color:#ef4444;background:#fef2f2}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.gate-error{background:#fef2f2;border:1.5px solid #fca5a5;border-radius:8px;padding:9px 12px;color:#dc2626;font-size:12px;font-weight:700;margin-bottom:12px;display:none}
+.gate-remember{display:flex;align-items:center;gap:8px;margin-bottom:14px;font-size:13px;color:#374151;font-weight:600;cursor:pointer}
+.gate-remember input{width:16px;height:16px;accent-color:#2563c0;cursor:pointer}
+.gate-btn{background:linear-gradient(135deg,#0f2d5c,#2563c0);color:#fff;border:none;border-radius:9px;padding:13px;width:100%;cursor:pointer;font-size:15px;font-weight:800;font-family:'Nunito',sans-serif;transition:all .2s}
+.gate-btn:hover{opacity:.9;transform:translateY(-1px)}
+.card{background:#fff;border-radius:18px;padding:36px;box-shadow:0 24px 64px rgba(0,0,0,.25);width:90%;max-width:460px}
 .logo-area{text-align:center;margin-bottom:28px}
-.logo-icon{font-size:48px;margin-bottom:6px;display:block}
-.logo-title{font-size:26px;font-weight:900;color:#1a4d8f;letter-spacing:-1px}
-.btn-home{background:linear-gradient(135deg,#1a4d8f,#2563c0);color:#fff;border:none;border-radius:12px;padding:16px 20px;width:100%;cursor:pointer;font-size:15px;font-weight:700;font-family:'Nunito',sans-serif;text-align:left;display:flex;align-items:center;gap:12px;margin-bottom:12px;transition:all .2s}
+.logo-icon{font-size:46px;display:block;margin-bottom:6px}
+.logo-title{font-size:25px;font-weight:900;color:#1a4d8f}
+.btn-home{background:linear-gradient(135deg,#1a4d8f,#2563c0);color:#fff;border:none;border-radius:12px;padding:15px 20px;width:100%;cursor:pointer;font-size:15px;font-weight:700;font-family:'Nunito',sans-serif;text-align:left;display:flex;align-items:center;gap:12px;margin-bottom:11px;transition:all .2s}
 .btn-home:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,99,192,.4)}
-.accordion-body{background:#eff6ff;border-radius:12px;padding:14px;margin-bottom:12px;margin-top:-8px;animation:fadeUp .3s ease}
-.opt-card{background:#fff;border-radius:10px;padding:16px;margin-bottom:10px;box-shadow:0 2px 8px rgba(0,0,0,.07)}
-.opt-title{font-weight:800;color:#0f2d5c;font-size:12px;text-transform:uppercase;margin-bottom:6px}
-.opt-desc{color:#555;font-size:13px;margin-bottom:12px;line-height:1.5}
-.opt-btn{background:linear-gradient(135deg,#1a4d8f,#2563c0);color:#fff;border:none;border-radius:7px;padding:8px 14px;cursor:pointer;font-size:12px;font-weight:700;font-family:'Nunito',sans-serif}
-.form-label{font-weight:700;color:#0f2d5c;display:block;margin-bottom:6px;font-size:14px}
-.form-input{width:100%;padding:13px 14px;border:2px solid #bfdbfe;border-radius:10px;font-size:15px;font-family:'Nunito',sans-serif;outline:none;transition:border-color .2s}
-.form-input:focus{border-color:#2563c0}
-.form-input.error{border-color:#ef4444;background:#fef2f2}
-.form-hint{font-size:12px;color:#94a3b8;margin-top:4px}
-.btn-primary{background:linear-gradient(135deg,#0f2d5c,#2563c0);color:#fff;border:none;border-radius:10px;padding:13px 20px;cursor:pointer;font-size:15px;font-weight:700;font-family:'Nunito',sans-serif;width:100%;margin-top:14px;transition:all .2s}
-.btn-primary:hover{opacity:.9;transform:translateY(-1px)}
-.btn-secondary-outline{background:#fff;color:#374151;border:2px solid #e2e8f0;border-radius:10px;padding:13px 20px;cursor:pointer;font-size:14px;font-weight:700;font-family:'Nunito',sans-serif;transition:all .2s}
-.btn-google{background:#fff;color:#374151;border:2px solid #e2e8f0;border-radius:12px;padding:14px 20px;width:100%;cursor:pointer;font-size:15px;font-weight:700;font-family:'Nunito',sans-serif;display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:14px;transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,.06)}
-.btn-google:hover{background:#f8fafc;box-shadow:0 4px 16px rgba(0,0,0,.1);transform:translateY(-1px)}
-.btn-create{background:linear-gradient(135deg,#0f2d5c,#2563c0);color:#fff;border:none;border-radius:12px;padding:14px 20px;width:100%;cursor:pointer;font-size:15px;font-weight:700;font-family:'Nunito',sans-serif;display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:10px;transition:all .2s}
-.btn-create:hover{opacity:.9;transform:translateY(-1px)}
-.divider{display:flex;align-items:center;gap:12px;margin:16px 0;color:#94a3b8;font-size:13px;font-weight:600}
-.divider::before,.divider::after{content:'';flex:1;height:1px;background:#e2e8f0}
-.info-box{background:#eff6ff;border-left:4px solid #2563c0;border-radius:0 10px 10px 0;padding:14px 16px;margin-bottom:20px}
-.user-badge{background:#eff6ff;border:2px solid #2563c0;border-radius:10px;padding:10px 16px;text-align:center;margin-bottom:20px;color:#0f2d5c;font-weight:700}
-.error-msg{background:#fef2f2;border:1.5px solid #fca5a5;border-radius:8px;padding:10px 14px;color:#dc2626;font-size:13px;margin-top:10px;font-weight:600;display:none}
-.link-btn{background:none;border:none;color:#2563c0;cursor:pointer;font-size:14px;text-decoration:underline;font-family:'Nunito',sans-serif;margin-top:10px;width:100%;text-align:center;display:block}
-
-/* FILE MANAGER */
+.accordion-body{background:#eff6ff;border-radius:12px;padding:13px;margin-bottom:11px;margin-top:-7px}
+.opt-card{background:#fff;border-radius:10px;padding:14px;margin-bottom:9px;box-shadow:0 2px 8px rgba(0,0,0,.07)}
+.opt-title{font-weight:800;color:#0f2d5c;font-size:11px;text-transform:uppercase;margin-bottom:5px}
+.opt-desc{color:#555;font-size:13px;margin-bottom:10px;line-height:1.5}
+.opt-btn{background:linear-gradient(135deg,#1a4d8f,#2563c0);color:#fff;border:none;border-radius:7px;padding:7px 13px;cursor:pointer;font-size:12px;font-weight:700;font-family:'Nunito',sans-serif}
 .fm-layout{background:#f1f5f9;min-height:100vh;flex-direction:column}
-.fm-topbar{background:#fff;border-bottom:2px solid #e2e8f0;padding:10px 20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.fm-brand{font-weight:900;font-size:16px;color:#0f2d5c;display:flex;align-items:center;gap:6px}
+.fm-topbar{background:#fff;border-bottom:2px solid #e2e8f0;padding:8px 20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;position:sticky;top:0;z-index:100}
+.fm-brand{font-weight:900;font-size:15px;color:#0f2d5c;display:flex;align-items:center;gap:6px;cursor:pointer}
+.fm-brand:hover{text-decoration:underline}
 .fm-search{padding:7px 12px;border:1.5px solid #d1d5db;border-radius:8px;font-size:13px;font-family:'Nunito',sans-serif;width:160px;outline:none}
 .fm-search:focus{border-color:#2563c0}
-.btn-upload{background:#2563c0;color:#fff;border:none;border-radius:7px;padding:8px 14px;cursor:pointer;font-size:13px;font-weight:700;font-family:'Nunito',sans-serif;transition:all .2s}
-.btn-upload:hover{background:#1a4d8f}
-.btn-new{background:#0f2d5c;color:#fff;border:none;border-radius:7px;padding:8px 14px;cursor:pointer;font-size:13px;font-weight:700;font-family:'Nunito',sans-serif}
-.btn-settings-top{background:#64748b;color:#fff;border:none;border-radius:7px;padding:8px 12px;cursor:pointer;font-size:13px}
-
-/* AVATAR */
-.avatar-wrap{position:relative;cursor:pointer}
-.avatar-circle{width:38px;height:38px;border-radius:50%;object-fit:cover;border:2.5px solid #2563c0;background:#eff6ff;display:flex;align-items:center;justify-content:center;font-size:18px;overflow:hidden}
-.avatar-circle img{width:100%;height:100%;object-fit:cover;border-radius:50%}
-.avatar-dropdown{position:absolute;right:0;top:46px;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.18);min-width:220px;z-index:1000;padding:8px 0;display:none;animation:fadeUp .2s ease}
-.avatar-dropdown.open{display:block}
-.av-header{padding:14px 16px;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;gap:10px}
-.av-pic{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid #2563c0;background:#eff6ff;display:flex;align-items:center;justify-content:center;font-size:22px;overflow:hidden;flex-shrink:0}
-.av-pic img{width:100%;height:100%;object-fit:cover;border-radius:50%}
-.av-name{font-weight:800;color:#0f2d5c;font-size:14px}
-.av-email{font-size:12px;color:#64748b;margin-top:2px;word-break:break-all}
-.av-item{padding:10px 16px;font-size:13px;font-weight:600;color:#374151;cursor:pointer;display:flex;align-items:center;gap:8px;transition:background .15s}
-.av-item:hover{background:#f8fafc}
-.av-item.danger{color:#dc2626}
-
-/* UPLOAD DROP ZONE */
+.btn-upload{background:#2563c0;color:#fff;border:none;border-radius:7px;padding:8px 14px;cursor:pointer;font-size:13px;font-weight:700;font-family:'Nunito',sans-serif;display:flex;align-items:center;gap:6px}
+.btn-nuovo{background:#0f2d5c;color:#fff;border:none;border-radius:7px;padding:8px 14px;cursor:pointer;font-size:13px;font-weight:700;font-family:'Nunito',sans-serif;display:flex;align-items:center;gap:6px}
+.btn-settings-top{background:#64748b;color:#fff;border:none;border-radius:7px;padding:8px 11px;cursor:pointer;font-size:14px}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#64748b;margin-bottom:14px;flex-wrap:wrap}
+.bc-item{color:#2563c0;cursor:pointer}
+.bc-item:hover{text-decoration:underline}
+.bc-sep{color:#94a3b8}
+.bc-current{color:#0f2d5c}
 .drop-zone{border:2.5px dashed #93c5fd;border-radius:14px;background:#eff6ff;padding:32px 20px;text-align:center;cursor:pointer;transition:all .2s;margin-bottom:16px}
 .drop-zone:hover,.drop-zone.drag-over{border-color:#2563c0;background:#dbeafe}
-.drop-zone-icon{font-size:42px;margin-bottom:10px}
-.drop-zone-text{font-weight:700;color:#1a4d8f;font-size:15px;margin-bottom:4px}
-.drop-zone-sub{font-size:12px;color:#64748b}
-
-/* TABLE */
-.fm-content{padding:20px}
-.fm-table-wrap{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+.drop-zone-icon{font-size:52px;margin-bottom:10px}
+.fm-content{padding:20px;flex:1}
+.fm-table-wrap{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);margin-bottom:12px}
 table{width:100%;border-collapse:collapse}
 thead tr{background:#f8fafc;border-bottom:2px solid #e2e8f0}
-th{padding:12px 16px;text-align:left;font-size:12px;font-weight:800;color:#374151;text-transform:uppercase;letter-spacing:.5px;cursor:pointer;user-select:none}
+th{padding:11px 16px;text-align:left;font-size:11px;font-weight:800;color:#374151;text-transform:uppercase;letter-spacing:.5px;cursor:pointer;user-select:none;white-space:nowrap}
 th:hover{color:#2563c0}
 tbody tr{border-bottom:1px solid #f1f5f9;transition:background .15s}
 tbody tr:hover{background:#f8fafc}
 tbody tr.selected-row{background:#eff6ff}
 td{padding:10px 16px;font-size:13px;color:#374151}
 .td-name{display:flex;align-items:center;gap:8px;font-weight:600}
-.td-name.folder{color:#2563c0;cursor:pointer}
-.td-name.folder:hover{text-decoration:underline}
+.td-name.is-folder{color:#2563c0;cursor:pointer}
+.td-name.is-folder:hover{text-decoration:underline}
 .perms-link{color:#2563c0;font-family:'JetBrains Mono',monospace;font-size:12px}
-.action-btns{display:flex;gap:5px}
-.abtn{border:none;border-radius:5px;padding:5px 9px;cursor:pointer;font-size:12px;transition:all .2s;font-weight:700}
-.abtn:hover{opacity:.8;transform:translateY(-1px)}
+.action-btns{display:flex;gap:4px}
+.abtn{border:none;border-radius:6px;padding:6px 10px;cursor:pointer;font-size:13px;font-weight:700;transition:all .15s}
+.abtn:hover{opacity:.85;transform:translateY(-1px)}
 .abtn-dl{background:#2563c0;color:#fff}
 .abtn-edit{background:#10b981;color:#fff}
 .abtn-copy{background:#f59e0b;color:#fff}
 .abtn-del{background:#ef4444;color:#fff}
-.fm-footer{font-size:12px;color:#64748b;margin-top:10px;padding:0 4px}
-.bulk-actions{margin-top:10px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
-.bulk-btn{background:#f8fafc;border:1.5px solid #d1d5db;border-radius:6px;padding:6px 12px;cursor:pointer;font-size:12px;color:#374151;font-family:'Nunito',sans-serif;font-weight:600;transition:all .2s}
+.fm-footer{font-size:12px;color:#64748b;padding:2px 4px;margin-bottom:8px}
+.bulk-actions{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.bulk-btn{background:#f8fafc;border:1.5px solid #d1d5db;border-radius:6px;padding:6px 12px;cursor:pointer;font-size:12px;color:#374151;font-family:'Nunito',sans-serif;font-weight:600;display:flex;align-items:center;gap:5px;transition:all .15s}
 .bulk-btn:hover{background:#e2e8f0}
 .bulk-btn.danger{background:#fef2f2;color:#dc2626;border-color:#fca5a5}
 .fm-version{margin-left:auto;font-size:11px;color:#94a3b8}
-
-/* BREADCRUMB */
-.breadcrumb{font-size:13px;color:#64748b;margin-bottom:12px;display:flex;align-items:center;gap:6px;font-weight:600}
-.breadcrumb span{color:#2563c0;cursor:pointer}
-.breadcrumb span:hover{text-decoration:underline}
-
-/* SETTINGS */
+.avatar-wrap{position:relative;cursor:pointer}
+.avatar-circle{width:36px;height:36px;border-radius:50%;border:2.5px solid #2563c0;background:#eff6ff;display:flex;align-items:center;justify-content:center;font-size:16px;overflow:hidden;flex-shrink:0}
+.avatar-circle img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.avatar-dd{position:absolute;right:0;top:44px;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.18);min-width:200px;z-index:200;padding:8px 0;display:none}
+.avatar-dd.open{display:block;animation:fadeUp .2s ease}
+.av-header{padding:12px 16px;border-bottom:1px solid #f1f5f9}
+.av-name{font-weight:800;color:#0f2d5c;font-size:14px}
+.av-role{font-size:11px;color:#64748b;background:#eff6ff;border-radius:4px;padding:2px 7px;display:inline-block;margin-top:3px;font-weight:700}
+.av-item{padding:9px 16px;font-size:13px;font-weight:600;color:#374151;cursor:pointer;display:flex;align-items:center;gap:8px;transition:background .15s}
+.av-item:hover{background:#f8fafc}
+.av-item.danger{color:#dc2626}
+.dialog-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;z-index:9999}
+.dialog-box{background:#fff;border-radius:16px;padding:28px;width:90%;max-width:480px;box-shadow:0 24px 60px rgba(0,0,0,.3);animation:fadeUp .2s ease;max-height:90vh;overflow-y:auto}
+.dialog-title{font-weight:800;color:#0f2d5c;font-size:17px;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.dialog-label{font-size:13px;font-weight:700;color:#0f2d5c;display:block;margin-bottom:5px}
+.dialog-input{width:100%;padding:11px 13px;border:2px solid #bfdbfe;border-radius:9px;font-size:14px;font-family:'Nunito',sans-serif;outline:none;margin-bottom:13px;transition:border-color .2s}
+.dialog-input:focus{border-color:#2563c0}
+.dialog-textarea{width:100%;padding:11px 13px;border:2px solid #bfdbfe;border-radius:9px;font-size:13px;font-family:'JetBrains Mono',monospace;outline:none;resize:vertical;min-height:120px;margin-bottom:13px}
+.dialog-textarea:focus{border-color:#2563c0}
+.dialog-btns{display:flex;gap:10px;margin-top:4px}
+.dialog-cancel{flex:1;padding:11px;border:1.5px solid #d1d5db;border-radius:9px;cursor:pointer;font-family:'Nunito',sans-serif;font-weight:700;background:#fff;font-size:14px}
+.dialog-ok{flex:1;padding:11px;background:#2563c0;color:#fff;border:none;border-radius:9px;cursor:pointer;font-weight:800;font-family:'Nunito',sans-serif;font-size:14px}
+.filetype-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px}
+.filetype-btn{border:2px solid #e2e8f0;border-radius:10px;padding:12px 8px;cursor:pointer;text-align:center;font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;color:#374151;background:#fff;transition:all .2s}
+.filetype-btn:hover{border-color:#2563c0;background:#eff6ff;color:#0f2d5c}
+.filetype-btn.selected{border-color:#2563c0;background:#eff6ff;color:#0f2d5c}
+.filetype-icon{font-size:24px;display:block;margin-bottom:4px}
 .settings-wrap{padding:20px;max-width:800px}
 .settings-card{background:#fff;border-radius:12px;padding:28px;box-shadow:0 2px 12px rgba(0,0,0,.08)}
-.settings-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
-.settings-title{font-size:17px;font-weight:800;color:#0f2d5c}
-.btn-cancel-s{background:#fef2f2;color:#dc2626;border:1.5px solid #fca5a5;border-radius:7px;padding:7px 16px;cursor:pointer;font-size:13px;font-weight:700;font-family:'Nunito',sans-serif}
 .settings-row{display:flex;align-items:center;padding:14px 0;border-bottom:1px solid #f1f5f9}
 .settings-label{flex:1;font-weight:600;color:#374151;font-size:14px}
-.settings-select{padding:8px 12px;border:2px solid #bfdbfe;border-radius:7px;font-size:14px;font-family:'Nunito',sans-serif;min-width:200px;outline:none}
-.toggle{width:48px;height:26px;border-radius:13px;cursor:pointer;position:relative;transition:background .2s;border:none}
+.settings-select{padding:8px 12px;border:2px solid #bfdbfe;border-radius:7px;font-size:14px;font-family:'Nunito',sans-serif;min-width:180px;outline:none}
+.toggle{width:48px;height:26px;border-radius:13px;cursor:pointer;position:relative;transition:background .2s;border:none;flex-shrink:0}
 .toggle-thumb{width:22px;height:22px;background:#fff;border-radius:50%;position:absolute;top:2px;transition:left .2s;box-shadow:0 1px 4px rgba(0,0,0,.2)}
 .btn-save{background:#2563c0;color:#fff;border:none;border-radius:8px;padding:11px 26px;cursor:pointer;font-weight:700;font-size:14px;font-family:'Nunito',sans-serif;margin-top:20px}
-.settings-note{color:#9ca3af;font-size:12px;margin-top:10px}
-
-/* PROFILE SETTINGS */
-.profile-pic-area{display:flex;align-items:center;gap:16px;padding:16px 0;border-bottom:1px solid #f1f5f9}
-.profile-big-pic{width:72px;height:72px;border-radius:50%;border:3px solid #2563c0;background:#eff6ff;display:flex;align-items:center;justify-content:center;font-size:32px;overflow:hidden;flex-shrink:0}
-.profile-big-pic img{width:100%;height:100%;object-fit:cover;border-radius:50%}
-.btn-change-pic{background:#eff6ff;color:#2563c0;border:2px solid #2563c0;border-radius:8px;padding:8px 16px;cursor:pointer;font-weight:700;font-size:13px;font-family:'Nunito',sans-serif}
-
-/* DIALOG */
-.dialog-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;z-index:9999}
-.dialog-box{background:#fff;border-radius:14px;padding:28px;min-width:340px;max-width:90vw;box-shadow:0 24px 60px rgba(0,0,0,.3);animation:fadeUp .2s ease}
-.dialog-title{font-weight:800;color:#0f2d5c;font-size:17px;margin-bottom:16px}
-.dialog-btns{display:flex;gap:10px;margin-top:16px}
-.dialog-cancel{flex:1;padding:10px;border:1.5px solid #d1d5db;border-radius:8px;cursor:pointer;font-family:'Nunito',sans-serif;font-weight:600;background:#fff;font-size:14px}
-.dialog-ok{flex:1;padding:10px;background:#2563c0;color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:700;font-family:'Nunito',sans-serif;font-size:14px}
-
-/* TOAST */
-#toast{position:fixed;bottom:28px;right:28px;background:#0f2d5c;color:#fff;padding:13px 20px;border-radius:12px;font-weight:700;font-size:14px;display:none;z-index:99999;box-shadow:0 8px 24px rgba(0,0,0,.3);animation:fadeUp .3s ease}
+#toast{position:fixed;bottom:24px;right:24px;background:#0f2d5c;color:#fff;padding:12px 20px;border-radius:12px;font-weight:700;font-size:14px;display:none;z-index:99999;box-shadow:0 8px 24px rgba(0,0,0,.3);animation:fadeUp .3s ease;max-width:320px}
 </style>
 </head>
 <body>
 
+<!-- SCREEN 0: LOGIN GATE -->
+<div class="screen active" id="sc-gate">
+  <div class="gate-card">
+    <div class="gate-logo">
+      <span class="gate-icon">🖥️</span>
+      <div class="gate-title">Nicolascassese.it</div>
+    </div>
+    <div class="gate-sub">🔒 Area Riservata — Inserisci le credenziali</div>
+    <div id="gate-error" class="gate-error">❌ Username o password errati.</div>
+    <label class="gate-label">Username</label>
+    <input class="gate-input" id="gate-user" placeholder="Username" autocomplete="username"
+      onkeydown="if(event.key==='Enter')document.getElementById('gate-pass').focus()"/>
+    <label class="gate-label">Password</label>
+    <input class="gate-input" id="gate-pass" type="password" placeholder="Password" autocomplete="current-password"
+      onkeydown="if(event.key==='Enter')gateLogin()"/>
+    <label class="gate-remember">
+      <input type="checkbox" id="gate-remember"/> Ricorda le credenziali
+    </label>
+    <button class="gate-btn" onclick="gateLogin()">🔓 Accedi</button>
+  </div>
+</div>
+
 <!-- SCREEN 1: HOME -->
-<div class="screen bg-blue active" id="sc-home">
+<div class="screen bg-blue" id="sc-home">
   <div class="card">
     <div class="logo-area">
       <span class="logo-icon">🖥️</span>
@@ -156,171 +158,79 @@ td{padding:10px 16px;font-size:13px;color:#374151}
     <div id="accordion" style="display:none" class="accordion-body">
       <div class="opt-card">
         <div class="opt-title">⭐ Opzione 1 — Online (File Manager)</div>
-        <div class="opt-desc">Modifica i file direttamente dal browser senza installare nulla.</div>
-        <button class="opt-btn" onclick="goTo('sc-login')">Apri File Manager</button>
+        <div class="opt-desc">Modifica i file dal browser senza installare nulla.</div>
+        <button class="opt-btn" onclick="goTo('sc-filemanager')">Apri File Manager</button>
       </div>
       <div class="opt-card">
-        <div class="opt-title">🖥️ Opzione 2 — Computer di Scuola (VSCode + Cartella Remota)</div>
-        <div class="opt-desc">Dai PC scolastici connetti al dominio, la cartella remota viene montata come cartella locale.</div>
+        <div class="opt-title">🖥️ Opzione 2 — VSCode + Cartella Remota</div>
+        <div class="opt-desc">Connetti al dominio e monta la cartella remota come locale.</div>
         <button class="opt-btn">Estensione vscode-open-remote</button>
       </div>
       <div class="opt-card">
-        <div class="opt-title">🔒 Opzione 3 — Computer Personale (VSCode + SSH)</div>
-        <div class="opt-desc">Usa l'estensione <strong>Remote - SSH</strong> di VSCode per modificare i file direttamente sul server.</div>
+        <div class="opt-title">🔒 Opzione 3 — VSCode + SSH</div>
+        <div class="opt-desc">Usa <strong>Remote - SSH</strong> per lavorare direttamente sul server.</div>
         <button class="opt-btn">Estensione Remote - SSH</button>
       </div>
       <div class="opt-card">
         <div class="opt-title">📦 Opzione 4 — PHP Locale + Deploy</div>
-        <div class="opt-desc">Sviluppa sul tuo PC e carica con <code style="background:#f1f5f9;padding:2px 5px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:12px">deploy.sh</code>:<br><br>
-        <code style="background:#0f2d5c;color:#7dd3fc;padding:5px 10px;border-radius:5px;font-family:'JetBrains Mono',monospace;font-size:12px;display:inline-block">./deploy.sh nome.cognome</code></div>
+        <div class="opt-desc">Sviluppa localmente poi carica con <code style="background:#f1f5f9;padding:2px 5px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:11px">deploy.sh</code></div>
         <button class="opt-btn">Scarica deploy.sh</button>
       </div>
     </div>
-    <button class="btn-home" onclick="goTo('sc-login')">
+    <button class="btn-home" onclick="goTo('sc-filemanager')">
       <span>🔗</span><span>Link diretto ai tuoi file</span>
     </button>
   </div>
 </div>
 
-<!-- SCREEN 2: LOGIN SCELTA -->
-<div class="screen bg-blue" id="sc-login">
-  <div class="card">
-    <div class="logo-area" style="margin-bottom:20px">
-      <span class="logo-icon" style="font-size:36px">🖥️</span>
-      <div class="logo-title" style="font-size:22px">Nicolascassese.it</div>
-    </div>
-    <h2 style="text-align:center;color:#0f2d5c;font-size:20px;font-weight:800;margin-bottom:6px">Accedi al tuo account</h2>
-    <p style="text-align:center;color:#64748b;font-size:13px;margin-bottom:24px">Scegli come vuoi accedere</p>
-    <button class="btn-google" onclick="loginGoogle()">
-      <svg width="22" height="22" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.36-8.16 2.36-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
-      Accedi con Google
-    </button>
-    <div class="divider">oppure</div>
-    <button class="btn-create" onclick="goTo('sc-register')">✨ Crea un account</button>
-    <div style="text-align:center;margin-top:8px">
-      <span style="font-size:13px;color:#94a3b8">Hai già un account? </span>
-      <button class="link-btn" style="display:inline;width:auto;margin:0" onclick="goTo('sc-login1')">Accedi con email</button>
-    </div>
-    <button class="link-btn" onclick="goTo('sc-home')" style="margin-top:16px;color:#94a3b8">← Torna alla home</button>
-  </div>
-</div>
-
-<!-- SCREEN 3: LOGIN STEP 1 -->
-<div class="screen bg-blue" id="sc-login1">
-  <div class="card">
-    <h2 style="text-align:center;color:#0f2d5c;font-size:26px;font-weight:800;margin-bottom:5px">File Manager</h2>
-    <p style="text-align:center;color:#64748b;font-size:14px;font-weight:600;margin-bottom:22px">Step 1: Inserisci il tuo username</p>
-    <div class="info-box"><strong>ℹ️ Informazione:</strong><br><span style="font-size:14px;color:#444">Inserisci il tuo username per accedere.<br>Nel prossimo step dovrai inserire la password.</span></div>
-    <label class="form-label">Username</label>
-    <input class="form-input" id="inp-username" placeholder="" autocomplete="off" onkeydown="if(event.key==='Enter')step1Next()"/>
-    <div class="form-hint">Esempio: nome.cognome</div>
-    <div style="display:flex;gap:10px;margin-top:16px">
-      <button class="btn-secondary-outline" onclick="goTo('sc-login')" style="flex:1">← Indietro</button>
-      <button class="btn-primary" onclick="step1Next()" style="flex:2;margin-top:0">Continua →</button>
-    </div>
-  </div>
-</div>
-
-<!-- SCREEN 4: LOGIN STEP 2 -->
-<div class="screen bg-blue" id="sc-login2">
-  <div class="card">
-    <h2 style="text-align:center;color:#0f2d5c;font-size:26px;font-weight:800;margin-bottom:5px">File Manager</h2>
-    <p style="text-align:center;color:#64748b;font-size:14px;font-weight:600;margin-bottom:18px">Step 2: Inserisci la password</p>
-    <div class="user-badge"><strong>Utente:</strong> <span id="badge-user"></span></div>
-    <label class="form-label">Username</label>
-    <input class="form-input" id="disp-username" style="background:#f8fafc;color:#64748b" readonly/>
-    <div style="height:12px"></div>
-    <label class="form-label">Password</label>
-    <input class="form-input" id="inp-password" type="password" onkeydown="if(event.key==='Enter')doLogin()"/>
-    <div id="login-error" class="error-msg">❌ Username o password errati. Riprova.</div>
-    <button class="btn-primary" onclick="doLogin()">Accedi</button>
-    <button class="link-btn" onclick="changeUser()">Cambia utente</button>
-  </div>
-</div>
-
-<!-- SCREEN 5: REGISTER -->
-<div class="screen bg-blue" id="sc-register">
-  <div class="card">
-    <div style="text-align:center;color:#0f2d5c;font-size:24px;font-weight:800;margin-bottom:4px">✨ Crea Account</div>
-    <div style="text-align:center;color:#64748b;font-size:13px;font-weight:600;margin-bottom:22px">Registrati su Nicolascassese.it</div>
-
-    <!-- FOTO PROFILO UPLOAD nella registrazione -->
-    <div style="text-align:center;margin-bottom:20px">
-      <div id="reg-avatar-preview" style="width:72px;height:72px;border-radius:50%;border:3px solid #2563c0;background:#eff6ff;display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto 10px;overflow:hidden;cursor:pointer" onclick="document.getElementById('reg-avatar-upload').click()">👤</div>
-      <input type="file" id="reg-avatar-upload" accept="image/*" style="display:none" onchange="previewRegAvatar(event)"/>
-      <button style="background:#eff6ff;color:#2563c0;border:2px solid #2563c0;border-radius:8px;padding:6px 14px;cursor:pointer;font-weight:700;font-size:12px;font-family:'Nunito',sans-serif" onclick="document.getElementById('reg-avatar-upload').click()">📷 Foto profilo</button>
-    </div>
-
-    <label class="form-label">Nome completo</label>
-    <input class="form-input" id="reg-name" placeholder="Es. Mario Rossi" style="margin-bottom:12px"/>
-    <label class="form-label">Username</label>
-    <input class="form-input" id="reg-user" placeholder="Es. mario.rossi" style="margin-bottom:4px"/>
-    <div class="form-hint" style="margin-bottom:12px">Esempio: nome.cognome</div>
-    <label class="form-label">Email</label>
-    <input class="form-input" id="reg-email" type="email" placeholder="Es. mario@gmail.com" style="margin-bottom:12px"/>
-    <label class="form-label">Password</label>
-    <input class="form-input" id="reg-pass" type="password" placeholder="Minimo 8 caratteri" style="margin-bottom:12px"/>
-    <label class="form-label">Conferma Password</label>
-    <input class="form-input" id="reg-pass2" type="password" placeholder="Ripeti la password"/>
-    <div id="reg-error" class="error-msg"></div>
-    <button class="btn-primary" onclick="doRegister()">🚀 Crea Account</button>
-    <button class="link-btn" onclick="goTo('sc-login')" style="margin-top:10px;color:#94a3b8">← Torna al login</button>
-  </div>
-</div>
-
-<!-- SCREEN 6: FILE MANAGER -->
+<!-- SCREEN 2: FILE MANAGER -->
 <div class="screen fm-layout" id="sc-filemanager">
   <div class="fm-topbar">
-    <span class="fm-brand">🖥️ Nicolascassese.it</span>
-    <button onclick="goTo('sc-home')" style="background:none;border:none;font-size:18px;cursor:pointer" title="Home">🏠</button>
+    <span class="fm-brand" onclick="goTo('sc-home')">🖥️ Nicolascassese.it 🏠</span>
     <div style="flex:1"></div>
     <input class="fm-search" id="fm-search" placeholder="🔍 Cerca..." oninput="renderTable()"/>
     <input type="file" id="file-upload" multiple style="display:none" onchange="handleUpload(event)"/>
     <button class="btn-upload" onclick="document.getElementById('file-upload').click()">⬆️ Upload</button>
-    <button class="btn-new" onclick="showNewDialog()">➕ Nuovo</button>
+    <button class="btn-nuovo" id="btn-nuovo-top" onclick="showNewDialog()" style="display:none">➕ Nuovo</button>
     <button class="btn-settings-top" onclick="goTo('sc-settings')">⚙️</button>
-
-    <!-- AVATAR con dropdown -->
     <div class="avatar-wrap" id="avatar-wrap">
       <div class="avatar-circle" id="topbar-avatar" onclick="toggleAvatarMenu()">👤</div>
-      <div class="avatar-dropdown" id="avatar-dropdown">
+      <div class="avatar-dd" id="avatar-dd">
         <div class="av-header">
-          <div class="av-pic" id="dropdown-avatar-pic">👤</div>
-          <div>
-            <div class="av-name" id="dropdown-name">Utente</div>
-            <div class="av-email" id="dropdown-email">—</div>
-          </div>
+          <div class="av-name" id="av-name-el">—</div>
+          <span class="av-role" id="av-role-el">utente</span>
         </div>
         <div class="av-item" onclick="goTo('sc-settings');closeAvatarMenu()">⚙️ Impostazioni</div>
-        <div class="av-item" onclick="changePicFromDropdown()">📷 Cambia foto</div>
+        <div class="av-item" onclick="document.getElementById('avatar-inp').click();closeAvatarMenu()">📷 Cambia foto</div>
         <div class="av-item danger" onclick="doLogout()">🚪 Logout</div>
       </div>
-      <input type="file" id="avatar-change" accept="image/*" style="display:none" onchange="changeAvatarFromFile(event)"/>
+      <input type="file" id="avatar-inp" accept="image/*" style="display:none" onchange="changeAvatar(event)"/>
     </div>
   </div>
-
-  <!-- DROP ZONE per upload -->
   <div class="fm-content">
-    <div class="breadcrumb">📁 <span onclick="currentPath=[];renderTable()">root</span> <span id="breadcrumb-extra"></span></div>
-    <div class="drop-zone" id="drop-zone" onclick="document.getElementById('file-upload').click()"
+    <div class="breadcrumb" id="breadcrumb"></div>
+    <div class="drop-zone" id="drop-zone"
+      onclick="document.getElementById('file-upload').click()"
       ondragover="event.preventDefault();this.classList.add('drag-over')"
       ondragleave="this.classList.remove('drag-over')"
       ondrop="handleDrop(event)">
       <div class="drop-zone-icon">📂</div>
-      <div class="drop-zone-text">Trascina qui i tuoi file o clicca per caricarli</div>
-      <div class="drop-zone-sub">Supporta qualsiasi tipo di file • Drag & Drop attivo</div>
+      <div style="font-weight:700;color:#1a4d8f;font-size:14px;margin-bottom:4px">Trascina qui i tuoi file o clicca per caricarli</div>
+      <div style="font-size:12px;color:#64748b">Supporta qualsiasi tipo di file • Drag &amp; Drop attivo</div>
     </div>
-
+    <div id="in-folder-nuovo" style="display:none;margin-bottom:12px">
+      <button class="btn-nuovo" onclick="showNewDialog()" style="font-size:14px;padding:10px 20px">➕ Nuovo file in questa cartella</button>
+    </div>
     <div class="fm-table-wrap">
       <table>
         <thead><tr>
           <th style="width:36px"><input type="checkbox" id="chk-all" onchange="toggleAll(this)"/></th>
-          <th onclick="sortBy('name')">Name ↕</th>
-          <th onclick="sortBy('size')">Size ↕</th>
-          <th onclick="sortBy('modified')">Modified ↕</th>
-          <th id="th-perms">Perms</th>
-          <th id="th-owner">Owner</th>
-          <th>Actions</th>
+          <th onclick="sortBy('name')">NAME ↕</th>
+          <th onclick="sortBy('size')">SIZE ↕</th>
+          <th onclick="sortBy('modified')">MODIFIED ↕</th>
+          <th id="th-perms">PERMS</th>
+          <th id="th-owner">OWNER</th>
+          <th>ACTIONS</th>
         </tr></thead>
         <tbody id="fm-tbody"></tbody>
       </table>
@@ -338,41 +248,35 @@ td{padding:10px 16px;font-size:13px;color:#374151}
   </div>
 </div>
 
-<!-- SCREEN 7: SETTINGS -->
+<!-- SCREEN 3: SETTINGS -->
 <div class="screen fm-layout" id="sc-settings">
   <div class="fm-topbar">
-    <span class="fm-brand">🖥️ Nicolascassese.it</span>
-    <button onclick="goTo('sc-filemanager')" style="background:none;border:none;font-size:18px;cursor:pointer">🏠</button>
+    <span class="fm-brand" onclick="goTo('sc-filemanager')">🖥️ Nicolascassese.it 🏠</span>
   </div>
   <div class="settings-wrap">
     <div class="settings-card">
-      <div class="settings-header">
-        <div class="settings-title">⚙️ Settings</div>
-        <button class="btn-cancel-s" onclick="goTo('sc-filemanager')">✖️ Cancel</button>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+        <div style="font-size:17px;font-weight:800;color:#0f2d5c">⚙️ Settings</div>
+        <button onclick="goTo('sc-filemanager')" style="background:#fef2f2;color:#dc2626;border:1.5px solid #fca5a5;border-radius:7px;padding:7px 14px;cursor:pointer;font-size:13px;font-weight:700;font-family:'Nunito',sans-serif">✖️ Cancel</button>
       </div>
-
-      <!-- PROFILO -->
-      <div class="profile-pic-area">
-        <div class="profile-big-pic" id="settings-avatar">👤</div>
-        <div style="flex:1">
-          <div style="font-weight:800;color:#0f2d5c;font-size:15px" id="settings-name">Utente</div>
-          <div style="font-size:13px;color:#64748b;margin-top:2px" id="settings-email">—</div>
-          <button class="btn-change-pic" style="margin-top:8px" onclick="document.getElementById('avatar-change').click()">📷 Cambia foto profilo</button>
+      <div style="display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid #f1f5f9;margin-bottom:6px">
+        <div id="settings-avatar" style="width:60px;height:60px;border-radius:50%;border:3px solid #2563c0;background:#eff6ff;display:flex;align-items:center;justify-content:center;font-size:26px;overflow:hidden;flex-shrink:0">👤</div>
+        <div>
+          <div style="font-weight:800;color:#0f2d5c;font-size:15px" id="settings-name">—</div>
+          <div id="s-role-badge" style="font-size:11px;background:#fef3c7;color:#92400e;border-radius:4px;padding:2px 7px;display:inline-block;margin-top:4px;font-weight:700">admin</div>
+          <button onclick="document.getElementById('avatar-inp').click()" style="display:block;background:#eff6ff;color:#2563c0;border:2px solid #2563c0;border-radius:7px;padding:5px 12px;cursor:pointer;font-weight:700;font-size:12px;font-family:'Nunito',sans-serif;margin-top:8px">📷 Cambia foto</button>
         </div>
       </div>
-
       <div class="settings-row"><span class="settings-label">Language</span>
-        <select class="settings-select"><option>Italiano</option><option selected>English</option><option>Español</option></select></div>
-      <div class="settings-row"><span class="settings-label">Error Reporting</span>
-        <button class="toggle" id="tog-error" onclick="toggleSetting('error')" style="background:#d1d5db"><div class="toggle-thumb" style="left:2px"></div></button></div>
+        <select class="settings-select"><option>Italiano</option><option selected>English</option></select></div>
       <div class="settings-row"><span class="settings-label">Show Hidden Files</span>
         <button class="toggle" id="tog-hidden" onclick="toggleSetting('hidden')" style="background:#2563c0"><div class="toggle-thumb" style="left:24px"></div></button></div>
-      <div class="settings-row"><span class="settings-label">Hide Perms/Owner columns</span>
+      <div class="settings-row"><span class="settings-label">Hide Perms/Owner</span>
         <button class="toggle" id="tog-perms" onclick="toggleSetting('perms')" style="background:#d1d5db"><div class="toggle-thumb" style="left:2px"></div></button></div>
       <div class="settings-row"><span class="settings-label">Theme</span>
-        <select class="settings-select"><option selected>Light</option><option>Dark</option><option>Auto</option></select></div>
+        <select class="settings-select"><option selected>Light</option><option>Dark</option></select></div>
       <button class="btn-save" onclick="saveSettings()">✅ Save</button>
-      <p class="settings-note">* Sometimes the save action may not work on the first try, so please attempt it again.</p>
+      <p style="color:#9ca3af;font-size:12px;margin-top:10px">* Sometimes the save action may not work on the first try.</p>
     </div>
   </div>
 </div>
@@ -380,18 +284,53 @@ td{padding:10px 16px;font-size:13px;color:#374151}
 <!-- NEW ITEM DIALOG -->
 <div id="dialog-overlay" class="dialog-overlay" style="display:none">
   <div class="dialog-box">
-    <div class="dialog-title">➕ Nuova Cartella / Nuovo File</div>
-    <div style="display:flex;gap:8px;margin-bottom:12px">
-      <button id="type-folder" onclick="setItemType('folder')" style="flex:1;padding:8px;border-radius:7px;border:2px solid #2563c0;background:#eff6ff;color:#0f2d5c;cursor:pointer;font-weight:700;font-family:'Nunito',sans-serif;font-size:13px">📁 Cartella</button>
-      <button id="type-file" onclick="setItemType('file')" style="flex:1;padding:8px;border-radius:7px;border:2px solid #d1d5db;background:#fff;color:#374151;cursor:pointer;font-weight:700;font-family:'Nunito',sans-serif;font-size:13px">📄 File</button>
+    <div class="dialog-title">➕ Crea nuovo elemento <span id="dialog-path-label" style="font-size:12px;color:#64748b;font-weight:600"></span></div>
+    <label class="dialog-label">Tipo di elemento</label>
+    <div class="filetype-grid">
+      <button class="filetype-btn selected" id="ft-folder" onclick="selectFileType('folder')"><span class="filetype-icon">📁</span>Cartella</button>
+      <button class="filetype-btn" id="ft-html" onclick="selectFileType('html')"><span class="filetype-icon">🌐</span>HTML</button>
+      <button class="filetype-btn" id="ft-php" onclick="selectFileType('php')"><span class="filetype-icon">🐘</span>PHP</button>
+      <button class="filetype-btn" id="ft-css" onclick="selectFileType('css')"><span class="filetype-icon">🎨</span>CSS</button>
+      <button class="filetype-btn" id="ft-js" onclick="selectFileType('js')"><span class="filetype-icon">📜</span>JavaScript</button>
+      <button class="filetype-btn" id="ft-txt" onclick="selectFileType('txt')"><span class="filetype-icon">📝</span>Testo</button>
+      <button class="filetype-btn" id="ft-img" onclick="selectFileType('img')"><span class="filetype-icon">🖼️</span>Immagine</button>
+      <button class="filetype-btn" id="ft-link" onclick="selectFileType('link')"><span class="filetype-icon">🔗</span>Link/URL</button>
+      <button class="filetype-btn" id="ft-sql" onclick="selectFileType('sql')"><span class="filetype-icon">🗄️</span>SQL</button>
     </div>
-    <input class="form-input" id="new-name" placeholder="Nome..." onkeydown="if(event.key==='Enter')createItem()"/>
-    <div id="file-content-wrap" style="display:none;margin-top:10px">
-      <textarea id="file-content" placeholder="Contenuto (opzionale)..." style="width:100%;padding:10px;border:2px solid #bfdbfe;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:12px;resize:vertical;min-height:80px;outline:none"></textarea>
+    <label class="dialog-label" id="dialog-name-label">Nome cartella</label>
+    <input class="dialog-input" id="new-name" placeholder="Es. mia-cartella" onkeydown="if(event.key==='Enter')createItem()"/>
+    <div id="content-area" style="display:none">
+      <label class="dialog-label" id="content-label">Contenuto</label>
+      <textarea class="dialog-textarea" id="file-content" placeholder="Contenuto del file..."></textarea>
+    </div>
+    <div id="img-area" style="display:none">
+      <label class="dialog-label">URL immagine</label>
+      <input class="dialog-input" id="img-url" placeholder="https://esempio.com/foto.jpg"/>
+      <label class="dialog-label">Testo alternativo</label>
+      <input class="dialog-input" id="img-alt" placeholder="Descrizione immagine"/>
+    </div>
+    <div id="link-area" style="display:none">
+      <label class="dialog-label">URL del link</label>
+      <input class="dialog-input" id="link-url" placeholder="https://esempio.com"/>
+      <label class="dialog-label">Testo del link</label>
+      <input class="dialog-input" id="link-text" placeholder="Clicca qui"/>
     </div>
     <div class="dialog-btns">
       <button class="dialog-cancel" onclick="closeDialog()">Annulla</button>
-      <button class="dialog-ok" onclick="createItem()">Crea</button>
+      <button class="dialog-ok" onclick="createItem()">✅ Crea</button>
+    </div>
+  </div>
+</div>
+
+<!-- EDIT DIALOG -->
+<div id="edit-overlay" class="dialog-overlay" style="display:none">
+  <div class="dialog-box">
+    <div class="dialog-title">✏️ Modifica file</div>
+    <label class="dialog-label" id="edit-filename-label">Contenuto</label>
+    <textarea class="dialog-textarea" id="edit-content" style="min-height:200px"></textarea>
+    <div class="dialog-btns">
+      <button class="dialog-cancel" onclick="closeEdit()">Annulla</button>
+      <button class="dialog-ok" onclick="saveEdit()">💾 Salva</button>
     </div>
   </div>
 </div>
@@ -399,193 +338,116 @@ td{padding:10px 16px;font-size:13px;color:#374151}
 <div id="toast">✅ <span id="toast-msg"></span></div>
 
 <script>
-// ======= STATE =======
-let currentScreen='sc-home', loggedUser='', loggedEmail='', loggedName='', userAvatar=null, newItemType='folder';
-let settings={hidePerms:false};
-let registeredUsers={'mario.rossi':{pass:'demo2024',email:'mario@gmail.com',name:'Mario Rossi',avatar:null},'admin':{pass:'admin123',email:'admin@nicolascassese.it',name:'Admin',avatar:null}};
-let files=[
-  {id:1,name:'progetti',type:'folder',rawSize:0,modified:new Date(),perms:'0775',owner:'mario.rossi',selected:false},
-  {id:2,name:'index.php',type:'file',rawSize:2048,modified:new Date(Date.now()-86400000),perms:'0644',owner:'mario.rossi',selected:false},
-  {id:3,name:'style.css',type:'file',rawSize:512,modified:new Date(Date.now()-172800000),perms:'0644',owner:'mario.rossi',selected:false},
+let htpasswd=[{username:'Nicolas',password:'nicolas2024',role:'admin',avatar:null},{username:'amico1',password:'amico2024',role:'user',avatar:null}];
+let savedCreds=null;
+let fs=[
+  {id:'root',name:'root',type:'folder',parentId:null,rawSize:0,modified:new Date(),perms:'0775',owner:'Nicolas',content:'',selected:false},
+  {id:'f1',name:'progetti',type:'folder',parentId:'root',rawSize:0,modified:new Date(),perms:'0775',owner:'Nicolas',content:'',selected:false},
+  {id:'f2',name:'index.php',type:'php',parentId:'root',rawSize:2048,modified:new Date(Date.now()-86400000),perms:'0644',owner:'Nicolas',content:'<?php\necho "Hello World!";\n?>',selected:false},
+  {id:'f3',name:'style.css',type:'css',parentId:'root',rawSize:512,modified:new Date(Date.now()-172800000),perms:'0644',owner:'Nicolas',content:'body { margin: 0; }',selected:false},
 ];
-let regAvatarData=null;
-const toggleState={error:false,hidden:true,perms:false};
+let currentScreen='sc-gate',currentPath=['root'],loggedUser=null,settings={hidePerms:false},newItemType='folder',editingId=null;
+const toggleState={hidden:true,perms:false};
 
 function fmtDate(d){return d.toLocaleDateString('it-IT')+' '+d.toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'});}
-function fmtSize(b){if(!b)return'-';if(b<1024)return b+' B';if(b<1048576)return Math.round(b/1024)+' KB';return (b/1048576).toFixed(1)+' MB';}
-function goTo(id){document.getElementById(currentScreen).classList.remove('active');currentScreen=id;document.getElementById(id).classList.add('active');if(id==='sc-filemanager')renderTable();if(id==='sc-settings')updateSettingsProfile();}
-function showToast(msg){const t=document.getElementById('toast');document.getElementById('toast-msg').textContent=msg;t.style.display='block';setTimeout(()=>t.style.display='none',2800);}
-function toggleAccordion(){const a=document.getElementById('accordion'),ar=document.getElementById('acc-arrow'),o=a.style.display==='none';a.style.display=o?'block':'none';ar.textContent=o?'▲':'▼';}
+function fmtSize(b){if(!b)return'-';if(b<1024)return b+' B';if(b<1048576)return Math.round(b/1024)+' KB';return(b/1048576).toFixed(1)+' MB';}
+function uid(){return 'id'+Date.now()+Math.floor(Math.random()*9999);}
+function showToast(msg,color='#0f2d5c'){const t=document.getElementById('toast');document.getElementById('toast-msg').textContent=msg;t.style.background=color;t.style.display='block';setTimeout(()=>t.style.display='none',2800);}
 
-// ======= AVATAR HELPERS =======
-function setAvatarEl(el, src){
-  if(src){el.innerHTML=`<img src="${src}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>`;}
-  else{el.innerHTML='👤';}
-}
-function updateAllAvatars(){
-  const src=userAvatar;
-  setAvatarEl(document.getElementById('topbar-avatar'),src);
-  setAvatarEl(document.getElementById('dropdown-avatar-pic'),src);
-  setAvatarEl(document.getElementById('settings-avatar'),src);
-  document.getElementById('dropdown-name').textContent=loggedName||loggedUser;
-  document.getElementById('dropdown-email').textContent=loggedEmail||'—';
-}
-function updateSettingsProfile(){
-  document.getElementById('settings-name').textContent=loggedName||loggedUser;
-  document.getElementById('settings-email').textContent=loggedEmail||'—';
-  updateAllAvatars();
+function goTo(id){
+  document.getElementById(currentScreen).classList.remove('active');document.getElementById(currentScreen).style.display='none';
+  currentScreen=id;const el=document.getElementById(id);el.classList.add('active');el.style.display='flex';
+  if(id==='sc-filemanager')renderTable();
+  if(id==='sc-settings'&&loggedUser){document.getElementById('settings-name').textContent=loggedUser.username;document.getElementById('s-role-badge').textContent=loggedUser.role==='admin'?'⚡ Admin':'👤 Utente';}
 }
 
-// ======= AVATAR MENU =======
-function toggleAvatarMenu(){document.getElementById('avatar-dropdown').classList.toggle('open');}
-function closeAvatarMenu(){document.getElementById('avatar-dropdown').classList.remove('open');}
-document.addEventListener('click',e=>{const w=document.getElementById('avatar-wrap');if(w&&!w.contains(e.target))closeAvatarMenu();});
-
-function changePicFromDropdown(){document.getElementById('avatar-change').click();closeAvatarMenu();}
-function changeAvatarFromFile(e){
-  const f=e.target.files[0];if(!f)return;
-  const r=new FileReader();
-  r.onload=ev=>{userAvatar=ev.target.result;updateAllAvatars();if(registeredUsers[loggedUser])registeredUsers[loggedUser].avatar=userAvatar;showToast('Foto profilo aggiornata! 📷');};
-  r.readAsDataURL(f);
-  e.target.value='';
-}
-function previewRegAvatar(e){
-  const f=e.target.files[0];if(!f)return;
-  const r=new FileReader();
-  r.onload=ev=>{regAvatarData=ev.target.result;const el=document.getElementById('reg-avatar-preview');el.innerHTML=`<img src="${ev.target.result}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>`;};
-  r.readAsDataURL(f);
-}
-
-// ======= LOGIN / REGISTER =======
-function loginGoogle(){
-  loggedUser='utente.google';loggedEmail='utente@gmail.com';loggedName='Utente Google';userAvatar=null;
-  document.getElementById('fm-username') && (document.getElementById('fm-username').textContent=loggedName);
-  updateAllAvatars();showToast('Accesso con Google simulato ✅');goTo('sc-filemanager');
-}
-function step1Next(){const u=document.getElementById('inp-username').value.trim();if(!u){alert('Inserisci uno username!');return;}loggedUser=u;document.getElementById('badge-user').textContent=u;document.getElementById('disp-username').value=u;document.getElementById('inp-password').value='';document.getElementById('login-error').style.display='none';goTo('sc-login2');}
-function doLogin(){
-  const p=document.getElementById('inp-password').value;
-  const err=document.getElementById('login-error');
-  const u=registeredUsers[loggedUser];
-  if(u&&u.pass===p){
-    err.style.display='none';
-    loggedEmail=u.email;loggedName=u.name;userAvatar=u.avatar||null;
-    updateAllAvatars();showToast('Accesso effettuato! 👋');goTo('sc-filemanager');
+function gateLogin(){
+  const u=document.getElementById('gate-user').value.trim();
+  const p=document.getElementById('gate-pass').value;
+  const rem=document.getElementById('gate-remember').checked;
+  const err=document.getElementById('gate-error');
+  const found=htpasswd.find(x=>x.username===u&&x.password===p);
+  if(found){
+    loggedUser=found;if(rem)savedCreds={username:u,password:p};else savedCreds=null;
+    err.style.display='none';updateAvatarUI();showToast('🔓 Benvenuto, '+found.username+'!');goTo('sc-home');
   } else {
-    document.getElementById('inp-password').classList.add('error');
     err.style.display='block';
-    setTimeout(()=>document.getElementById('inp-password').classList.remove('error'),600);
+    ['gate-user','gate-pass'].forEach(id=>{const el=document.getElementById(id);el.classList.add('shake');setTimeout(()=>el.classList.remove('shake'),400);});
+    document.getElementById('gate-pass').value='';
   }
 }
-function changeUser(){loggedUser='';document.getElementById('inp-username').value='';document.getElementById('inp-password').value='';document.getElementById('login-error').style.display='none';goTo('sc-login');}
-function doLogout(){loggedUser='';loggedEmail='';loggedName='';userAvatar=null;regAvatarData=null;closeAvatarMenu();showToast('Logout effettuato 👋');goTo('sc-home');}
-function doRegister(){
-  const name=document.getElementById('reg-name').value.trim();
-  const user=document.getElementById('reg-user').value.trim();
-  const email=document.getElementById('reg-email').value.trim();
-  const pass=document.getElementById('reg-pass').value;
-  const pass2=document.getElementById('reg-pass2').value;
-  const err=document.getElementById('reg-error');
-  if(!name||!user||!email||!pass){err.textContent='❌ Compila tutti i campi!';err.style.display='block';return;}
-  if(pass!==pass2){err.textContent='❌ Le password non coincidono!';err.style.display='block';return;}
-  if(pass.length<8){err.textContent='❌ Password minimo 8 caratteri!';err.style.display='block';return;}
-  if(registeredUsers[user]){err.textContent='❌ Username già esistente!';err.style.display='block';return;}
-  registeredUsers[user]={pass,email,name,avatar:regAvatarData};
-  loggedUser=user;loggedEmail=email;loggedName=name;userAvatar=regAvatarData;
-  err.style.display='none';regAvatarData=null;
-  updateAllAvatars();showToast('Account creato! 🎉');goTo('sc-filemanager');
+function doLogout(){loggedUser=null;closeAvatarMenu();document.getElementById('gate-pass').value='';document.getElementById('gate-error').style.display='none';if(!savedCreds){document.getElementById('gate-user').value='';document.getElementById('gate-pass').value='';}showToast('👋 Logout!');goTo('sc-gate');}
+function toggleAccordion(){const a=document.getElementById('accordion'),ar=document.getElementById('acc-arrow'),o=a.style.display==='none';a.style.display=o?'block':'none';ar.textContent=o?'▲':'▼';}
+
+function updateAvatarUI(){
+  if(!loggedUser)return;
+  const src=loggedUser.avatar;
+  ['topbar-avatar','settings-avatar'].forEach(id=>{const e=document.getElementById(id);if(!e)return;e.innerHTML=src?`<img src="${src}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>`:loggedUser.username.charAt(0).toUpperCase();});
+  document.getElementById('av-name-el').textContent=loggedUser.username;
+  document.getElementById('av-role-el').textContent=loggedUser.role==='admin'?'⚡ Admin':'👤 Utente';
+}
+function toggleAvatarMenu(){document.getElementById('avatar-dd').classList.toggle('open');}
+function closeAvatarMenu(){document.getElementById('avatar-dd').classList.remove('open');}
+document.addEventListener('click',e=>{const w=document.getElementById('avatar-wrap');if(w&&!w.contains(e.target))closeAvatarMenu();});
+function changeAvatar(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{if(loggedUser)loggedUser.avatar=ev.target.result;updateAvatarUI();showToast('📷 Foto aggiornata!');};r.readAsDataURL(f);e.target.value='';}
+
+function currentFolderId(){return currentPath[currentPath.length-1];}
+function enterFolder(id){currentPath.push(id);renderTable();}
+function navigateTo(idx){currentPath=currentPath.slice(0,idx+1);renderTable();}
+
+function renderBreadcrumb(){
+  const bc=document.getElementById('breadcrumb');
+  bc.innerHTML=currentPath.map((id,i)=>{const node=fs.find(x=>x.id===id);const name=node?node.name:'root';return i===currentPath.length-1?`<span class="bc-current">📁 ${name}</span>`:`<span class="bc-item" onclick="navigateTo(${i})">📁 ${name}</span>`;}).join('<span class="bc-sep"> › </span>');
 }
 
-// ======= FILE MANAGER =======
-function getIcon(n){const m={php:'🐘',js:'📜',css:'🎨',html:'🌐',json:'📋',txt:'📝',md:'📝',jpg:'🖼️',jpeg:'🖼️',png:'🖼️',gif:'🖼️',zip:'📦',sql:'🗄️',py:'🐍',mp4:'🎬',mp3:'🎵',pdf:'📄'};return m[n.split('.').pop().toLowerCase()]||'📄';}
-
 function renderTable(){
+  renderBreadcrumb();
+  const inRoot=currentPath.length===1;
+  document.getElementById('drop-zone').style.display=inRoot?'block':'none';
+  document.getElementById('in-folder-nuovo').style.display=inRoot?'none':'flex';
+  document.getElementById('btn-nuovo-top').style.display=inRoot?'flex':'none';
   const q=(document.getElementById('fm-search')?.value||'').toLowerCase();
-  const tbody=document.getElementById('fm-tbody');
-  const filtered=files.filter(f=>f.name.toLowerCase().includes(q));
+  const fid=currentFolderId();
+  let items=fs.filter(f=>f.parentId===fid&&f.id!=='root'&&f.name.toLowerCase().includes(q));
   const h=settings.hidePerms;
   document.getElementById('th-perms').style.display=h?'none':'';
   document.getElementById('th-owner').style.display=h?'none':'';
-  if(!filtered.length){tbody.innerHTML=`<tr><td colspan="7" style="text-align:center;padding:40px;color:#94a3b8;font-size:14px">📭 Nessun file trovato</td></tr>`;}
-  else{tbody.innerHTML=filtered.map(f=>{
-    const ic=f.type==='folder'?'📁':getIcon(f.name);
-    const sz=f.type==='folder'?'Folder':fmtSize(f.rawSize);
-    const pc=h?'':`<td class="perms-link">${f.perms}</td>`;
-    const oc=h?'':`<td style="color:#64748b;font-size:12px">${f.owner}</td>`;
-    return`<tr class="${f.selected?'selected-row':''}">
-      <td><input type="checkbox" ${f.selected?'checked':''} onchange="toggleSelect(${f.id},this)"/></td>
-      <td><div class="td-name ${f.type==='folder'?'folder':''}">${ic} ${f.name}</div></td>
-      <td style="color:#64748b;font-size:13px">${sz}</td>
-      <td style="color:#64748b;font-size:13px">${fmtDate(f.modified)}</td>
-      ${pc}${oc}
-      <td><div class="action-btns">
-        <button class="abtn abtn-dl" title="Download">⬇️</button>
-        <button class="abtn abtn-edit" title="Modifica">✏️</button>
-        <button class="abtn abtn-copy" title="Copia">📋</button>
-        <button class="abtn abtn-del" title="Elimina" onclick="deleteFile(${f.id})">🗑️</button>
-      </div></td>
-    </tr>`;
-  }).join('');}
-  const fol=files.filter(f=>f.type==='folder').length;
-  const fc=files.filter(f=>f.type!=='folder').length;
-  const ts=files.filter(f=>f.type!=='folder').reduce((a,b)=>a+b.rawSize,0);
-  document.getElementById('fm-footer').textContent=`Full Size: ${fmtSize(ts)} | File: ${fc} | Folder: ${fol}`;
+  const tbody=document.getElementById('fm-tbody');
+  if(!items.length){tbody.innerHTML=`<tr><td colspan="7" style="text-align:center;padding:40px;color:#94a3b8;font-size:14px">📭 Cartella vuota — clicca "Nuovo file" per creare qualcosa</td></tr>`;}
+  else{tbody.innerHTML=items.map(f=>{const ic=getIcon(f);const sz=f.type==='folder'?'Folder':fmtSize(f.rawSize);const nc=f.type==='folder'?'td-name is-folder':'td-name';const nclick=f.type==='folder'?`onclick="enterFolder('${f.id}')"` :'';const pc=h?'':`<td><span class="perms-link">${f.perms}</span></td>`;const oc=h?'':`<td style="color:#64748b;font-size:12px">${f.owner}</td>`;return`<tr class="${f.selected?'selected-row':''}"><td><input type="checkbox" ${f.selected?'checked':''} onchange="toggleSelect('${f.id}',this)"/></td><td><div class="${nc}" ${nclick}>${ic} ${f.name}</div></td><td style="color:#64748b;font-size:13px">${sz}</td><td style="color:#64748b;font-size:13px">${fmtDate(f.modified)}</td>${pc}${oc}<td><div class="action-btns"><button class="abtn abtn-dl" onclick="downloadItem('${f.id}')">⬇️</button><button class="abtn abtn-edit" onclick="editItem('${f.id}')">✏️</button><button class="abtn abtn-copy" onclick="copyItem('${f.id}')">📋</button><button class="abtn abtn-del" onclick="deleteItem('${f.id}')">🗑️</button></div></td></tr>`;}).join('');}
+  const fols=items.filter(f=>f.type==='folder').length,files=items.filter(f=>f.type!=='folder').length,size=items.filter(f=>f.type!=='folder').reduce((a,b)=>a+b.rawSize,0);
+  document.getElementById('fm-footer').textContent=`Full Size: ${fmtSize(size)} | File: ${files} | Folder: ${fols}`;
 }
 
-function sortBy(key){
-  files.sort((a,b)=>{
-    if(key==='name')return a.name.localeCompare(b.name);
-    if(key==='size')return a.rawSize-b.rawSize;
-    if(key==='modified')return new Date(b.modified)-new Date(a.modified);
-  });renderTable();
-}
+function getIcon(f){const map={folder:'📁',html:'🌐',php:'🐘',css:'🎨',js:'📜',txt:'📝',img:'🖼️',link:'🔗',sql:'🗄️',py:'🐍',md:'📝',zip:'📦',mp4:'🎬',mp3:'🎵',pdf:'📄'};if(map[f.type])return map[f.type];const ext=f.name.split('.').pop().toLowerCase();return map[ext]||'📄';}
+function sortBy(key){const fid=currentFolderId();const items=fs.filter(f=>f.parentId===fid&&f.id!=='root');items.sort((a,b)=>key==='name'?a.name.localeCompare(b.name):key==='size'?a.rawSize-b.rawSize:new Date(b.modified)-new Date(a.modified));const others=fs.filter(f=>f.parentId!==fid||f.id==='root');fs=[...others,...items];renderTable();}
+function toggleSelect(id,cb){const f=fs.find(x=>x.id===id);if(f)f.selected=cb.checked;}
+function toggleAll(cb){const fid=currentFolderId();fs.filter(f=>f.parentId===fid).forEach(f=>f.selected=cb.checked);renderTable();}
+function selectAll(){const fid=currentFolderId();fs.filter(f=>f.parentId===fid).forEach(f=>f.selected=true);renderTable();}
+function unselectAll(){fs.forEach(f=>f.selected=false);renderTable();}
+function invertSelection(){const fid=currentFolderId();fs.filter(f=>f.parentId===fid).forEach(f=>f.selected=!f.selected);renderTable();}
+function deleteSelected(){if(!fs.some(f=>f.selected)){showToast('⚠️ Seleziona almeno un elemento!','#92400e');return;}if(confirm('Eliminare?')){fs=fs.filter(f=>!f.selected);renderTable();showToast('🗑️ Eliminati!');}}
+function deleteItem(id){if(confirm('Eliminare?')){fs=fs.filter(f=>f.id!==id&&f.parentId!==id);renderTable();showToast('🗑️ Eliminato!');}}
+function downloadItem(id){const f=fs.find(x=>x.id===id);if(!f||f.type==='folder')return;const b=new Blob([f.content||''],{type:'text/plain'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=f.name;a.click();showToast('⬇️ Download avviato!');}
+function copyItem(id){const f=fs.find(x=>x.id===id);if(!f)return;fs.push({...f,id:uid(),name:'copia_'+f.name,selected:false});renderTable();showToast('📋 Copiato!');}
+function editItem(id){const f=fs.find(x=>x.id===id);if(!f||f.type==='folder'){showToast('⚠️ Non puoi modificare una cartella!','#92400e');return;}editingId=id;document.getElementById('edit-filename-label').textContent='Modifica: '+f.name;document.getElementById('edit-content').value=f.content||'';document.getElementById('edit-overlay').style.display='flex';}
+function closeEdit(){document.getElementById('edit-overlay').style.display='none';editingId=null;}
+function saveEdit(){const f=fs.find(x=>x.id===editingId);if(f){f.content=document.getElementById('edit-content').value;f.rawSize=new Blob([f.content]).size;f.modified=new Date();}closeEdit();renderTable();showToast('💾 File salvato!');}
+function handleUpload(e){const fid=currentFolderId();Array.from(e.target.files).forEach(f=>{const ext=f.name.split('.').pop().toLowerCase();fs.push({id:uid(),name:f.name,type:ext||'file',parentId:fid,rawSize:f.size,modified:new Date(),perms:'0644',owner:loggedUser?loggedUser.username:'guest',content:'',selected:false});});e.target.value='';renderTable();showToast('✅ File caricati!');}
+function handleDrop(e){e.preventDefault();document.getElementById('drop-zone').classList.remove('drag-over');const fid=currentFolderId();Array.from(e.dataTransfer.files).forEach(f=>{const ext=f.name.split('.').pop().toLowerCase();fs.push({id:uid(),name:f.name,type:ext||'file',parentId:fid,rawSize:f.size,modified:new Date(),perms:'0644',owner:loggedUser?loggedUser.username:'guest',content:'',selected:false});});renderTable();showToast('✅ File caricati!');}
 
-function toggleSelect(id,cb){const f=files.find(x=>x.id===id);if(f)f.selected=cb.checked;}
-function toggleAll(cb){files.forEach(f=>f.selected=cb.checked);renderTable();}
-function selectAll(){files.forEach(f=>f.selected=true);renderTable();}
-function unselectAll(){files.forEach(f=>f.selected=false);renderTable();}
-function invertSelection(){files.forEach(f=>f.selected=!f.selected);renderTable();}
-function deleteSelected(){if(!files.some(f=>f.selected)){showToast('⚠️ Seleziona almeno un file!');return;}if(confirm('Eliminare i file selezionati?')){files=files.filter(f=>!f.selected);renderTable();showToast('File eliminati!');}}
-function deleteFile(id){if(confirm('Eliminare questo elemento?')){files=files.filter(f=>f.id!==id);renderTable();showToast('File eliminato!');}}
+const ftDefaults={folder:{name:'nuova-cartella',content:'',placeholder:'Nome cartella'},html:{name:'index.html',content:'<!DOCTYPE html>\n<html lang="it">\n<head>\n  <meta charset="UTF-8"/>\n  <title>Pagina</title>\n</head>\n<body>\n  <h1>Ciao!</h1>\n</body>\n</html>',placeholder:'Nome file .html'},php:{name:'index.php',content:'<?php\necho "Hello World!";\n?>',placeholder:'Nome file .php'},css:{name:'style.css',content:'body {\n  margin: 0;\n  font-family: sans-serif;\n}\n',placeholder:'Nome file .css'},js:{name:'script.js',content:'// JavaScript\nconsole.log("Hello!");\n',placeholder:'Nome file .js'},txt:{name:'note.txt',content:'',placeholder:'Nome file .txt'},img:{name:'immagine.html',content:'',placeholder:'Nome file immagine'},link:{name:'link.html',content:'',placeholder:'Nome del link'},sql:{name:'database.sql',content:'-- SQL\nCREATE TABLE utenti (\n  id INT PRIMARY KEY,\n  nome VARCHAR(100)\n);\n',placeholder:'Nome file .sql'}};
 
-function handleUpload(e){
-  Array.from(e.target.files).forEach(f=>{
-    files.push({id:Date.now()+Math.random(),name:f.name,type:'file',rawSize:f.size,modified:new Date(),perms:'0644',owner:loggedUser,selected:false});
-  });
-  e.target.value='';renderTable();showToast(`File caricati! ✅`);
-}
-function handleDrop(e){
-  e.preventDefault();document.getElementById('drop-zone').classList.remove('drag-over');
-  Array.from(e.dataTransfer.files).forEach(f=>{
-    files.push({id:Date.now()+Math.random(),name:f.name,type:'file',rawSize:f.size,modified:new Date(),perms:'0644',owner:loggedUser,selected:false});
-  });
-  renderTable();showToast('File caricati con drag & drop! ✅');
-}
-
-function showNewDialog(){setItemType('folder');document.getElementById('new-name').value='';document.getElementById('file-content').value='';document.getElementById('dialog-overlay').style.display='flex';setTimeout(()=>document.getElementById('new-name').focus(),100);}
+function showNewDialog(){selectFileType('folder');document.getElementById('new-name').value='nuova-cartella';document.getElementById('file-content').value='';document.getElementById('img-url').value='';document.getElementById('img-alt').value='';document.getElementById('link-url').value='';document.getElementById('link-text').value='';const fid=currentFolderId();const node=fs.find(x=>x.id===fid);document.getElementById('dialog-path-label').textContent=node&&node.name!=='root'?'in: '+node.name:'';document.getElementById('dialog-overlay').style.display='flex';setTimeout(()=>document.getElementById('new-name').focus(),80);}
 function closeDialog(){document.getElementById('dialog-overlay').style.display='none';}
-function setItemType(t){
-  newItemType=t;
-  const fb=document.getElementById('type-file'),db=document.getElementById('type-folder'),cw=document.getElementById('file-content-wrap');
-  if(t==='folder'){db.style.cssText+='border-color:#2563c0;background:#eff6ff;color:#0f2d5c';fb.style.cssText+='border-color:#d1d5db;background:#fff;color:#374151';cw.style.display='none';}
-  else{fb.style.cssText+='border-color:#2563c0;background:#eff6ff;color:#0f2d5c';db.style.cssText+='border-color:#d1d5db;background:#fff;color:#374151';cw.style.display='block';}
-}
-function createItem(){
-  const n=document.getElementById('new-name').value.trim();if(!n){alert('Inserisci un nome!');return;}
-  const c=document.getElementById('file-content').value;
-  files.push({id:Date.now(),name:n,type:newItemType,rawSize:newItemType==='file'?new Blob([c]).size:0,modified:new Date(),perms:newItemType==='folder'?'0755':'0644',owner:loggedUser,selected:false});
-  closeDialog();renderTable();showToast(newItemType==='folder'?'📁 Cartella creata!':'📄 File creato!');
-}
 
-function toggleSetting(k){
-  toggleState[k]=!toggleState[k];
-  const b=document.getElementById('tog-'+k),th=b.querySelector('.toggle-thumb');
-  b.style.background=toggleState[k]?'#2563c0':'#d1d5db';th.style.left=toggleState[k]?'24px':'2px';
-  if(k==='perms'){settings.hidePerms=toggleState[k];renderTable();}
-}
+function selectFileType(type){newItemType=type;Object.keys(ftDefaults).forEach(t=>{const b=document.getElementById('ft-'+t);if(b)b.classList.remove('selected');});document.getElementById('ft-'+type)?.classList.add('selected');const d=ftDefaults[type];document.getElementById('dialog-name-label').textContent=type==='folder'?'Nome cartella':'Nome file';document.getElementById('new-name').placeholder=d.placeholder;document.getElementById('new-name').value=d.name;document.getElementById('content-area').style.display=(type!=='folder'&&type!=='img'&&type!=='link')?'block':'none';document.getElementById('img-area').style.display=type==='img'?'block':'none';document.getElementById('link-area').style.display=type==='link'?'block':'none';if(type!=='folder'&&type!=='img'&&type!=='link'){document.getElementById('file-content').value=d.content;document.getElementById('content-label').textContent='Contenuto '+type.toUpperCase();}}
+
+function createItem(){const name=document.getElementById('new-name').value.trim();if(!name){alert('Inserisci un nome!');return;}const fid=currentFolderId();let content='',rawSize=0,type=newItemType;if(newItemType==='img'){const url=document.getElementById('img-url').value.trim();const alt=document.getElementById('img-alt').value.trim()||name;content=`<img src="${url}" alt="${alt}" style="max-width:100%"/>`;rawSize=content.length;type='html';}else if(newItemType==='link'){const url=document.getElementById('link-url').value.trim();const text=document.getElementById('link-text').value.trim()||url;content=`<a href="${url}" target="_blank">${text}</a>`;rawSize=content.length;type='html';}else if(newItemType!=='folder'){content=document.getElementById('file-content').value;rawSize=new Blob([content]).size;}fs.push({id:uid(),name,type,parentId:fid,rawSize,modified:new Date(),perms:type==='folder'?'0755':'0644',owner:loggedUser?loggedUser.username:'guest',content,selected:false});closeDialog();renderTable();showToast(type==='folder'?'📁 Cartella creata!':'📄 '+name+' creato!');}
+
+function toggleSetting(k){toggleState[k]=!toggleState[k];const b=document.getElementById('tog-'+k),th=b.querySelector('.toggle-thumb');b.style.background=toggleState[k]?'#2563c0':'#d1d5db';th.style.left=toggleState[k]?'24px':'2px';if(k==='perms'){settings.hidePerms=toggleState[k];renderTable();}}
 function saveSettings(){settings.hidePerms=toggleState.perms;renderTable();showToast('✅ Impostazioni salvate!');goTo('sc-filemanager');}
-
-document.getElementById('dialog-overlay').addEventListener('click',function(e){if(e.target===this)closeDialog();});
+['dialog-overlay','edit-overlay'].forEach(id=>{document.getElementById(id).addEventListener('click',function(e){if(e.target===this)this.style.display='none';});});
 </script>
 </body>
 </html>
