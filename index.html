@@ -7,166 +7,193 @@
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Nunito','Segoe UI',sans-serif;min-height:100vh}
+body{font-family:'Nunito','Segoe UI',sans-serif;min-height:100vh;background:#f1f5f9}
 .screen{min-height:100vh;display:none}
 .screen.active{display:flex}
-.bg-blue{background:linear-gradient(135deg,#0f2d5c 0%,#1a4d8f 50%,#2563c0 100%);align-items:center;justify-content:center;min-height:100vh}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.bg-blue{background:linear-gradient(135deg,#0f2d5c 0%,#1a4d8f 50%,#2563c0 100%);align-items:center;justify-content:center}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
 
-/* LOGIN */
-#sc-gate{background:linear-gradient(135deg,#0f2d5c,#2563c0);align-items:center;justify-content:center;flex-direction:column}
-.gate-card{background:#fff;border-radius:18px;padding:36px 32px;width:90%;max-width:400px;box-shadow:0 24px 60px rgba(0,0,0,.35);animation:fadeUp .4s ease}
-.gate-logo{text-align:center;margin-bottom:20px}
-.gate-icon{font-size:44px;display:block;margin-bottom:6px}
-.gate-title{font-size:22px;font-weight:900;color:#1a4d8f}
-.gate-sub{text-align:center;color:#64748b;font-size:13px;margin-bottom:22px;font-weight:600}
-.g-label{font-size:13px;font-weight:700;color:#0f2d5c;display:block;margin-bottom:5px}
-.g-input{width:100%;padding:12px 14px;border:2px solid #bfdbfe;border-radius:9px;font-size:14px;font-family:'Nunito',sans-serif;outline:none;transition:all .2s;margin-bottom:14px}
-.g-input:focus{border-color:#2563c0;box-shadow:0 0 0 3px rgba(37,99,192,.1)}
-.g-input.shake{animation:shake .3s ease;border-color:#ef4444;background:#fef2f2}
-.g-error{background:#fef2f2;border:1.5px solid #fca5a5;border-radius:8px;padding:10px 14px;color:#dc2626;font-size:13px;font-weight:700;margin-bottom:14px;display:none;text-align:center}
-.g-remember{display:flex;align-items:center;gap:8px;margin-bottom:16px;font-size:13px;color:#374151;font-weight:600;cursor:pointer}
+/* ===== LOGIN ===== */
+#sc-gate{background:linear-gradient(135deg,#0f2d5c,#2563c0);align-items:center;justify-content:center}
+.gate-card{background:#fff;border-radius:20px;padding:40px 36px;width:90%;max-width:400px;box-shadow:0 28px 64px rgba(0,0,0,.3);animation:fadeUp .4s ease}
+.gate-logo{text-align:center;margin-bottom:24px}
+.gate-icon{font-size:48px;display:block;margin-bottom:8px}
+.gate-title{font-size:24px;font-weight:900;color:#1a4d8f;letter-spacing:-.5px}
+.gate-sub{font-size:13px;color:#64748b;font-weight:600;text-align:center;margin-bottom:24px}
+.g-label{font-size:13px;font-weight:800;color:#0f2d5c;display:block;margin-bottom:6px;text-transform:uppercase;letter-spacing:.3px}
+.g-input{width:100%;padding:13px 16px;border:2px solid #bfdbfe;border-radius:10px;font-size:15px;font-family:'Nunito',sans-serif;outline:none;transition:all .2s;margin-bottom:16px;background:#fafafa}
+.g-input:focus{border-color:#2563c0;background:#fff;box-shadow:0 0 0 4px rgba(37,99,192,.1)}
+.g-input.shake{animation:shake .35s ease;border-color:#ef4444;background:#fef2f2}
+.g-error{background:#fef2f2;border-left:4px solid #ef4444;border-radius:0 8px 8px 0;padding:11px 14px;color:#dc2626;font-size:13px;font-weight:700;margin-bottom:16px;display:none}
+.g-remember{display:flex;align-items:center;gap:8px;margin-bottom:18px;font-size:13px;color:#374151;font-weight:600;cursor:pointer;user-select:none}
 .g-remember input{width:16px;height:16px;accent-color:#2563c0;cursor:pointer}
-.g-btn{background:linear-gradient(135deg,#0f2d5c,#2563c0);color:#fff;border:none;border-radius:9px;padding:13px;width:100%;cursor:pointer;font-size:15px;font-weight:800;font-family:'Nunito',sans-serif;transition:all .2s;margin-bottom:14px}
-.g-btn:hover{opacity:.9;transform:translateY(-1px)}
-.g-divider{display:flex;align-items:center;gap:10px;margin-bottom:14px;color:#94a3b8;font-size:12px;font-weight:600}
+.g-btn{background:linear-gradient(135deg,#0f2d5c,#2563c0);color:#fff;border:none;border-radius:10px;padding:14px;width:100%;cursor:pointer;font-size:15px;font-weight:800;font-family:'Nunito',sans-serif;transition:all .2s;margin-bottom:16px;letter-spacing:.3px}
+.g-btn:hover{opacity:.9;transform:translateY(-1px);box-shadow:0 8px 20px rgba(37,99,192,.4)}
+.g-divider{display:flex;align-items:center;gap:10px;margin-bottom:16px;color:#94a3b8;font-size:12px;font-weight:700}
 .g-divider::before,.g-divider::after{content:'';flex:1;height:1px;background:#e2e8f0}
 .g-link{text-align:center;font-size:13px;color:#64748b}
-.g-link button{background:none;border:none;color:#2563c0;cursor:pointer;font-weight:700;font-size:13px;font-family:'Nunito',sans-serif;text-decoration:underline}
-.g-hint{font-size:11px;color:#94a3b8;text-align:center;margin-top:8px}
+.g-link button{background:none;border:none;color:#2563c0;cursor:pointer;font-weight:800;font-size:13px;font-family:'Nunito',sans-serif;text-decoration:underline}
+.g-hint{font-size:11px;color:#94a3b8;text-align:center;margin-top:10px;font-weight:600}
 
-/* REGISTER */
-#sc-register{background:linear-gradient(135deg,#0f2d5c,#2563c0);align-items:center;justify-content:center;flex-direction:column;padding:20px 0;overflow-y:auto}
-.reg-card{background:#fff;border-radius:18px;padding:32px 28px;width:90%;max-width:480px;box-shadow:0 24px 60px rgba(0,0,0,.35);animation:fadeUp .4s ease}
-.reg-title{font-size:20px;font-weight:900;color:#0f2d5c;text-align:center;margin-bottom:4px}
-.reg-sub{font-size:13px;color:#64748b;font-weight:600;text-align:center;margin-bottom:22px}
-.steps{display:flex;align-items:center;justify-content:center;margin-bottom:26px}
-.step-item{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1}
-.step-circle{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;transition:all .3s;border:2.5px solid #d1d5db;background:#fff;color:#94a3b8}
-.step-circle.active{border-color:#2563c0;background:#2563c0;color:#fff;box-shadow:0 0 0 4px rgba(37,99,192,.15)}
+/* ===== REGISTER ===== */
+#sc-register{background:linear-gradient(135deg,#0f2d5c,#2563c0);align-items:flex-start;justify-content:center;padding:30px 16px;overflow-y:auto;min-height:100vh}
+.reg-card{background:#fff;border-radius:20px;padding:36px 32px;width:100%;max-width:480px;box-shadow:0 28px 64px rgba(0,0,0,.3);animation:fadeUp .4s ease;margin:auto}
+.reg-title{font-size:22px;font-weight:900;color:#0f2d5c;text-align:center;margin-bottom:4px}
+.reg-sub{font-size:13px;color:#64748b;font-weight:600;text-align:center;margin-bottom:24px}
+
+/* Step indicator */
+.steps{display:flex;align-items:center;justify-content:center;margin-bottom:28px;gap:0}
+.step-item{display:flex;flex-direction:column;align-items:center;gap:5px;flex:1}
+.step-circle{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;transition:all .3s;border:2.5px solid #d1d5db;background:#fff;color:#94a3b8}
+.step-circle.active{border-color:#2563c0;background:#2563c0;color:#fff;box-shadow:0 0 0 5px rgba(37,99,192,.12)}
 .step-circle.done{border-color:#10b981;background:#10b981;color:#fff}
-.step-label{font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase}
-.step-label.active{color:#2563c0}
-.step-label.done{color:#10b981}
-.step-line{flex:1;height:2px;background:#e2e8f0;margin-bottom:18px;max-width:50px;transition:background .3s}
+.step-label{font-size:10px;font-weight:800;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px}
+.step-label.active{color:#2563c0}.step-label.done{color:#10b981}
+.step-line{flex:1;height:2.5px;background:#e2e8f0;margin-bottom:20px;max-width:60px;transition:background .3s}
 .step-line.done{background:#10b981}
 .step-panel{display:none}
 .step-panel.active{display:block;animation:fadeUp .3s ease}
-.r-label{font-size:13px;font-weight:700;color:#0f2d5c;display:block;margin-bottom:5px}
-.r-input{width:100%;padding:11px 13px;border:2px solid #bfdbfe;border-radius:9px;font-size:14px;font-family:'Nunito',sans-serif;outline:none;margin-bottom:13px;transition:all .2s}
-.r-input:focus{border-color:#2563c0;box-shadow:0 0 0 3px rgba(37,99,192,.1)}
+
+/* Form fields */
+.r-label{font-size:12px;font-weight:800;color:#0f2d5c;display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:.3px}
+.r-input{width:100%;padding:12px 14px;border:2px solid #bfdbfe;border-radius:10px;font-size:14px;font-family:'Nunito',sans-serif;outline:none;margin-bottom:14px;transition:all .2s;background:#fafafa}
+.r-input:focus{border-color:#2563c0;background:#fff;box-shadow:0 0 0 4px rgba(37,99,192,.08)}
 .r-input.valid{border-color:#10b981;background:#f0fdf4}
 .r-input.invalid{border-color:#ef4444;background:#fef2f2}
-.r-hint{font-size:11px;font-weight:700;margin-top:-9px;margin-bottom:11px}
-.r-hint.ok{color:#10b981}
-.r-hint.err{color:#ef4444}
+.r-hint{font-size:11px;font-weight:700;margin-top:-10px;margin-bottom:12px;padding-left:2px}
+.r-hint.ok{color:#10b981}.r-hint.err{color:#ef4444}
 .r-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.r-error{background:#fef2f2;border:1.5px solid #fca5a5;border-radius:8px;padding:10px 14px;color:#dc2626;font-size:12px;font-weight:700;margin-bottom:12px;display:none}
-.r-success{background:#f0fdf4;border:1.5px solid #86efac;border-radius:8px;padding:10px 14px;color:#166534;font-size:13px;font-weight:700;margin-bottom:12px;display:none;text-align:center}
-.reg-btns{display:flex;gap:10px;margin-top:4px}
-.reg-back{flex:1;padding:11px;border:2px solid #e2e8f0;border-radius:9px;background:#fff;cursor:pointer;font-weight:700;font-size:14px;font-family:'Nunito',sans-serif;color:#374151}
-.reg-next{flex:2;padding:11px;background:linear-gradient(135deg,#0f2d5c,#2563c0);color:#fff;border:none;border-radius:9px;cursor:pointer;font-weight:800;font-size:14px;font-family:'Nunito',sans-serif;transition:all .2s}
+.r-error{background:#fef2f2;border-left:4px solid #ef4444;border-radius:0 8px 8px 0;padding:11px 14px;color:#dc2626;font-size:13px;font-weight:700;margin-bottom:14px;display:none}
+.r-success{background:#f0fdf4;border-left:4px solid #10b981;border-radius:0 8px 8px 0;padding:11px 14px;color:#166534;font-size:13px;font-weight:700;margin-bottom:14px;display:none}
+.reg-btns{display:flex;gap:10px;margin-top:6px}
+.reg-back{flex:1;padding:12px;border:2px solid #e2e8f0;border-radius:10px;background:#fff;cursor:pointer;font-weight:700;font-size:14px;font-family:'Nunito',sans-serif;color:#374151;transition:all .2s}
+.reg-back:hover{background:#f8fafc}
+.reg-next{flex:2;padding:12px;background:linear-gradient(135deg,#0f2d5c,#2563c0);color:#fff;border:none;border-radius:10px;cursor:pointer;font-weight:800;font-size:14px;font-family:'Nunito',sans-serif;transition:all .2s}
 .reg-next:hover{opacity:.9;transform:translateY(-1px)}
 .reg-next:disabled{opacity:.4;cursor:not-allowed;transform:none}
-.profile-upload{text-align:center;margin-bottom:20px}
-.profile-preview{width:76px;height:76px;border-radius:50%;border:3px solid #2563c0;background:#eff6ff;display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 10px;overflow:hidden;cursor:pointer;transition:all .2s;position:relative}
-.profile-preview:hover{transform:scale(1.05)}
+
+/* Avatar upload */
+.profile-upload{text-align:center;margin-bottom:22px}
+.profile-preview{width:80px;height:80px;border-radius:50%;border:3px solid #2563c0;background:#eff6ff;display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto 10px;overflow:hidden;cursor:pointer;transition:all .2s;position:relative}
+.profile-preview:hover{transform:scale(1.05);border-color:#1a4d8f}
 .profile-preview img{width:100%;height:100%;object-fit:cover;border-radius:50%}
-.p-overlay{position:absolute;inset:0;background:rgba(0,0,0,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s;font-size:18px}
+.p-overlay{position:absolute;inset:0;background:rgba(0,0,0,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s;color:#fff;font-size:20px}
 .profile-preview:hover .p-overlay{opacity:1}
-.upload-btn-sm{background:#eff6ff;color:#2563c0;border:2px solid #2563c0;border-radius:7px;padding:6px 14px;cursor:pointer;font-weight:700;font-size:12px;font-family:'Nunito',sans-serif}
-.strength-bars{display:flex;gap:4px;margin-top:6px;margin-bottom:4px}
-.sbar{flex:1;height:4px;border-radius:2px;background:#e2e8f0;transition:background .3s}
-.summary-box{background:#f8fafc;border-radius:12px;padding:16px;margin-bottom:16px}
-.sum-row{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #e2e8f0;font-size:13px}
+.upload-btn-sm{background:#eff6ff;color:#2563c0;border:2px solid #2563c0;border-radius:8px;padding:7px 16px;cursor:pointer;font-weight:700;font-size:12px;font-family:'Nunito',sans-serif}
+
+/* Password strength */
+.strength-bars{display:flex;gap:4px;margin-top:6px;margin-bottom:6px}
+.sbar{flex:1;height:4px;border-radius:3px;background:#e2e8f0;transition:background .3s}
+
+/* Summary */
+.summary-box{background:#f8fafc;border-radius:12px;padding:16px;margin-bottom:18px;border:1.5px solid #e2e8f0}
+.sum-row{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #e8ecf0;font-size:13px;align-items:center}
 .sum-row:last-child{border-bottom:none}
-.sum-k{color:#64748b;font-weight:700;width:110px;flex-shrink:0}
-.sum-v{color:#0f2d5c;font-weight:800;word-break:break-all}
+.sum-k{color:#64748b;font-weight:800;width:120px;flex-shrink:0;font-size:12px;text-transform:uppercase}
+.sum-v{color:#0f2d5c;font-weight:700;word-break:break-all}
 
-/* HOME */
-.card{background:#fff;border-radius:18px;padding:36px;box-shadow:0 24px 64px rgba(0,0,0,.25);width:90%;max-width:460px}
-.logo-area{text-align:center;margin-bottom:28px}
-.logo-icon{font-size:46px;display:block;margin-bottom:6px}
-.logo-title{font-size:25px;font-weight:900;color:#1a4d8f}
-.btn-home{background:linear-gradient(135deg,#1a4d8f,#2563c0);color:#fff;border:none;border-radius:12px;padding:15px 20px;width:100%;cursor:pointer;font-size:15px;font-weight:700;font-family:'Nunito',sans-serif;text-align:left;display:flex;align-items:center;gap:12px;margin-bottom:11px;transition:all .2s}
+/* ===== HOME ===== */
+.card{background:#fff;border-radius:20px;padding:38px 36px;box-shadow:0 24px 64px rgba(0,0,0,.22);width:90%;max-width:460px;animation:fadeUp .4s ease}
+.logo-area{text-align:center;margin-bottom:30px}
+.logo-icon{font-size:48px;display:block;margin-bottom:8px}
+.logo-title{font-size:26px;font-weight:900;color:#1a4d8f;letter-spacing:-.5px}
+.btn-home{background:linear-gradient(135deg,#1a4d8f,#2563c0);color:#fff;border:none;border-radius:12px;padding:16px 20px;width:100%;cursor:pointer;font-size:15px;font-weight:700;font-family:'Nunito',sans-serif;text-align:left;display:flex;align-items:center;gap:12px;margin-bottom:12px;transition:all .2s}
 .btn-home:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,99,192,.4)}
-.accordion-body{background:#eff6ff;border-radius:12px;padding:13px;margin-bottom:11px;margin-top:-7px}
-.opt-card{background:#fff;border-radius:10px;padding:14px;margin-bottom:9px;box-shadow:0 2px 8px rgba(0,0,0,.07)}
-.opt-title{font-weight:800;color:#0f2d5c;font-size:11px;text-transform:uppercase;margin-bottom:5px}
+.accordion-body{background:#eff6ff;border-radius:12px;padding:14px;margin-bottom:12px;margin-top:-8px;animation:fadeUp .3s ease}
+.opt-card{background:#fff;border-radius:10px;padding:15px;margin-bottom:10px;box-shadow:0 2px 8px rgba(0,0,0,.06);border:1.5px solid #f1f5f9}
+.opt-title{font-weight:800;color:#0f2d5c;font-size:11px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
 .opt-desc{color:#555;font-size:13px;margin-bottom:10px;line-height:1.5}
-.opt-btn{background:linear-gradient(135deg,#1a4d8f,#2563c0);color:#fff;border:none;border-radius:7px;padding:7px 13px;cursor:pointer;font-size:12px;font-weight:700;font-family:'Nunito',sans-serif}
+.opt-btn{background:linear-gradient(135deg,#1a4d8f,#2563c0);color:#fff;border:none;border-radius:7px;padding:7px 14px;cursor:pointer;font-size:12px;font-weight:700;font-family:'Nunito',sans-serif;transition:all .2s}
+.opt-btn:hover{opacity:.85}
 
-/* FM */
+/* ===== FILE MANAGER ===== */
 .fm-layout{background:#f1f5f9;min-height:100vh;flex-direction:column}
-.fm-topbar{background:#fff;border-bottom:2px solid #e2e8f0;padding:8px 20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;position:sticky;top:0;z-index:100}
-.fm-brand{font-weight:900;font-size:15px;color:#0f2d5c;cursor:pointer}
+.fm-topbar{background:#fff;border-bottom:2px solid #e2e8f0;padding:10px 20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.fm-brand{font-weight:900;font-size:15px;color:#0f2d5c;cursor:pointer;display:flex;align-items:center;gap:6px}
 .fm-brand:hover{text-decoration:underline}
-.fm-search{padding:7px 12px;border:1.5px solid #d1d5db;border-radius:8px;font-size:13px;font-family:'Nunito',sans-serif;width:160px;outline:none}
+.fm-search{padding:8px 13px;border:1.5px solid #d1d5db;border-radius:8px;font-size:13px;font-family:'Nunito',sans-serif;width:160px;outline:none;transition:border-color .2s}
 .fm-search:focus{border-color:#2563c0}
-.btn-upload{background:#2563c0;color:#fff;border:none;border-radius:7px;padding:8px 14px;cursor:pointer;font-size:13px;font-weight:700;font-family:'Nunito',sans-serif}
-.btn-nuovo{background:#0f2d5c;color:#fff;border:none;border-radius:7px;padding:8px 14px;cursor:pointer;font-size:13px;font-weight:700;font-family:'Nunito',sans-serif}
+.tbtn{border:none;border-radius:8px;padding:8px 14px;cursor:pointer;font-size:13px;font-weight:700;font-family:'Nunito',sans-serif;transition:all .2s;display:flex;align-items:center;gap:6px}
+.tbtn:hover{opacity:.88;transform:translateY(-1px)}
+.tbtn-blue{background:#2563c0;color:#fff}
+.tbtn-dark{background:#0f2d5c;color:#fff}
+.tbtn-gray{background:#64748b;color:#fff}
 .breadcrumb{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#64748b;margin-bottom:14px;flex-wrap:wrap}
-.bc-item{color:#2563c0;cursor:pointer}.bc-item:hover{text-decoration:underline}
-.bc-current{color:#0f2d5c}
+.bc-item{color:#2563c0;cursor:pointer}.bc-item:hover{text-decoration:underline}.bc-current{color:#0f2d5c}
 .drop-zone{border:2.5px dashed #93c5fd;border-radius:14px;background:#eff6ff;padding:32px 20px;text-align:center;cursor:pointer;transition:all .2s;margin-bottom:16px}
-.drop-zone:hover,.drop-zone.drag-over{border-color:#2563c0;background:#dbeafe}
+.drop-zone:hover,.drop-zone.drag-over{border-color:#2563c0;background:#dbeafe;transform:scale(1.005)}
 .fm-content{padding:20px;flex:1}
-.fm-table-wrap{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);margin-bottom:12px}
+.fm-table-wrap{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,.08);margin-bottom:12px;border:1.5px solid #e8ecf0}
 table{width:100%;border-collapse:collapse}
 thead tr{background:#f8fafc;border-bottom:2px solid #e2e8f0}
-th{padding:11px 16px;text-align:left;font-size:11px;font-weight:800;color:#374151;text-transform:uppercase;letter-spacing:.5px;cursor:pointer;user-select:none}
+th{padding:12px 16px;text-align:left;font-size:11px;font-weight:800;color:#374151;text-transform:uppercase;letter-spacing:.6px;cursor:pointer;user-select:none;white-space:nowrap}
 th:hover{color:#2563c0}
-tbody tr{border-bottom:1px solid #f1f5f9;transition:background .15s}
+tbody tr{border-bottom:1px solid #f1f5f9;transition:background .12s}
 tbody tr:hover{background:#f8fafc}
-tbody tr.selected-row{background:#eff6ff}
+tbody tr.sel-row{background:#eff6ff}
 td{padding:10px 16px;font-size:13px;color:#374151}
 .td-name{display:flex;align-items:center;gap:8px;font-weight:600}
 .td-name.is-folder{color:#2563c0;cursor:pointer}.td-name.is-folder:hover{text-decoration:underline}
-.perms-link{color:#2563c0;font-family:'JetBrains Mono',monospace;font-size:12px}
+.perms-txt{color:#2563c0;font-family:'JetBrains Mono',monospace;font-size:12px}
 .action-btns{display:flex;gap:4px}
-.abtn{border:none;border-radius:6px;padding:6px 10px;cursor:pointer;font-size:13px;font-weight:700;transition:all .15s}
-.abtn:hover{opacity:.85;transform:translateY(-1px)}
+.abtn{border:none;border-radius:6px;padding:6px 10px;cursor:pointer;font-size:12px;font-weight:700;transition:all .15s}
+.abtn:hover{opacity:.82;transform:translateY(-1px)}
 .abtn-dl{background:#2563c0;color:#fff}.abtn-edit{background:#10b981;color:#fff}.abtn-copy{background:#f59e0b;color:#fff}.abtn-del{background:#ef4444;color:#fff}
 .fm-footer{font-size:12px;color:#64748b;padding:2px 4px;margin-bottom:8px}
 .bulk-actions{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
-.bulk-btn{background:#f8fafc;border:1.5px solid #d1d5db;border-radius:6px;padding:6px 12px;cursor:pointer;font-size:12px;color:#374151;font-family:'Nunito',sans-serif;font-weight:600}
-.bulk-btn:hover{background:#e2e8f0}.bulk-btn.danger{background:#fef2f2;color:#dc2626;border-color:#fca5a5}
+.bulk-btn{background:#f8fafc;border:1.5px solid #d1d5db;border-radius:7px;padding:7px 13px;cursor:pointer;font-size:12px;color:#374151;font-family:'Nunito',sans-serif;font-weight:600;transition:all .15s;display:flex;align-items:center;gap:5px}
+.bulk-btn:hover{background:#e8ecf0}.bulk-btn.danger{background:#fef2f2;color:#dc2626;border-color:#fca5a5}
 .fm-version{margin-left:auto;font-size:11px;color:#94a3b8}
+
+/* Avatar */
 .avatar-wrap{position:relative;cursor:pointer}
-.avatar-circle{width:36px;height:36px;border-radius:50%;border:2.5px solid #2563c0;background:#eff6ff;display:flex;align-items:center;justify-content:center;font-size:15px;overflow:hidden;flex-shrink:0;font-weight:800;color:#1a4d8f}
+.avatar-circle{width:36px;height:36px;border-radius:50%;border:2.5px solid #2563c0;background:#eff6ff;display:flex;align-items:center;justify-content:center;font-size:14px;overflow:hidden;flex-shrink:0;font-weight:900;color:#1a4d8f}
 .avatar-circle img{width:100%;height:100%;object-fit:cover;border-radius:50%}
-.avatar-dd{position:absolute;right:0;top:44px;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.18);min-width:220px;z-index:200;padding:8px 0;display:none}
+.avatar-dd{position:absolute;right:0;top:46px;background:#fff;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.18);min-width:220px;z-index:200;padding:8px 0;display:none;border:1.5px solid #e2e8f0}
 .avatar-dd.open{display:block;animation:fadeUp .2s ease}
-.av-header{padding:12px 16px;border-bottom:1px solid #f1f5f9}
+.av-header{padding:14px 16px;border-bottom:1px solid #f1f5f9}
 .av-name{font-weight:800;color:#0f2d5c;font-size:14px}
-.av-email{font-size:12px;color:#64748b;margin-top:2px}
-.av-role{font-size:11px;background:#fef3c7;color:#92400e;border-radius:4px;padding:2px 7px;display:inline-block;margin-top:4px;font-weight:700}
-.av-item{padding:9px 16px;font-size:13px;font-weight:600;color:#374151;cursor:pointer;display:flex;align-items:center;gap:8px}
+.av-email{font-size:12px;color:#64748b;margin-top:2px;word-break:break-all}
+.av-role{font-size:11px;border-radius:4px;padding:3px 8px;display:inline-block;margin-top:5px;font-weight:800;text-transform:uppercase;letter-spacing:.3px}
+.role-admin{background:#fef3c7;color:#92400e}.role-user{background:#f0fdf4;color:#166534}
+.av-item{padding:10px 16px;font-size:13px;font-weight:600;color:#374151;cursor:pointer;display:flex;align-items:center;gap:9px;transition:background .12s}
 .av-item:hover{background:#f8fafc}.av-item.danger{color:#dc2626}
-.settings-wrap{padding:20px;max-width:800px}
-.settings-card{background:#fff;border-radius:12px;padding:28px;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+
+/* Settings */
+.settings-wrap{padding:20px;max-width:820px}
+.settings-card{background:#fff;border-radius:14px;padding:30px;box-shadow:0 2px 16px rgba(0,0,0,.08);border:1.5px solid #e8ecf0}
 .settings-row{display:flex;align-items:center;padding:14px 0;border-bottom:1px solid #f1f5f9}
 .settings-label{flex:1;font-weight:600;color:#374151;font-size:14px}
-.settings-select{padding:8px 12px;border:2px solid #bfdbfe;border-radius:7px;font-size:14px;font-family:'Nunito',sans-serif;min-width:180px;outline:none}
-.toggle{width:48px;height:26px;border-radius:13px;cursor:pointer;position:relative;transition:background .2s;border:none;flex-shrink:0}
-.toggle-thumb{width:22px;height:22px;background:#fff;border-radius:50%;position:absolute;top:2px;transition:left .2s;box-shadow:0 1px 4px rgba(0,0,0,.2)}
-.btn-save{background:#2563c0;color:#fff;border:none;border-radius:8px;padding:11px 26px;cursor:pointer;font-weight:700;font-size:14px;font-family:'Nunito',sans-serif;margin-top:20px}
-.dialog-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;z-index:9999}
-.dialog-box{background:#fff;border-radius:16px;padding:28px;width:90%;max-width:480px;box-shadow:0 24px 60px rgba(0,0,0,.3);animation:fadeUp .2s ease;max-height:90vh;overflow-y:auto}
-.dialog-label{font-size:13px;font-weight:700;color:#0f2d5c;display:block;margin-bottom:5px}
-.dialog-input{width:100%;padding:11px 13px;border:2px solid #bfdbfe;border-radius:9px;font-size:14px;font-family:'Nunito',sans-serif;outline:none;margin-bottom:13px}
-.dialog-input:focus{border-color:#2563c0}
-.dialog-textarea{width:100%;padding:11px 13px;border:2px solid #bfdbfe;border-radius:9px;font-size:13px;font-family:'JetBrains Mono',monospace;outline:none;resize:vertical;min-height:120px;margin-bottom:13px}
+.settings-select{padding:9px 13px;border:2px solid #bfdbfe;border-radius:8px;font-size:14px;font-family:'Nunito',sans-serif;min-width:180px;outline:none}
+.toggle{width:50px;height:27px;border-radius:14px;cursor:pointer;position:relative;transition:background .2s;border:none;flex-shrink:0}
+.toggle-thumb{width:23px;height:23px;background:#fff;border-radius:50%;position:absolute;top:2px;transition:left .2s;box-shadow:0 1px 5px rgba(0,0,0,.22)}
+.btn-save{background:#2563c0;color:#fff;border:none;border-radius:9px;padding:12px 28px;cursor:pointer;font-weight:800;font-size:14px;font-family:'Nunito',sans-serif;margin-top:22px;transition:all .2s}
+.btn-save:hover{background:#1a4d8f;transform:translateY(-1px)}
+
+/* Dialogs */
+.dialog-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;z-index:9999}
+.dialog-box{background:#fff;border-radius:16px;padding:28px;width:90%;max-width:500px;box-shadow:0 24px 64px rgba(0,0,0,.28);animation:fadeUp .2s ease;max-height:92vh;overflow-y:auto}
+.dialog-label{font-size:12px;font-weight:800;color:#0f2d5c;display:block;margin-bottom:6px;text-transform:uppercase;letter-spacing:.3px}
+.dialog-input{width:100%;padding:11px 13px;border:2px solid #bfdbfe;border-radius:9px;font-size:14px;font-family:'Nunito',sans-serif;outline:none;margin-bottom:13px;transition:all .2s}
+.dialog-input:focus{border-color:#2563c0;box-shadow:0 0 0 3px rgba(37,99,192,.1)}
+.dialog-textarea{width:100%;padding:11px 13px;border:2px solid #bfdbfe;border-radius:9px;font-size:13px;font-family:'JetBrains Mono',monospace;outline:none;resize:vertical;min-height:130px;margin-bottom:13px;transition:all .2s}
 .dialog-textarea:focus{border-color:#2563c0}
-.dialog-btns{display:flex;gap:10px;margin-top:4px}
-.dialog-cancel{flex:1;padding:11px;border:1.5px solid #d1d5db;border-radius:9px;cursor:pointer;font-family:'Nunito',sans-serif;font-weight:700;background:#fff;font-size:14px}
-.dialog-ok{flex:1;padding:11px;background:#2563c0;color:#fff;border:none;border-radius:9px;cursor:pointer;font-weight:800;font-family:'Nunito',sans-serif;font-size:14px}
-.filetype-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px}
-.filetype-btn{border:2px solid #e2e8f0;border-radius:10px;padding:12px 8px;cursor:pointer;text-align:center;font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;color:#374151;background:#fff;transition:all .2s}
-.filetype-btn:hover,.filetype-btn.selected{border-color:#2563c0;background:#eff6ff;color:#0f2d5c}
-.filetype-icon{font-size:24px;display:block;margin-bottom:4px}
-#toast{position:fixed;bottom:24px;right:24px;background:#0f2d5c;color:#fff;padding:12px 20px;border-radius:12px;font-weight:700;font-size:14px;display:none;z-index:99999;box-shadow:0 8px 24px rgba(0,0,0,.3);animation:fadeUp .3s ease;max-width:320px}
+.dialog-btns{display:flex;gap:10px;margin-top:6px}
+.d-cancel{flex:1;padding:12px;border:2px solid #e2e8f0;border-radius:9px;cursor:pointer;font-family:'Nunito',sans-serif;font-weight:700;background:#fff;font-size:14px;transition:all .2s}
+.d-cancel:hover{background:#f8fafc}
+.d-ok{flex:1;padding:12px;background:linear-gradient(135deg,#0f2d5c,#2563c0);color:#fff;border:none;border-radius:9px;cursor:pointer;font-weight:800;font-family:'Nunito',sans-serif;font-size:14px;transition:all .2s}
+.d-ok:hover{opacity:.9;transform:translateY(-1px)}
+.filetype-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px}
+.ft-btn{border:2px solid #e2e8f0;border-radius:10px;padding:12px 6px;cursor:pointer;text-align:center;font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;color:#374151;background:#fff;transition:all .2s}
+.ft-btn:hover,.ft-btn.sel{border-color:#2563c0;background:#eff6ff;color:#0f2d5c}
+.ft-icon{font-size:24px;display:block;margin-bottom:4px}
+
+/* Toast */
+#toast{position:fixed;bottom:24px;right:24px;background:#0f2d5c;color:#fff;padding:13px 22px;border-radius:13px;font-weight:700;font-size:14px;display:none;z-index:99999;box-shadow:0 10px 30px rgba(0,0,0,.28);animation:fadeUp .3s ease;max-width:340px;border-left:4px solid #2563c0}
+
+/* Saved accounts banner */
+.saved-banner{background:#f0fdf4;border:1.5px solid #86efac;border-radius:10px;padding:10px 14px;font-size:12px;color:#166534;font-weight:700;margin-bottom:14px;display:none}
 </style>
 </head>
 <body>
@@ -179,9 +206,10 @@ td{padding:10px 16px;font-size:13px;color:#374151}
       <div class="gate-title">Nicolascassese.it</div>
     </div>
     <div class="gate-sub">🔒 Accedi al tuo account</div>
+    <div id="saved-banner" class="saved-banner">✅ Credenziali salvate — premi Accedi!</div>
     <div id="gate-error" class="g-error"></div>
     <label class="g-label">Username o Email</label>
-    <input class="g-input" id="gate-user" placeholder="Username o Email" autocomplete="username"
+    <input class="g-input" id="gate-user" placeholder="Username oppure Email" autocomplete="username"
       onkeydown="if(event.key==='Enter')document.getElementById('gate-pass').focus()"/>
     <label class="g-label">Password</label>
     <input class="g-input" id="gate-pass" type="password" placeholder="Password"
@@ -190,7 +218,7 @@ td{padding:10px 16px;font-size:13px;color:#374151}
     <button class="g-btn" onclick="gateLogin()">🔓 Accedi</button>
     <div class="g-divider">oppure</div>
     <div class="g-link">Non hai un account? <button onclick="goTo('sc-register')">✨ Crea account</button></div>
-    <div class="g-hint">💡 Puoi accedere con Username <strong>o</strong> Email</div>
+    <div class="g-hint">💡 Puoi accedere con <strong>Username</strong> o con la tua <strong>Email</strong></div>
   </div>
 </div>
 
@@ -199,7 +227,6 @@ td{padding:10px 16px;font-size:13px;color:#374151}
   <div class="reg-card">
     <div class="reg-title">✨ Crea il tuo account</div>
     <div class="reg-sub">Registrati su Nicolascassese.it</div>
-    <!-- Steps -->
     <div class="steps">
       <div class="step-item"><div class="step-circle active" id="sc1">1</div><div class="step-label active" id="sl1">Dati</div></div>
       <div class="step-line" id="line1"></div>
@@ -218,17 +245,11 @@ td{padding:10px 16px;font-size:13px;color:#374151}
         <button class="upload-btn-sm" onclick="document.getElementById('reg-avatar-inp').click()">📷 Foto profilo (opzionale)</button>
       </div>
       <div class="r-row">
-        <div>
-          <label class="r-label">Nome *</label>
-          <input class="r-input" id="reg-nome" placeholder="Es. Nicolas" oninput="liveValidate('reg-nome','min2')"/>
-        </div>
-        <div>
-          <label class="r-label">Cognome *</label>
-          <input class="r-input" id="reg-cognome" placeholder="Es. Cassese" oninput="liveValidate('reg-cognome','min2')"/>
-        </div>
+        <div><label class="r-label">Nome *</label><input class="r-input" id="reg-nome" placeholder="Nicolas" oninput="lv('reg-nome','min2')"/></div>
+        <div><label class="r-label">Cognome *</label><input class="r-input" id="reg-cognome" placeholder="Cassese" oninput="lv('reg-cognome','min2')"/></div>
       </div>
       <label class="r-label">Email *</label>
-      <input class="r-input" id="reg-email" type="email" placeholder="nicolas@gmail.com" oninput="liveValidate('reg-email','email')"/>
+      <input class="r-input" id="reg-email" type="email" placeholder="nicolas@gmail.com" oninput="lv('reg-email','email')"/>
       <div id="hint-email" class="r-hint"></div>
       <div id="reg-error-1" class="r-error"></div>
       <div class="reg-btns">
@@ -240,14 +261,14 @@ td{padding:10px 16px;font-size:13px;color:#374151}
     <!-- STEP 2 -->
     <div class="step-panel" id="panel2">
       <label class="r-label">Username *</label>
-      <input class="r-input" id="reg-username" placeholder="Es. nicolas.cassese" oninput="liveValidate('reg-username','username')"/>
+      <input class="r-input" id="reg-username" placeholder="nicolas.cassese" oninput="lv('reg-username','username')"/>
       <div id="hint-username" class="r-hint"></div>
       <label class="r-label">Password *</label>
-      <input class="r-input" id="reg-pass" type="password" placeholder="Minimo 8 caratteri" oninput="checkStrength()"/>
+      <input class="r-input" id="reg-pass" type="password" placeholder="Minimo 8 caratteri" oninput="checkStr()"/>
       <div class="strength-bars"><div class="sbar" id="b1"></div><div class="sbar" id="b2"></div><div class="sbar" id="b3"></div><div class="sbar" id="b4"></div></div>
-      <div id="strength-lbl" style="font-size:11px;font-weight:700;color:#94a3b8;margin-bottom:12px"></div>
-      <label class="r-label">Conferma password *</label>
-      <input class="r-input" id="reg-pass2" type="password" placeholder="Ripeti la password" oninput="liveValidate('reg-pass2','match')"/>
+      <div id="str-lbl" style="font-size:11px;font-weight:700;margin-bottom:14px;color:#94a3b8"></div>
+      <label class="r-label">Conferma Password *</label>
+      <input class="r-input" id="reg-pass2" type="password" placeholder="Ripeti la password" oninput="lv('reg-pass2','match')"/>
       <div id="hint-pass2" class="r-hint"></div>
       <div id="reg-error-2" class="r-error"></div>
       <div class="reg-btns">
@@ -258,7 +279,7 @@ td{padding:10px 16px;font-size:13px;color:#374151}
 
     <!-- STEP 3 -->
     <div class="step-panel" id="panel3">
-      <div style="text-align:center;font-size:13px;color:#0f2d5c;font-weight:700;margin-bottom:14px">✅ Controlla i tuoi dati prima di confermare</div>
+      <div style="text-align:center;font-size:13px;font-weight:700;color:#0f2d5c;margin-bottom:16px">✅ Controlla i tuoi dati prima di confermare</div>
       <div class="summary-box" id="summary-box"></div>
       <div id="reg-error-3" class="r-error"></div>
       <div id="reg-success" class="r-success"></div>
@@ -284,7 +305,7 @@ td{padding:10px 16px;font-size:13px;color:#374151}
       <div class="opt-card"><div class="opt-title">⭐ Opzione 1 — Online (File Manager)</div><div class="opt-desc">Modifica i file dal browser senza installare nulla.</div><button class="opt-btn" onclick="goTo('sc-filemanager')">Apri File Manager</button></div>
       <div class="opt-card"><div class="opt-title">🖥️ Opzione 2 — VSCode + Cartella Remota</div><div class="opt-desc">Connetti al dominio e monta la cartella remota.</div><button class="opt-btn">vscode-open-remote</button></div>
       <div class="opt-card"><div class="opt-title">🔒 Opzione 3 — VSCode + SSH</div><div class="opt-desc">Usa <strong>Remote - SSH</strong> per lavorare sul server.</div><button class="opt-btn">Remote - SSH</button></div>
-      <div class="opt-card"><div class="opt-title">📦 Opzione 4 — PHP + Deploy</div><div class="opt-desc">Sviluppa localmente poi carica con <code style="background:#f1f5f9;padding:2px 4px;border-radius:3px;font-size:11px">deploy.sh</code></div><button class="opt-btn">Scarica deploy.sh</button></div>
+      <div class="opt-card"><div class="opt-title">📦 Opzione 4 — PHP + Deploy</div><div class="opt-desc">Sviluppa localmente poi carica con <code style="background:#f1f5f9;padding:2px 5px;border-radius:4px;font-size:11px">deploy.sh</code></div><button class="opt-btn">Scarica deploy.sh</button></div>
     </div>
     <button class="btn-home" onclick="goTo('sc-filemanager')"><span>🔗</span><span>Link diretto ai tuoi file</span></button>
   </div>
@@ -297,16 +318,16 @@ td{padding:10px 16px;font-size:13px;color:#374151}
     <div style="flex:1"></div>
     <input class="fm-search" id="fm-search" placeholder="🔍 Cerca..." oninput="renderTable()"/>
     <input type="file" id="file-upload" multiple style="display:none" onchange="handleUpload(event)"/>
-    <button class="btn-upload" onclick="document.getElementById('file-upload').click()">⬆️ Upload</button>
-    <button class="btn-nuovo" id="btn-nuovo-top" onclick="showNewDialog()" style="display:none">➕ Nuovo</button>
-    <button style="background:#64748b;color:#fff;border:none;border-radius:7px;padding:8px 11px;cursor:pointer" onclick="goTo('sc-settings')">⚙️</button>
+    <button class="tbtn tbtn-blue" onclick="document.getElementById('file-upload').click()">⬆️ Upload</button>
+    <button class="tbtn tbtn-dark" id="btn-nuovo-top" onclick="showNewDialog()" style="display:none">➕ Nuovo</button>
+    <button class="tbtn tbtn-gray" onclick="goTo('sc-settings')">⚙️</button>
     <div class="avatar-wrap" id="avatar-wrap">
       <div class="avatar-circle" id="topbar-avatar" onclick="toggleAvatarMenu()">👤</div>
       <div class="avatar-dd" id="avatar-dd">
         <div class="av-header">
           <div class="av-name" id="av-name-el">—</div>
           <div class="av-email" id="av-email-el">—</div>
-          <span class="av-role" id="av-role-el">utente</span>
+          <span class="av-role role-user" id="av-role-el">utente</span>
         </div>
         <div class="av-item" onclick="goTo('sc-settings');closeAvatarMenu()">⚙️ Impostazioni</div>
         <div class="av-item" onclick="document.getElementById('avatar-inp').click();closeAvatarMenu()">📷 Cambia foto</div>
@@ -320,18 +341,19 @@ td{padding:10px 16px;font-size:13px;color:#374151}
     <div class="drop-zone" id="drop-zone" onclick="document.getElementById('file-upload').click()"
       ondragover="event.preventDefault();this.classList.add('drag-over')"
       ondragleave="this.classList.remove('drag-over')" ondrop="handleDrop(event)">
-      <div style="font-size:46px;margin-bottom:10px">📂</div>
-      <div style="font-weight:700;color:#1a4d8f;font-size:14px;margin-bottom:4px">Trascina qui i file o clicca per caricarli</div>
-      <div style="font-size:12px;color:#64748b">Drag &amp; Drop attivo</div>
+      <div style="font-size:50px;margin-bottom:10px">📂</div>
+      <div style="font-weight:800;color:#1a4d8f;font-size:15px;margin-bottom:5px">Trascina qui i tuoi file o clicca per caricarli</div>
+      <div style="font-size:12px;color:#64748b;font-weight:600">Supporta qualsiasi tipo di file • Drag &amp; Drop attivo</div>
     </div>
-    <div id="in-folder-nuovo" style="display:none;margin-bottom:12px">
-      <button class="btn-nuovo" onclick="showNewDialog()" style="font-size:14px;padding:10px 20px">➕ Nuovo file in questa cartella</button>
+    <div id="in-folder-nuovo" style="display:none;margin-bottom:14px">
+      <button class="tbtn tbtn-dark" onclick="showNewDialog()" style="font-size:14px;padding:10px 22px">➕ Nuovo file in questa cartella</button>
     </div>
     <div class="fm-table-wrap">
       <table>
         <thead><tr>
           <th style="width:36px"><input type="checkbox" id="chk-all" onchange="toggleAll(this)"/></th>
-          <th onclick="sortBy('name')">NAME ↕</th><th onclick="sortBy('size')">SIZE ↕</th>
+          <th onclick="sortBy('name')">NAME ↕</th>
+          <th onclick="sortBy('size')">SIZE ↕</th>
           <th onclick="sortBy('modified')">MODIFIED ↕</th>
           <th id="th-perms">PERMS</th><th id="th-owner">OWNER</th><th>ACTIONS</th>
         </tr></thead>
@@ -342,7 +364,7 @@ td{padding:10px 16px;font-size:13px;color:#374151}
     <div class="bulk-actions">
       <button class="bulk-btn" onclick="selectAll()">☑️ Select all</button>
       <button class="bulk-btn" onclick="unselectAll()">⬜ Unselect all</button>
-      <button class="bulk-btn" onclick="invertSelection()">🔄 Invert</button>
+      <button class="bulk-btn" onclick="invertSel()">🔄 Invert</button>
       <button class="bulk-btn danger" onclick="deleteSelected()">🗑️ Delete</button>
       <button class="bulk-btn">📦 Zip</button>
       <button class="bulk-btn">📋 Copy</button>
@@ -358,20 +380,20 @@ td{padding:10px 16px;font-size:13px;color:#374151}
   </div>
   <div class="settings-wrap">
     <div class="settings-card">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
-        <div style="font-size:17px;font-weight:800;color:#0f2d5c">⚙️ Settings</div>
-        <button onclick="goTo('sc-filemanager')" style="background:#fef2f2;color:#dc2626;border:1.5px solid #fca5a5;border-radius:7px;padding:7px 14px;cursor:pointer;font-size:13px;font-weight:700;font-family:'Nunito',sans-serif">✖️ Cancel</button>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:22px">
+        <div style="font-size:18px;font-weight:900;color:#0f2d5c">⚙️ Settings</div>
+        <button onclick="goTo('sc-filemanager')" style="background:#fef2f2;color:#dc2626;border:1.5px solid #fca5a5;border-radius:8px;padding:7px 14px;cursor:pointer;font-size:13px;font-weight:700;font-family:'Nunito',sans-serif">✖️ Cancel</button>
       </div>
-      <div style="display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid #f1f5f9;margin-bottom:6px">
-        <div id="settings-avatar" style="width:60px;height:60px;border-radius:50%;border:3px solid #2563c0;background:#eff6ff;display:flex;align-items:center;justify-content:center;font-size:24px;overflow:hidden;flex-shrink:0;font-weight:800;color:#1a4d8f">👤</div>
+      <div style="display:flex;align-items:center;gap:16px;padding:16px 0;border-bottom:1.5px solid #f1f5f9;margin-bottom:8px">
+        <div id="settings-avatar" style="width:64px;height:64px;border-radius:50%;border:3px solid #2563c0;background:#eff6ff;display:flex;align-items:center;justify-content:center;font-size:26px;overflow:hidden;flex-shrink:0;font-weight:900;color:#1a4d8f">👤</div>
         <div>
-          <div style="font-weight:800;color:#0f2d5c;font-size:15px" id="settings-name">—</div>
+          <div style="font-weight:800;color:#0f2d5c;font-size:16px" id="settings-name">—</div>
           <div style="font-size:12px;color:#64748b;margin-top:2px" id="settings-email">—</div>
-          <button onclick="document.getElementById('avatar-inp').click()" style="display:block;background:#eff6ff;color:#2563c0;border:2px solid #2563c0;border-radius:7px;padding:5px 12px;cursor:pointer;font-weight:700;font-size:12px;font-family:'Nunito',sans-serif;margin-top:8px">📷 Cambia foto</button>
+          <button onclick="document.getElementById('avatar-inp').click()" style="display:block;background:#eff6ff;color:#2563c0;border:2px solid #2563c0;border-radius:8px;padding:6px 14px;cursor:pointer;font-weight:700;font-size:12px;font-family:'Nunito',sans-serif;margin-top:8px">📷 Cambia foto</button>
         </div>
       </div>
       <div class="settings-row"><span class="settings-label">Language</span><select class="settings-select"><option>Italiano</option><option selected>English</option></select></div>
-      <div class="settings-row"><span class="settings-label">Show Hidden Files</span><button class="toggle" id="tog-hidden" onclick="toggleSetting('hidden')" style="background:#2563c0"><div class="toggle-thumb" style="left:24px"></div></button></div>
+      <div class="settings-row"><span class="settings-label">Show Hidden Files</span><button class="toggle" id="tog-hidden" onclick="toggleSetting('hidden')" style="background:#2563c0"><div class="toggle-thumb" style="left:25px"></div></button></div>
       <div class="settings-row"><span class="settings-label">Hide Perms/Owner</span><button class="toggle" id="tog-perms" onclick="toggleSetting('perms')" style="background:#d1d5db"><div class="toggle-thumb" style="left:2px"></div></button></div>
       <div class="settings-row"><span class="settings-label">Theme</span><select class="settings-select"><option selected>Light</option><option>Dark</option></select></div>
       <button class="btn-save" onclick="saveSettings()">✅ Save</button>
@@ -382,135 +404,203 @@ td{padding:10px 16px;font-size:13px;color:#374151}
 <!-- NEW ITEM DIALOG -->
 <div id="dialog-overlay" class="dialog-overlay" style="display:none">
   <div class="dialog-box">
-    <div style="font-weight:800;color:#0f2d5c;font-size:17px;margin-bottom:16px">➕ Crea nuovo <span id="dialog-path-label" style="font-size:12px;color:#64748b;font-weight:600"></span></div>
-    <label class="dialog-label">Tipo</label>
+    <div style="font-weight:900;color:#0f2d5c;font-size:17px;margin-bottom:16px">➕ Crea nuovo <span id="dlg-path" style="font-size:12px;color:#64748b;font-weight:600"></span></div>
+    <label class="dialog-label">Tipo elemento</label>
     <div class="filetype-grid">
-      <button class="filetype-btn selected" id="ft-folder" onclick="selectFileType('folder')"><span class="filetype-icon">📁</span>Cartella</button>
-      <button class="filetype-btn" id="ft-html" onclick="selectFileType('html')"><span class="filetype-icon">🌐</span>HTML</button>
-      <button class="filetype-btn" id="ft-php" onclick="selectFileType('php')"><span class="filetype-icon">🐘</span>PHP</button>
-      <button class="filetype-btn" id="ft-css" onclick="selectFileType('css')"><span class="filetype-icon">🎨</span>CSS</button>
-      <button class="filetype-btn" id="ft-js" onclick="selectFileType('js')"><span class="filetype-icon">📜</span>JavaScript</button>
-      <button class="filetype-btn" id="ft-txt" onclick="selectFileType('txt')"><span class="filetype-icon">📝</span>Testo</button>
-      <button class="filetype-btn" id="ft-img" onclick="selectFileType('img')"><span class="filetype-icon">🖼️</span>Immagine</button>
-      <button class="filetype-btn" id="ft-link" onclick="selectFileType('link')"><span class="filetype-icon">🔗</span>Link/URL</button>
-      <button class="filetype-btn" id="ft-sql" onclick="selectFileType('sql')"><span class="filetype-icon">🗄️</span>SQL</button>
+      <button class="ft-btn sel" id="ft-folder" onclick="selFT('folder')"><span class="ft-icon">📁</span>Cartella</button>
+      <button class="ft-btn" id="ft-html" onclick="selFT('html')"><span class="ft-icon">🌐</span>HTML</button>
+      <button class="ft-btn" id="ft-php" onclick="selFT('php')"><span class="ft-icon">🐘</span>PHP</button>
+      <button class="ft-btn" id="ft-css" onclick="selFT('css')"><span class="ft-icon">🎨</span>CSS</button>
+      <button class="ft-btn" id="ft-js" onclick="selFT('js')"><span class="ft-icon">📜</span>JavaScript</button>
+      <button class="ft-btn" id="ft-txt" onclick="selFT('txt')"><span class="ft-icon">📝</span>Testo</button>
+      <button class="ft-btn" id="ft-img" onclick="selFT('img')"><span class="ft-icon">🖼️</span>Immagine</button>
+      <button class="ft-btn" id="ft-link" onclick="selFT('link')"><span class="ft-icon">🔗</span>Link/URL</button>
+      <button class="ft-btn" id="ft-sql" onclick="selFT('sql')"><span class="ft-icon">🗄️</span>SQL</button>
     </div>
-    <label class="dialog-label" id="dialog-name-label">Nome</label>
+    <label class="dialog-label" id="dlg-name-lbl">Nome</label>
     <input class="dialog-input" id="new-name" placeholder="Nome..." onkeydown="if(event.key==='Enter')createItem()"/>
-    <div id="content-area" style="display:none"><label class="dialog-label" id="content-label">Contenuto</label><textarea class="dialog-textarea" id="file-content"></textarea></div>
-    <div id="img-area" style="display:none"><label class="dialog-label">URL immagine</label><input class="dialog-input" id="img-url" placeholder="https://..."/><label class="dialog-label">Alt</label><input class="dialog-input" id="img-alt" placeholder="Descrizione"/></div>
-    <div id="link-area" style="display:none"><label class="dialog-label">URL</label><input class="dialog-input" id="link-url" placeholder="https://..."/><label class="dialog-label">Testo link</label><input class="dialog-input" id="link-text" placeholder="Clicca qui"/></div>
-    <div class="dialog-btns"><button class="dialog-cancel" onclick="closeDialog()">Annulla</button><button class="dialog-ok" onclick="createItem()">✅ Crea</button></div>
+    <div id="content-area" style="display:none"><label class="dialog-label" id="content-lbl">Contenuto</label><textarea class="dialog-textarea" id="file-content"></textarea></div>
+    <div id="img-area" style="display:none"><label class="dialog-label">URL Immagine</label><input class="dialog-input" id="img-url" placeholder="https://..."/><label class="dialog-label">Testo alternativo</label><input class="dialog-input" id="img-alt" placeholder="Descrizione"/></div>
+    <div id="link-area" style="display:none"><label class="dialog-label">URL</label><input class="dialog-input" id="link-url" placeholder="https://..."/><label class="dialog-label">Testo del link</label><input class="dialog-input" id="link-text" placeholder="Clicca qui"/></div>
+    <div class="dialog-btns"><button class="d-cancel" onclick="closeDialog()">Annulla</button><button class="d-ok" onclick="createItem()">✅ Crea</button></div>
   </div>
 </div>
 
 <!-- EDIT DIALOG -->
 <div id="edit-overlay" class="dialog-overlay" style="display:none">
   <div class="dialog-box">
-    <div style="font-weight:800;color:#0f2d5c;font-size:17px;margin-bottom:16px">✏️ Modifica file</div>
-    <label class="dialog-label" id="edit-filename-label">Contenuto</label>
-    <textarea class="dialog-textarea" id="edit-content" style="min-height:200px"></textarea>
-    <div class="dialog-btns"><button class="dialog-cancel" onclick="closeEdit()">Annulla</button><button class="dialog-ok" onclick="saveEdit()">💾 Salva</button></div>
+    <div style="font-weight:900;color:#0f2d5c;font-size:17px;margin-bottom:16px">✏️ Modifica file</div>
+    <label class="dialog-label" id="edit-lbl">Contenuto</label>
+    <textarea class="dialog-textarea" id="edit-content" style="min-height:220px"></textarea>
+    <div class="dialog-btns"><button class="d-cancel" onclick="closeEdit()">Annulla</button><button class="d-ok" onclick="saveEdit()">💾 Salva</button></div>
   </div>
 </div>
 
 <div id="toast">✅ <span id="toast-msg"></span></div>
 
 <script>
-// ======= DATABASE UTENTI =======
-// Ogni utente ha: username, password, email, nome, cognome, role, avatar
-let users = [
-  {username:'Nicolas', password:'nicolas2024', email:'nicolas@gmail.com', nome:'Nicolas', cognome:'Cassese', role:'admin', avatar:null},
-  {username:'amico1',  password:'amico2024',   email:'amico1@gmail.com',  nome:'Amico',   cognome:'Uno',     role:'user',  avatar:null},
+// ============================================================
+//  DATABASE UTENTI — salvato in localStorage del file HTML
+//  (funziona perché è un file .html aperto localmente)
+// ============================================================
+
+const STORAGE_KEY = 'nicolascassese_users';
+
+// Carica utenti dal localStorage, o usa i default
+function loadUsers() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) return JSON.parse(saved);
+  } catch(e) {}
+  return [
+    {username:'Nicolas', password:'nicolas2024', email:'nicolas@gmail.com', nome:'Nicolas', cognome:'Cassese', role:'admin', avatar:null},
+    {username:'amico1',  password:'amico2024',   email:'amico1@gmail.com',  nome:'Amico',   cognome:'Uno',     role:'user',  avatar:null},
+  ];
+}
+
+// Salva utenti nel localStorage
+function saveUsers() {
+  try {
+    // Non salvare avatar (troppo grande) per ora
+    const toSave = users.map(u => ({...u, avatar: u.avatar ? '__has_avatar__' : null}));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(toSave));
+  } catch(e) {}
+}
+
+let users = loadUsers();
+
+// ============================================================
+//  STATO APP
+// ============================================================
+let currentScreen = 'sc-gate';
+let currentPath   = ['root'];
+let loggedUser    = null;
+let regAvatarData = null;
+let settings      = {hidePerms: false};
+let newItemType   = 'folder';
+let editingId     = null;
+const toggleState = {hidden: true, perms: false};
+
+let fs = [
+  {id:'root',  name:'root',      type:'folder', parentId:null,   rawSize:0,    modified:new Date(), perms:'0775', owner:'Nicolas', content:'', selected:false},
+  {id:'f1',    name:'progetti',  type:'folder', parentId:'root', rawSize:0,    modified:new Date(), perms:'0775', owner:'Nicolas', content:'', selected:false},
+  {id:'f2',    name:'index.php', type:'php',    parentId:'root', rawSize:2048, modified:new Date(Date.now()-86400000), perms:'0644', owner:'Nicolas', content:'<?php\necho "Hello World!";\n?>', selected:false},
+  {id:'f3',    name:'style.css', type:'css',    parentId:'root', rawSize:512,  modified:new Date(Date.now()-172800000), perms:'0644', owner:'Nicolas', content:'body{margin:0;}', selected:false},
 ];
 
-// ======= STATO =======
-let currentScreen='sc-gate', currentPath=['root'], loggedUser=null;
-let settings={hidePerms:false}, newItemType='folder', editingId=null, regAvatarData=null;
-const toggleState={hidden:true,perms:false};
-let fs=[
-  {id:'root',name:'root',type:'folder',parentId:null,rawSize:0,modified:new Date(),perms:'0775',owner:'Nicolas',content:'',selected:false},
-  {id:'f1',name:'progetti',type:'folder',parentId:'root',rawSize:0,modified:new Date(),perms:'0775',owner:'Nicolas',content:'',selected:false},
-  {id:'f2',name:'index.php',type:'php',parentId:'root',rawSize:2048,modified:new Date(Date.now()-86400000),perms:'0644',owner:'Nicolas',content:'<?php\necho "Hello World!";\n?>',selected:false},
-  {id:'f3',name:'style.css',type:'css',parentId:'root',rawSize:512,modified:new Date(Date.now()-172800000),perms:'0644',owner:'Nicolas',content:'body{margin:0;}',selected:false},
-];
-
+// ============================================================
+//  UTILITY
+// ============================================================
 function fmtDate(d){return d.toLocaleDateString('it-IT')+' '+d.toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'});}
 function fmtSize(b){if(!b)return'-';if(b<1024)return b+' B';if(b<1048576)return Math.round(b/1024)+' KB';return(b/1048576).toFixed(1)+' MB';}
 function uid(){return 'id'+Date.now()+Math.floor(Math.random()*9999);}
-function showToast(msg,c='#0f2d5c'){const t=document.getElementById('toast');document.getElementById('toast-msg').textContent=msg;t.style.background=c;t.style.display='block';setTimeout(()=>t.style.display='none',2800);}
+function showToast(msg,c='#0f2d5c'){const t=document.getElementById('toast');document.getElementById('toast-msg').textContent=msg;t.style.background=c;t.style.borderLeftColor=c==='#059669'?'#10b981':'#2563c0';t.style.display='block';setTimeout(()=>t.style.display='none',3000);}
 
 function goTo(id){
   document.getElementById(currentScreen).classList.remove('active');
   document.getElementById(currentScreen).style.display='none';
-  currentScreen=id;
-  const el=document.getElementById(id);el.classList.add('active');el.style.display='flex';
-  if(id==='sc-filemanager')renderTable();
-  if(id==='sc-settings'&&loggedUser){
-    document.getElementById('settings-name').textContent=(loggedUser.nome||'')+' '+(loggedUser.cognome||'');
-    document.getElementById('settings-email').textContent=loggedUser.email||'';
+  currentScreen = id;
+  const el = document.getElementById(id);
+  el.classList.add('active');
+  el.style.display = 'flex';
+  if(id === 'sc-filemanager') renderTable();
+  if(id === 'sc-settings' && loggedUser){
+    document.getElementById('settings-name').textContent = (loggedUser.nome||'')+' '+(loggedUser.cognome||'');
+    document.getElementById('settings-email').textContent = loggedUser.email||'';
     updateAvatarUI();
   }
-  if(id==='sc-register')initRegister();
+  if(id === 'sc-register') initRegister();
+  if(id === 'sc-gate') loadSavedCreds();
 }
 
-// ======= LOGIN — accetta username O email =======
+// ============================================================
+//  LOGIN — accetta USERNAME oppure EMAIL
+// ============================================================
+function loadSavedCreds(){
+  try {
+    const saved = localStorage.getItem('nc_remember');
+    if(saved){
+      const {username,password} = JSON.parse(saved);
+      document.getElementById('gate-user').value = username;
+      document.getElementById('gate-pass').value = password;
+      document.getElementById('gate-remember').checked = true;
+      document.getElementById('saved-banner').style.display = 'block';
+    } else {
+      document.getElementById('saved-banner').style.display = 'none';
+    }
+  } catch(e){}
+}
+
 function gateLogin(){
   const input = document.getElementById('gate-user').value.trim();
   const pass  = document.getElementById('gate-pass').value;
+  const rem   = document.getElementById('gate-remember').checked;
   const err   = document.getElementById('gate-error');
 
   if(!input || !pass){
-    err.textContent='⚠️ Inserisci username/email e password.';
-    err.style.display='block';return;
+    err.textContent = '⚠️ Inserisci username/email e password.';
+    err.style.display = 'block';
+    return;
   }
 
-  // Cerca per username OPPURE per email (case-insensitive)
-  const found = users.find(u =>
-    (u.username.toLowerCase() === input.toLowerCase() ||
-     u.email.toLowerCase()    === input.toLowerCase()) &&
-    u.password === pass
-  );
+  // Ricarica sempre utenti freschi dal localStorage
+  users = loadUsers();
+
+  // Cerca per USERNAME oppure EMAIL (case-insensitive)
+  const found = users.find(u => {
+    const matchUser  = u.username.toLowerCase() === input.toLowerCase();
+    const matchEmail = u.email && u.email.toLowerCase() === input.toLowerCase();
+    return (matchUser || matchEmail) && u.password === pass;
+  });
 
   if(found){
     loggedUser = found;
-    err.style.display='none';
+    err.style.display = 'none';
+
+    // Salva/rimuovi credenziali ricordate
+    if(rem){
+      localStorage.setItem('nc_remember', JSON.stringify({username: found.username, password: pass}));
+    } else {
+      localStorage.removeItem('nc_remember');
+    }
+
     updateAvatarUI();
-    showToast('🔓 Benvenuto, '+(found.nome||found.username)+'!','#059669');
+    showToast('🔓 Benvenuto, '+(found.nome||found.username)+'!', '#059669');
     goTo('sc-home');
   } else {
-    err.textContent='❌ Username, email o password errati. Riprova.';
-    err.style.display='block';
-    ['gate-user','gate-pass'].forEach(id=>{
-      const el=document.getElementById(id);
+    err.textContent = '❌ Username, email o password errati. Riprova.';
+    err.style.display = 'block';
+    ['gate-user','gate-pass'].forEach(id => {
+      const el = document.getElementById(id);
       el.classList.add('shake');
-      setTimeout(()=>el.classList.remove('shake'),400);
+      setTimeout(() => el.classList.remove('shake'), 400);
     });
-    document.getElementById('gate-pass').value='';
+    document.getElementById('gate-pass').value = '';
     document.getElementById('gate-pass').focus();
   }
 }
 
 function doLogout(){
-  loggedUser=null;closeAvatarMenu();
-  document.getElementById('gate-pass').value='';
-  document.getElementById('gate-error').style.display='none';
+  loggedUser = null;
+  closeAvatarMenu();
+  document.getElementById('gate-pass').value = '';
+  document.getElementById('gate-error').style.display = 'none';
   showToast('👋 Logout effettuato!');
   goTo('sc-gate');
 }
 
-// ======= REGISTER =======
+// ============================================================
+//  REGISTER (3 step)
+// ============================================================
 function initRegister(){
   ['reg-nome','reg-cognome','reg-email','reg-username','reg-pass','reg-pass2'].forEach(id=>{
     const el=document.getElementById(id);if(el){el.value='';el.className='r-input';}
   });
   document.getElementById('reg-avatar-preview').innerHTML='👤<div class="p-overlay">📷</div>';
-  document.getElementById('hint-email').textContent='';
-  document.getElementById('hint-username').textContent='';
-  document.getElementById('hint-pass2').textContent='';
+  ['hint-email','hint-username','hint-pass2'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent='';});
   ['reg-error-1','reg-error-2','reg-error-3','reg-success'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='none';});
   ['b1','b2','b3','b4'].forEach(id=>document.getElementById(id).style.background='#e2e8f0');
-  document.getElementById('strength-lbl').textContent='';
+  document.getElementById('str-lbl').textContent='';
   const btn=document.getElementById('btn-confirm');if(btn)btn.disabled=false;
   regAvatarData=null;
   showStep(1);
@@ -528,20 +618,24 @@ function showStep(n){
 }
 
 function nextStep(from){
+  // Ricarica sempre utenti aggiornati
+  users = loadUsers();
+
   if(from===1){
-    const nome=document.getElementById('reg-nome').value.trim();
-    const cognome=document.getElementById('reg-cognome').value.trim();
-    const email=document.getElementById('reg-email').value.trim();
-    const err=document.getElementById('reg-error-1');
+    const nome    = document.getElementById('reg-nome').value.trim();
+    const cognome = document.getElementById('reg-cognome').value.trim();
+    const email   = document.getElementById('reg-email').value.trim();
+    const err     = document.getElementById('reg-error-1');
     if(!nome||!cognome||!email){err.textContent='❌ Compila tutti i campi!';err.style.display='block';return;}
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){err.textContent='❌ Email non valida!';err.style.display='block';return;}
     if(users.find(u=>u.email.toLowerCase()===email.toLowerCase())){err.textContent='❌ Email già registrata!';err.style.display='block';return;}
-    err.style.display='none';showStep(2);
+    err.style.display='none';
+    showStep(2);
   } else if(from===2){
-    const user=document.getElementById('reg-username').value.trim();
-    const pass=document.getElementById('reg-pass').value;
-    const pass2=document.getElementById('reg-pass2').value;
-    const err=document.getElementById('reg-error-2');
+    const user  = document.getElementById('reg-username').value.trim();
+    const pass  = document.getElementById('reg-pass').value;
+    const pass2 = document.getElementById('reg-pass2').value;
+    const err   = document.getElementById('reg-error-2');
     if(!user||!pass||!pass2){err.textContent='❌ Compila tutti i campi!';err.style.display='block';return;}
     if(user.length<3){err.textContent='❌ Username troppo corto (min 3 caratteri)!';err.style.display='block';return;}
     if(users.find(u=>u.username.toLowerCase()===user.toLowerCase())){err.textContent='❌ Username già in uso!';err.style.display='block';return;}
@@ -549,9 +643,9 @@ function nextStep(from){
     if(pass!==pass2){err.textContent='❌ Le password non coincidono!';err.style.display='block';return;}
     err.style.display='none';
     // Riepilogo
-    const nome=document.getElementById('reg-nome').value.trim();
-    const cognome=document.getElementById('reg-cognome').value.trim();
-    const email=document.getElementById('reg-email').value.trim();
+    const nome    = document.getElementById('reg-nome').value.trim();
+    const cognome = document.getElementById('reg-cognome').value.trim();
+    const email   = document.getElementById('reg-email').value.trim();
     document.getElementById('summary-box').innerHTML=`
       <div class="sum-row"><div class="sum-k">👤 Nome</div><div class="sum-v">${nome} ${cognome}</div></div>
       <div class="sum-row"><div class="sum-k">📧 Email</div><div class="sum-v">${email}</div></div>
@@ -564,35 +658,49 @@ function nextStep(from){
 }
 
 function doRegister(){
-  const nome=document.getElementById('reg-nome').value.trim();
-  const cognome=document.getElementById('reg-cognome').value.trim();
-  const email=document.getElementById('reg-email').value.trim();
-  const username=document.getElementById('reg-username').value.trim();
-  const password=document.getElementById('reg-pass').value;
+  users = loadUsers(); // Ricarica per sicurezza
 
-  // Aggiungi al database
-  const newUser={username,password,email,nome,cognome,role:'user',avatar:regAvatarData};
+  const nome     = document.getElementById('reg-nome').value.trim();
+  const cognome  = document.getElementById('reg-cognome').value.trim();
+  const email    = document.getElementById('reg-email').value.trim();
+  const username = document.getElementById('reg-username').value.trim();
+  const password = document.getElementById('reg-pass').value;
+
+  // Crea nuovo utente
+  const newUser = {username, password, email, nome, cognome, role:'user', avatar: regAvatarData};
+
+  // Aggiungi e SALVA nel localStorage — persiste anche se la pagina si ricarica!
   users.push(newUser);
+  saveUsers();
 
   // Login automatico
-  loggedUser=newUser;
-  document.getElementById('btn-confirm').disabled=true;
-  document.getElementById('reg-success').textContent='🎉 Account creato! Accesso in corso...';
-  document.getElementById('reg-success').style.display='block';
+  loggedUser = newUser;
+  document.getElementById('btn-confirm').disabled = true;
+  document.getElementById('reg-success').textContent = '🎉 Account creato! Puoi sempre accedere con username "'+username+'" o email "'+email+'"';
+  document.getElementById('reg-success').style.display = 'block';
+
   updateAvatarUI();
-  setTimeout(()=>{showToast('🎉 Benvenuto, '+nome+'!','#059669');goTo('sc-home');},1200);
+  setTimeout(()=>{
+    showToast('🎉 Benvenuto, '+nome+'!','#059669');
+    goTo('sc-home');
+  }, 1500);
 }
 
 function previewRegAvatar(e){
   const f=e.target.files[0];if(!f)return;
   const r=new FileReader();
-  r.onload=ev=>{regAvatarData=ev.target.result;const el=document.getElementById('reg-avatar-preview');el.innerHTML=`<img src="${ev.target.result}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/><div class="p-overlay">📷</div>`;};
+  r.onload=ev=>{
+    regAvatarData=ev.target.result;
+    const el=document.getElementById('reg-avatar-preview');
+    el.innerHTML=`<img src="${ev.target.result}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/><div class="p-overlay">📷</div>`;
+  };
   r.readAsDataURL(f);
 }
 
 // Validazione live
-function liveValidate(id,type){
-  const el=document.getElementById(id);const v=el.value.trim();
+function lv(id, type){
+  users = loadUsers();
+  const el=document.getElementById(id); const v=el.value.trim();
   if(type==='min2'){el.className='r-input '+(v.length>=2?'valid':v?'invalid':'');}
   if(type==='email'){
     const ok=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
@@ -608,87 +716,200 @@ function liveValidate(id,type){
     else{el.className='r-input';h.textContent='';}
   }
   if(type==='match'){
-    const p=document.getElementById('reg-pass').value;const ok=v&&v===p;const h=document.getElementById('hint-pass2');
+    const p=document.getElementById('reg-pass').value; const ok=v&&v===p;
+    const h=document.getElementById('hint-pass2');
     if(v){el.className='r-input '+(ok?'valid':'invalid');h.className='r-hint '+(ok?'ok':'err');h.textContent=ok?'✓ Corrispondono':'✗ Non corrispondono';}
     else{el.className='r-input';h.textContent='';}
   }
 }
 
-function checkStrength(){
+function checkStr(){
   const p=document.getElementById('reg-pass').value;
   let s=0;if(p.length>=8)s++;if(p.length>=12)s++;if(/[A-Z]/.test(p)&&/[a-z]/.test(p))s++;if(/[0-9]/.test(p)&&/[^A-Za-z0-9]/.test(p))s++;
   const cols=['#ef4444','#f59e0b','#3b82f6','#10b981'];
   const lbls=['Molto debole','Debole','Media','Forte'];
-  ['b1','b2','b3','b4'].forEach((id,i)=>document.getElementById(id).style.background=i<s?(cols[s-1]||'#ef4444'):'#e2e8f0');
-  const lbl=document.getElementById('strength-lbl');lbl.textContent=p?(lbls[s-1]||'Molto debole'):'';lbl.style.color=p?(cols[s-1]||'#ef4444'):'';
+  ['b1','b2','b3','b4'].forEach((id,i)=>document.getElementById(id).style.background=i<s?(cols[s-1]):'#e2e8f0');
+  const lbl=document.getElementById('str-lbl');
+  lbl.textContent=p?(lbls[s-1]||'Molto debole'):'';
+  lbl.style.color=p?(cols[s-1]||'#ef4444'):'';
 }
 
-// Avatar
+// ============================================================
+//  AVATAR
+// ============================================================
 function updateAvatarUI(){
   if(!loggedUser)return;
-  const src=loggedUser.avatar;
-  const initial=(loggedUser.nome||loggedUser.username||'U').charAt(0).toUpperCase();
-  ['topbar-avatar','settings-avatar'].forEach(id=>{const e=document.getElementById(id);if(!e)return;e.innerHTML=src?`<img src="${src}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>`:initial;});
+  const src = loggedUser.avatar;
+  const initial = (loggedUser.nome||loggedUser.username||'U').charAt(0).toUpperCase();
+  ['topbar-avatar','settings-avatar'].forEach(id=>{
+    const e=document.getElementById(id);if(!e)return;
+    e.innerHTML=src?`<img src="${src}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>`:initial;
+  });
   document.getElementById('av-name-el').textContent=(loggedUser.nome||'')+' '+(loggedUser.cognome||'');
   document.getElementById('av-email-el').textContent=loggedUser.email||'';
-  document.getElementById('av-role-el').textContent=loggedUser.role==='admin'?'⚡ Admin':'👤 Utente';
-  document.getElementById('av-role-el').style.background=loggedUser.role==='admin'?'#fef3c7':'#f0fdf4';
-  document.getElementById('av-role-el').style.color=loggedUser.role==='admin'?'#92400e':'#166534';
+  const roleEl=document.getElementById('av-role-el');
+  roleEl.textContent=loggedUser.role==='admin'?'⚡ Admin':'👤 Utente';
+  roleEl.className='av-role '+(loggedUser.role==='admin'?'role-admin':'role-user');
 }
 function toggleAvatarMenu(){document.getElementById('avatar-dd').classList.toggle('open');}
 function closeAvatarMenu(){document.getElementById('avatar-dd').classList.remove('open');}
 document.addEventListener('click',e=>{const w=document.getElementById('avatar-wrap');if(w&&!w.contains(e.target))closeAvatarMenu();});
-function changeAvatar(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{if(loggedUser)loggedUser.avatar=ev.target.result;updateAvatarUI();showToast('📷 Foto aggiornata!');};r.readAsDataURL(f);e.target.value='';}
+function changeAvatar(e){
+  const f=e.target.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=ev=>{
+    if(loggedUser){
+      loggedUser.avatar=ev.target.result;
+      // Aggiorna nel db
+      const idx=users.findIndex(u=>u.username===loggedUser.username);
+      if(idx>=0)users[idx].avatar=ev.target.result;
+      saveUsers();
+    }
+    updateAvatarUI();
+    showToast('📷 Foto profilo aggiornata!');
+  };
+  r.readAsDataURL(f);e.target.value='';
+}
 
 // Home accordion
 function toggleAccordion(){const a=document.getElementById('accordion'),ar=document.getElementById('acc-arrow'),o=a.style.display==='none';a.style.display=o?'block':'none';ar.textContent=o?'▲':'▼';}
 
-// File Manager
-function currentFolderId(){return currentPath[currentPath.length-1];}
+// ============================================================
+//  FILE MANAGER
+// ============================================================
+function curFolderId(){return currentPath[currentPath.length-1];}
 function enterFolder(id){currentPath.push(id);renderTable();}
-function navigateTo(idx){currentPath=currentPath.slice(0,idx+1);renderTable();}
-function renderBreadcrumb(){document.getElementById('breadcrumb').innerHTML=currentPath.map((id,i)=>{const node=fs.find(x=>x.id===id);const name=node?node.name:'root';return i===currentPath.length-1?`<span class="bc-current">📁 ${name}</span>`:`<span class="bc-item" onclick="navigateTo(${i})">📁 ${name}</span>`;}).join('<span style="color:#94a3b8"> › </span>');}
-function getIcon(f){const m={folder:'📁',html:'🌐',php:'🐘',css:'🎨',js:'📜',txt:'📝',img:'🖼️',link:'🔗',sql:'🗄️',py:'🐍',md:'📝',zip:'📦',mp4:'🎬',mp3:'🎵',pdf:'📄'};if(m[f.type])return m[f.type];const ext=f.name.split('.').pop().toLowerCase();return m[ext]||'📄';}
+function navTo(idx){currentPath=currentPath.slice(0,idx+1);renderTable();}
+function renderBreadcrumb(){
+  document.getElementById('breadcrumb').innerHTML=currentPath.map((id,i)=>{
+    const node=fs.find(x=>x.id===id);const name=node?node.name:'root';
+    return i===currentPath.length-1
+      ?`<span class="bc-current">📁 ${name}</span>`
+      :`<span class="bc-item" onclick="navTo(${i})">📁 ${name}</span>`;
+  }).join('<span style="color:#94a3b8;margin:0 2px"> › </span>');
+}
+function getIcon(f){
+  const m={folder:'📁',html:'🌐',php:'🐘',css:'🎨',js:'📜',txt:'📝',img:'🖼️',link:'🔗',sql:'🗄️',py:'🐍',md:'📝',zip:'📦',mp4:'🎬',mp3:'🎵',pdf:'📄'};
+  if(m[f.type])return m[f.type];
+  const ext=f.name.split('.').pop().toLowerCase();
+  return m[ext]||'📄';
+}
 function renderTable(){
-  renderBreadcrumb();const inRoot=currentPath.length===1;
+  renderBreadcrumb();
+  const inRoot=currentPath.length===1;
   document.getElementById('drop-zone').style.display=inRoot?'block':'none';
   document.getElementById('in-folder-nuovo').style.display=inRoot?'none':'flex';
   document.getElementById('btn-nuovo-top').style.display=inRoot?'flex':'none';
-  const q=(document.getElementById('fm-search')?.value||'').toLowerCase();const fid=currentFolderId();
+  const q=(document.getElementById('fm-search')?.value||'').toLowerCase();
+  const fid=curFolderId();
   const items=fs.filter(f=>f.parentId===fid&&f.id!=='root'&&f.name.toLowerCase().includes(q));
   const h=settings.hidePerms;
-  document.getElementById('th-perms').style.display=h?'none':'';document.getElementById('th-owner').style.display=h?'none':'';
+  document.getElementById('th-perms').style.display=h?'none':'';
+  document.getElementById('th-owner').style.display=h?'none':'';
   const tbody=document.getElementById('fm-tbody');
-  if(!items.length){tbody.innerHTML=`<tr><td colspan="7" style="text-align:center;padding:40px;color:#94a3b8">📭 Vuota — clicca "Nuovo" per creare</td></tr>`;return;}
-  tbody.innerHTML=items.map(f=>{const ic=getIcon(f);const sz=f.type==='folder'?'Folder':fmtSize(f.rawSize);const nc=f.type==='folder'?'td-name is-folder':'td-name';const nc2=f.type==='folder'?`onclick="enterFolder('${f.id}')"` :'';const pc=h?'':`<td><span class="perms-link">${f.perms}</span></td>`;const oc=h?'':`<td style="color:#64748b;font-size:12px">${f.owner}</td>`;return`<tr class="${f.selected?'selected-row':''}"><td><input type="checkbox" ${f.selected?'checked':''} onchange="toggleSelect('${f.id}',this)"/></td><td><div class="${nc}" ${nc2}>${ic} ${f.name}</div></td><td style="color:#64748b;font-size:13px">${sz}</td><td style="color:#64748b;font-size:13px">${fmtDate(f.modified)}</td>${pc}${oc}<td><div class="action-btns"><button class="abtn abtn-dl" onclick="downloadItem('${f.id}')">⬇️</button><button class="abtn abtn-edit" onclick="editItem('${f.id}')">✏️</button><button class="abtn abtn-copy" onclick="copyItem('${f.id}')">📋</button><button class="abtn abtn-del" onclick="deleteItem('${f.id}')">🗑️</button></div></td></tr>`;}).join('');
-  const fols=items.filter(f=>f.type==='folder').length,files=items.filter(f=>f.type!=='folder').length,size=items.filter(f=>f.type!=='folder').reduce((a,b)=>a+b.rawSize,0);
+  if(!items.length){
+    tbody.innerHTML=`<tr><td colspan="7" style="text-align:center;padding:44px;color:#94a3b8;font-size:14px">📭 Cartella vuota — clicca "Nuovo" per creare</td></tr>`;
+    document.getElementById('fm-footer').textContent='Full Size: - | File: 0 | Folder: 0';
+    return;
+  }
+  tbody.innerHTML=items.map(f=>{
+    const ic=getIcon(f);const sz=f.type==='folder'?'Folder':fmtSize(f.rawSize);
+    const nc=f.type==='folder'?'td-name is-folder':'td-name';
+    const click=f.type==='folder'?`onclick="enterFolder('${f.id}')"` :'';
+    const pc=h?'':`<td><span class="perms-txt">${f.perms}</span></td>`;
+    const oc=h?'':`<td style="color:#64748b;font-size:12px">${f.owner}</td>`;
+    return`<tr class="${f.selected?'sel-row':''}">
+      <td><input type="checkbox" ${f.selected?'checked':''} onchange="toggleSel('${f.id}',this)"/></td>
+      <td><div class="${nc}" ${click}>${ic} ${f.name}</div></td>
+      <td style="color:#64748b;font-size:13px">${sz}</td>
+      <td style="color:#64748b;font-size:13px">${fmtDate(f.modified)}</td>
+      ${pc}${oc}
+      <td><div class="action-btns">
+        <button class="abtn abtn-dl" onclick="downloadItem('${f.id}')" title="Download">⬇️</button>
+        <button class="abtn abtn-edit" onclick="editItem('${f.id}')" title="Modifica">✏️</button>
+        <button class="abtn abtn-copy" onclick="copyItem('${f.id}')" title="Copia">📋</button>
+        <button class="abtn abtn-del" onclick="deleteItem('${f.id}')" title="Elimina">🗑️</button>
+      </div></td>
+    </tr>`;
+  }).join('');
+  const fols=items.filter(f=>f.type==='folder').length;
+  const files=items.filter(f=>f.type!=='folder').length;
+  const size=items.filter(f=>f.type!=='folder').reduce((a,b)=>a+b.rawSize,0);
   document.getElementById('fm-footer').textContent=`Full Size: ${fmtSize(size)} | File: ${files} | Folder: ${fols}`;
 }
-function sortBy(key){const fid=currentFolderId();const items=fs.filter(f=>f.parentId===fid&&f.id!=='root');items.sort((a,b)=>key==='name'?a.name.localeCompare(b.name):key==='size'?a.rawSize-b.rawSize:new Date(b.modified)-new Date(a.modified));fs=[...fs.filter(f=>f.parentId!==fid||f.id==='root'),...items];renderTable();}
-function toggleSelect(id,cb){const f=fs.find(x=>x.id===id);if(f)f.selected=cb.checked;}
-function toggleAll(cb){const fid=currentFolderId();fs.filter(f=>f.parentId===fid).forEach(f=>f.selected=cb.checked);renderTable();}
-function selectAll(){const fid=currentFolderId();fs.filter(f=>f.parentId===fid).forEach(f=>f.selected=true);renderTable();}
+function sortBy(key){const fid=curFolderId();const items=fs.filter(f=>f.parentId===fid&&f.id!=='root');items.sort((a,b)=>key==='name'?a.name.localeCompare(b.name):key==='size'?a.rawSize-b.rawSize:new Date(b.modified)-new Date(a.modified));fs=[...fs.filter(f=>f.parentId!==fid||f.id==='root'),...items];renderTable();}
+function toggleSel(id,cb){const f=fs.find(x=>x.id===id);if(f)f.selected=cb.checked;}
+function toggleAll(cb){const fid=curFolderId();fs.filter(f=>f.parentId===fid).forEach(f=>f.selected=cb.checked);renderTable();}
+function selectAll(){const fid=curFolderId();fs.filter(f=>f.parentId===fid).forEach(f=>f.selected=true);renderTable();}
 function unselectAll(){fs.forEach(f=>f.selected=false);renderTable();}
-function invertSelection(){const fid=currentFolderId();fs.filter(f=>f.parentId===fid).forEach(f=>f.selected=!f.selected);renderTable();}
-function deleteSelected(){if(!fs.some(f=>f.selected)){showToast('⚠️ Seleziona!','#92400e');return;}if(confirm('Eliminare?')){fs=fs.filter(f=>!f.selected);renderTable();showToast('🗑️ Eliminati!');}}
-function deleteItem(id){if(confirm('Eliminare?')){fs=fs.filter(f=>f.id!==id&&f.parentId!==id);renderTable();showToast('🗑️ Eliminato!');}}
-function downloadItem(id){const f=fs.find(x=>x.id===id);if(!f||f.type==='folder')return;const b=new Blob([f.content||''],{type:'text/plain'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=f.name;a.click();showToast('⬇️ Download!');}
+function invertSel(){const fid=curFolderId();fs.filter(f=>f.parentId===fid).forEach(f=>f.selected=!f.selected);renderTable();}
+function deleteSelected(){if(!fs.some(f=>f.selected)){showToast('⚠️ Seleziona almeno un elemento!','#92400e');return;}if(confirm('Eliminare gli elementi selezionati?')){fs=fs.filter(f=>!f.selected);renderTable();showToast('🗑️ Elementi eliminati!');}}
+function deleteItem(id){if(confirm('Eliminare questo elemento?')){fs=fs.filter(f=>f.id!==id&&f.parentId!==id);renderTable();showToast('🗑️ Eliminato!');}}
+function downloadItem(id){const f=fs.find(x=>x.id===id);if(!f||f.type==='folder')return;const b=new Blob([f.content||''],{type:'text/plain'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=f.name;a.click();showToast('⬇️ Download avviato!');}
 function copyItem(id){const f=fs.find(x=>x.id===id);if(!f)return;fs.push({...f,id:uid(),name:'copia_'+f.name,selected:false});renderTable();showToast('📋 Copiato!');}
-function editItem(id){const f=fs.find(x=>x.id===id);if(!f||f.type==='folder'){showToast('⚠️ Non modificabile!','#92400e');return;}editingId=id;document.getElementById('edit-filename-label').textContent='Modifica: '+f.name;document.getElementById('edit-content').value=f.content||'';document.getElementById('edit-overlay').style.display='flex';}
+function editItem(id){const f=fs.find(x=>x.id===id);if(!f||f.type==='folder'){showToast('⚠️ Non puoi modificare una cartella!','#92400e');return;}editingId=id;document.getElementById('edit-lbl').textContent='Modifica: '+f.name;document.getElementById('edit-content').value=f.content||'';document.getElementById('edit-overlay').style.display='flex';}
 function closeEdit(){document.getElementById('edit-overlay').style.display='none';editingId=null;}
-function saveEdit(){const f=fs.find(x=>x.id===editingId);if(f){f.content=document.getElementById('edit-content').value;f.rawSize=new Blob([f.content]).size;f.modified=new Date();}closeEdit();renderTable();showToast('💾 Salvato!');}
-function handleUpload(e){const fid=currentFolderId();Array.from(e.target.files).forEach(f=>{const ext=f.name.split('.').pop().toLowerCase();fs.push({id:uid(),name:f.name,type:ext||'file',parentId:fid,rawSize:f.size,modified:new Date(),perms:'0644',owner:loggedUser?loggedUser.username:'guest',content:'',selected:false});});e.target.value='';renderTable();showToast('✅ Caricati!');}
-function handleDrop(e){e.preventDefault();document.getElementById('drop-zone').classList.remove('drag-over');const fid=currentFolderId();Array.from(e.dataTransfer.files).forEach(f=>{const ext=f.name.split('.').pop().toLowerCase();fs.push({id:uid(),name:f.name,type:ext||'file',parentId:fid,rawSize:f.size,modified:new Date(),perms:'0644',owner:loggedUser?loggedUser.username:'guest',content:'',selected:false});});renderTable();showToast('✅ Caricati!');}
+function saveEdit(){const f=fs.find(x=>x.id===editingId);if(f){f.content=document.getElementById('edit-content').value;f.rawSize=new Blob([f.content]).size;f.modified=new Date();}closeEdit();renderTable();showToast('💾 File salvato!');}
+function handleUpload(e){const fid=curFolderId();Array.from(e.target.files).forEach(f=>{const ext=f.name.split('.').pop().toLowerCase();fs.push({id:uid(),name:f.name,type:ext||'file',parentId:fid,rawSize:f.size,modified:new Date(),perms:'0644',owner:loggedUser?loggedUser.username:'guest',content:'',selected:false});});e.target.value='';renderTable();showToast('✅ File caricati!');}
+function handleDrop(e){e.preventDefault();document.getElementById('drop-zone').classList.remove('drag-over');const fid=curFolderId();Array.from(e.dataTransfer.files).forEach(f=>{const ext=f.name.split('.').pop().toLowerCase();fs.push({id:uid(),name:f.name,type:ext||'file',parentId:fid,rawSize:f.size,modified:new Date(),perms:'0644',owner:loggedUser?loggedUser.username:'guest',content:'',selected:false});});renderTable();showToast('✅ File caricati via drag & drop!');}
 
-const ftDef={folder:{name:'nuova-cartella',content:'',ph:'Nome cartella'},html:{name:'index.html',content:'<!DOCTYPE html>\n<html lang="it">\n<head>\n  <meta charset="UTF-8"/>\n  <title>Pagina</title>\n</head>\n<body>\n  <h1>Ciao!</h1>\n</body>\n</html>',ph:'Nome .html'},php:{name:'index.php',content:'<?php\necho "Hello World!";\n?>',ph:'Nome .php'},css:{name:'style.css',content:'body {\n  margin: 0;\n}\n',ph:'Nome .css'},js:{name:'script.js',content:'console.log("Hello!");\n',ph:'Nome .js'},txt:{name:'note.txt',content:'',ph:'Nome .txt'},img:{name:'immagine.html',content:'',ph:'Nome'},link:{name:'link.html',content:'',ph:'Nome'},sql:{name:'database.sql',content:'-- SQL\n',ph:'Nome .sql'}};
-function showNewDialog(){selectFileType('folder');document.getElementById('new-name').value='nuova-cartella';document.getElementById('file-content').value='';document.getElementById('img-url').value='';document.getElementById('img-alt').value='';document.getElementById('link-url').value='';document.getElementById('link-text').value='';const fid=currentFolderId();const node=fs.find(x=>x.id===fid);document.getElementById('dialog-path-label').textContent=node&&node.name!=='root'?'in: '+node.name:'';document.getElementById('dialog-overlay').style.display='flex';setTimeout(()=>document.getElementById('new-name').focus(),80);}
+const ftDef={
+  folder:{name:'nuova-cartella',content:'',ph:'Nome cartella'},
+  html:{name:'index.html',content:'<!DOCTYPE html>\n<html lang="it">\n<head>\n  <meta charset="UTF-8"/>\n  <title>Pagina</title>\n</head>\n<body>\n  <h1>Ciao!</h1>\n</body>\n</html>',ph:'Nome .html'},
+  php:{name:'index.php',content:'<?php\n// Scrivi il codice PHP qui\necho "Hello World!";\n?>',ph:'Nome .php'},
+  css:{name:'style.css',content:'body {\n  margin: 0;\n  font-family: sans-serif;\n}\n',ph:'Nome .css'},
+  js:{name:'script.js',content:'// JavaScript\nconsole.log("Hello World!");\n',ph:'Nome .js'},
+  txt:{name:'note.txt',content:'',ph:'Nome .txt'},
+  img:{name:'immagine.html',content:'',ph:'Nome file'},
+  link:{name:'link.html',content:'',ph:'Nome link'},
+  sql:{name:'database.sql',content:'-- SQL\nCREATE TABLE utenti (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  nome VARCHAR(100)\n);\n',ph:'Nome .sql'},
+};
+
+function showNewDialog(){
+  selFT('folder');
+  document.getElementById('new-name').value='nuova-cartella';
+  document.getElementById('file-content').value='';
+  document.getElementById('img-url').value='';
+  document.getElementById('img-alt').value='';
+  document.getElementById('link-url').value='';
+  document.getElementById('link-text').value='';
+  const fid=curFolderId();const node=fs.find(x=>x.id===fid);
+  document.getElementById('dlg-path').textContent=node&&node.name!=='root'?'in: '+node.name:'';
+  document.getElementById('dialog-overlay').style.display='flex';
+  setTimeout(()=>document.getElementById('new-name').focus(),80);
+}
 function closeDialog(){document.getElementById('dialog-overlay').style.display='none';}
-function selectFileType(type){newItemType=type;Object.keys(ftDef).forEach(t=>{const b=document.getElementById('ft-'+t);if(b)b.classList.remove('selected');});document.getElementById('ft-'+type)?.classList.add('selected');const d=ftDef[type];document.getElementById('dialog-name-label').textContent=type==='folder'?'Nome cartella':'Nome file';document.getElementById('new-name').placeholder=d.ph;document.getElementById('new-name').value=d.name;document.getElementById('content-area').style.display=(type!=='folder'&&type!=='img'&&type!=='link')?'block':'none';document.getElementById('img-area').style.display=type==='img'?'block':'none';document.getElementById('link-area').style.display=type==='link'?'block':'none';if(type!=='folder'&&type!=='img'&&type!=='link'){document.getElementById('file-content').value=d.content;document.getElementById('content-label').textContent='Contenuto '+type.toUpperCase();}}
-function createItem(){const name=document.getElementById('new-name').value.trim();if(!name){alert('Inserisci un nome!');return;}const fid=currentFolderId();let content='',rawSize=0,type=newItemType;if(newItemType==='img'){const url=document.getElementById('img-url').value.trim();const alt=document.getElementById('img-alt').value.trim()||name;content=`<img src="${url}" alt="${alt}" style="max-width:100%"/>`;rawSize=content.length;type='html';}else if(newItemType==='link'){const url=document.getElementById('link-url').value.trim();const text=document.getElementById('link-text').value.trim()||url;content=`<a href="${url}" target="_blank">${text}</a>`;rawSize=content.length;type='html';}else if(newItemType!=='folder'){content=document.getElementById('file-content').value;rawSize=new Blob([content]).size;}fs.push({id:uid(),name,type,parentId:fid,rawSize,modified:new Date(),perms:type==='folder'?'0755':'0644',owner:loggedUser?loggedUser.username:'guest',content,selected:false});closeDialog();renderTable();showToast(type==='folder'?'📁 Cartella creata!':'📄 '+name+' creato!');}
+function selFT(type){
+  newItemType=type;
+  Object.keys(ftDef).forEach(t=>{const b=document.getElementById('ft-'+t);if(b)b.classList.toggle('sel',t===type);});
+  const d=ftDef[type];
+  document.getElementById('dlg-name-lbl').textContent=type==='folder'?'Nome cartella':'Nome file';
+  document.getElementById('new-name').placeholder=d.ph;
+  document.getElementById('new-name').value=d.name;
+  document.getElementById('content-area').style.display=(type!=='folder'&&type!=='img'&&type!=='link')?'block':'none';
+  document.getElementById('img-area').style.display=type==='img'?'block':'none';
+  document.getElementById('link-area').style.display=type==='link'?'block':'none';
+  if(type!=='folder'&&type!=='img'&&type!=='link'){document.getElementById('file-content').value=d.content;document.getElementById('content-lbl').textContent='Contenuto '+type.toUpperCase();}
+}
+function createItem(){
+  const name=document.getElementById('new-name').value.trim();if(!name){alert('Inserisci un nome!');return;}
+  const fid=curFolderId();let content='',rawSize=0,type=newItemType;
+  if(newItemType==='img'){const url=document.getElementById('img-url').value.trim();const alt=document.getElementById('img-alt').value.trim()||name;content=`<img src="${url}" alt="${alt}" style="max-width:100%"/>`;rawSize=content.length;type='html';}
+  else if(newItemType==='link'){const url=document.getElementById('link-url').value.trim();const text=document.getElementById('link-text').value.trim()||url;content=`<a href="${url}" target="_blank">${text}</a>`;rawSize=content.length;type='html';}
+  else if(newItemType!=='folder'){content=document.getElementById('file-content').value;rawSize=new Blob([content]).size;}
+  fs.push({id:uid(),name,type,parentId:fid,rawSize,modified:new Date(),perms:type==='folder'?'0755':'0644',owner:loggedUser?loggedUser.username:'guest',content,selected:false});
+  closeDialog();renderTable();showToast(type==='folder'?'📁 Cartella creata!':'📄 '+name+' creato!');
+}
 
-function toggleSetting(k){toggleState[k]=!toggleState[k];const b=document.getElementById('tog-'+k),th=b.querySelector('.toggle-thumb');b.style.background=toggleState[k]?'#2563c0':'#d1d5db';th.style.left=toggleState[k]?'24px':'2px';if(k==='perms'){settings.hidePerms=toggleState[k];renderTable();}}
-function saveSettings(){settings.hidePerms=toggleState.perms;renderTable();showToast('✅ Salvato!');goTo('sc-filemanager');}
+// Settings
+function toggleSetting(k){toggleState[k]=!toggleState[k];const b=document.getElementById('tog-'+k),th=b.querySelector('.toggle-thumb');b.style.background=toggleState[k]?'#2563c0':'#d1d5db';th.style.left=toggleState[k]?'25px':'2px';if(k==='perms'){settings.hidePerms=toggleState[k];renderTable();}}
+function saveSettings(){settings.hidePerms=toggleState.perms;renderTable();showToast('✅ Impostazioni salvate!');goTo('sc-filemanager');}
+
+// Close dialogs on overlay click
 ['dialog-overlay','edit-overlay'].forEach(id=>{document.getElementById(id).addEventListener('click',function(e){if(e.target===this)this.style.display='none';});});
+
+// Load saved creds on startup
+window.addEventListener('load', loadSavedCreds);
 </script>
 </body>
 </html>
