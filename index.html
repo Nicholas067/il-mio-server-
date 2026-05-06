@@ -171,6 +171,20 @@ td{padding:10px 16px;font-size:13px;color:#374151}
 .btn-save{background:#2563c0;color:#fff;border:none;border-radius:9px;padding:12px 28px;cursor:pointer;font-weight:800;font-size:14px;font-family:'Nunito',sans-serif;margin-top:22px;transition:all .2s}
 .btn-save:hover{background:#1a4d8f;transform:translateY(-1px)}
  
+/* ===== GIOCHI SCRATCH (AGGIUNTA) ===== */
+.games-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; padding: 20px; }
+.game-card { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); cursor: pointer; transition: transform 0.2s; border: 2px solid #e2e8f0; text-align: center; }
+.game-card:hover { transform: translateY(-5px); border-color: #2563c0; }
+.game-thumb { width: 100%; height: 120px; background: linear-gradient(135deg,#0f2d5c,#1e40af); display: flex; align-items: center; justify-content: center; font-size: 48px; }
+.game-title { padding: 12px; font-weight: 800; color: #1a4d8f; font-size: 14px; }
+.modal-full { position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: none; flex-direction: column; z-index: 10000; }
+.modal-header { padding: 15px 20px; display: flex; justify-content: space-between; color: #fff; align-items: center; background: #0f2d5c; }
+.modal-header h2 { margin: 0; font-size: 1.2rem; }
+.close-game { background: #ef4444; color: #fff; border: none; padding: 8px 18px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 14px; }
+.close-game:hover { background: #dc2626; }
+.refresh-game { background: #059669; color: #fff; border: none; padding: 8px 18px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 14px; margin-right: 10px; }
+.refresh-game:hover { background: #047857; }
+ 
 /* Dialogs */
 .dialog-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;z-index:9999}
 .dialog-box{background:#fff;border-radius:16px;padding:28px;width:90%;max-width:500px;box-shadow:0 24px 64px rgba(0,0,0,.28);animation:fadeUp .2s ease;max-height:92vh;overflow-y:auto}
@@ -318,6 +332,7 @@ td{padding:10px 16px;font-size:13px;color:#374151}
     <div style="flex:1"></div>
     <input class="fm-search" id="fm-search" placeholder="🔍 Cerca..." oninput="renderTable()"/>
     <input type="file" id="file-upload" multiple style="display:none" onchange="handleUpload(event)"/>
+    <button class="tbtn tbtn-dark" onclick="openGames()" style="background:#059669; margin-right:10px">🎮 I miei giochi</button>
     <button class="tbtn tbtn-blue" onclick="document.getElementById('file-upload').click()">⬆️ Upload</button>
     <button class="tbtn tbtn-dark" id="btn-nuovo-top" onclick="showNewDialog()" style="display:none">➕ Nuovo</button>
     <button class="tbtn tbtn-gray" onclick="goTo('sc-settings')">⚙️</button>
@@ -356,7 +371,8 @@ td{padding:10px 16px;font-size:13px;color:#374151}
           <th onclick="sortBy('size')">SIZE ↕</th>
           <th onclick="sortBy('modified')">MODIFIED ↕</th>
           <th id="th-perms">PERMS</th><th id="th-owner">OWNER</th><th>ACTIONS</th>
-        </tr></thead>
+         </tr>
+        </thead>
         <tbody id="fm-tbody"></tbody>
       </table>
     </div>
@@ -401,6 +417,18 @@ td{padding:10px 16px;font-size:13px;color:#374151}
   </div>
 </div>
  
+<!-- MODAL GIOCHI SCRATCH (AGGIUNTO) -->
+<div id="games-modal" class="modal-full">
+  <div class="modal-header">
+    <h2 id="modal-title">🎮 I Miei Giochi Scratch</h2>
+    <div>
+      <button class="refresh-game" onclick="refreshCurrentGame()">🔄 Ricarica gioco (F5)</button>
+      <button class="close-game" onclick="closeGames()">❌ Chiudi</button>
+    </div>
+  </div>
+  <div id="games-content" style="height: 100%; overflow-y: auto;"></div>
+</div>
+ 
 <!-- NEW ITEM DIALOG -->
 <div id="dialog-overlay" class="dialog-overlay" style="display:none">
   <div class="dialog-box">
@@ -441,12 +469,10 @@ td{padding:10px 16px;font-size:13px;color:#374151}
 <script>
 // ============================================================
 //  DATABASE UTENTI — salvato in localStorage del file HTML
-//  (funziona perché è un file .html aperto localmente)
 // ============================================================
  
 const STORAGE_KEY = 'nicolascassese_users';
  
-// Carica utenti dal localStorage, o usa i default
 function loadUsers() {
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
@@ -458,12 +484,10 @@ function loadUsers() {
   ];
 }
  
-// Salva utenti nel localStorage (con avatar incluso)
 function saveUsers() {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(users));
   } catch(e) {
-    // Se troppo grande (avatar base64), salva senza avatar
     try {
       const slim = users.map(u => ({...u, avatar: null}));
       localStorage.setItem(STORAGE_KEY, JSON.stringify(slim));
@@ -488,7 +512,6 @@ function loadFs() {
     const saved = localStorage.getItem(FS_KEY);
     if (saved) {
       const parsed = JSON.parse(saved);
-      // Ripristina date come oggetti Date
       return parsed.map(f => ({...f, selected:false, modified: new Date(f.modified)}));
     }
   } catch(e) {}
@@ -497,14 +520,13 @@ function loadFs() {
  
 function saveFs() {
   try {
-    // Salva con date come ISO string
     const toSave = fs.map(f => ({...f, selected:false, modified: f.modified instanceof Date ? f.modified.toISOString() : f.modified}));
     localStorage.setItem(FS_KEY, JSON.stringify(toSave));
   } catch(e) {}
 }
  
 // ============================================================
-//  AVATAR PERSISTENTE (separato per evitare quota)
+//  AVATAR PERSISTENTE
 // ============================================================
 const AVATARS_KEY = 'nicolascassese_avatars';
  
@@ -572,7 +594,7 @@ function goTo(id){
 }
  
 // ============================================================
-//  LOGIN — accetta USERNAME oppure EMAIL
+//  LOGIN
 // ============================================================
 function loadSavedCreds(){
   try {
@@ -601,10 +623,8 @@ function gateLogin(){
     return;
   }
  
-  // Ricarica sempre utenti freschi dal localStorage
   users = loadUsers();
  
-  // Cerca per USERNAME oppure EMAIL (case-insensitive)
   const found = users.find(u => {
     const matchUser  = u.username.toLowerCase() === input.toLowerCase();
     const matchEmail = u.email && u.email.toLowerCase() === input.toLowerCase();
@@ -613,11 +633,9 @@ function gateLogin(){
  
   if(found){
     loggedUser = found;
-    // Carica avatar salvato
     loggedUser.avatar = getAvatar(found.username);
     err.style.display = 'none';
  
-    // Salva/rimuovi credenziali ricordate
     if(rem){
       localStorage.setItem('nc_remember', JSON.stringify({username: found.username, password: pass}));
     } else {
@@ -678,7 +696,6 @@ function showStep(n){
 }
  
 function nextStep(from){
-  // Ricarica sempre utenti aggiornati
   users = loadUsers();
  
   if(from===1){
@@ -702,7 +719,6 @@ function nextStep(from){
     if(pass.length<8){err.textContent='❌ Password troppo corta (min 8 caratteri)!';err.style.display='block';return;}
     if(pass!==pass2){err.textContent='❌ Le password non coincidono!';err.style.display='block';return;}
     err.style.display='none';
-    // Riepilogo
     const nome    = document.getElementById('reg-nome').value.trim();
     const cognome = document.getElementById('reg-cognome').value.trim();
     const email   = document.getElementById('reg-email').value.trim();
@@ -718,7 +734,7 @@ function nextStep(from){
 }
  
 function doRegister(){
-  users = loadUsers(); // Ricarica per sicurezza
+  users = loadUsers();
  
   const nome     = document.getElementById('reg-nome').value.trim();
   const cognome  = document.getElementById('reg-cognome').value.trim();
@@ -726,17 +742,13 @@ function doRegister(){
   const username = document.getElementById('reg-username').value.trim();
   const password = document.getElementById('reg-pass').value;
  
-  // Crea nuovo utente
   const newUser = {username, password, email, nome, cognome, role:'user', avatar: null};
  
-  // Aggiungi e SALVA nel localStorage
   users.push(newUser);
   saveUsers();
  
-  // Salva avatar separatamente se presente
   if(regAvatarData) saveAvatar(username, regAvatarData);
  
-  // Login automatico
   loggedUser = newUser;
   loggedUser.avatar = regAvatarData;
   document.getElementById('btn-confirm').disabled = true;
@@ -761,7 +773,6 @@ function previewRegAvatar(e){
   r.readAsDataURL(f);
 }
  
-// Validazione live
 function lv(id, type){
   users = loadUsers();
   const el=document.getElementById(id); const v=el.value.trim();
@@ -824,9 +835,7 @@ function changeAvatar(e){
   r.onload=ev=>{
     if(loggedUser){
       loggedUser.avatar=ev.target.result;
-      // Salva avatar in storage separato
       saveAvatar(loggedUser.username, ev.target.result);
-      // Aggiorna nel db utenti
       const idx=users.findIndex(u=>u.username===loggedUser.username);
       if(idx>=0)users[idx].avatar=ev.target.result;
       saveUsers();
@@ -881,7 +890,7 @@ function renderTable(){
   tbody.innerHTML=items.map(f=>{
     const ic=getIcon(f);const sz=f.type==='folder'?'Folder':fmtSize(f.rawSize);
     const nc=f.type==='folder'?'td-name is-folder':'td-name';
-    const click=f.type==='folder'?`onclick="enterFolder('${f.id}')"` :'';
+    const click=f.type==='folder'?`onclick="enterFolder('${f.id}')"`:'';
     const pc=h?'':`<td><span class="perms-txt">${f.perms}</span></td>`;
     const oc=h?'':`<td style="color:#64748b;font-size:12px">${f.owner}</td>`;
     return`<tr class="${f.selected?'sel-row':''}">
@@ -971,6 +980,77 @@ function createItem(){
 function toggleSetting(k){toggleState[k]=!toggleState[k];const b=document.getElementById('tog-'+k),th=b.querySelector('.toggle-thumb');b.style.background=toggleState[k]?'#2563c0':'#d1d5db';th.style.left=toggleState[k]?'25px':'2px';if(k==='perms'){settings.hidePerms=toggleState[k];renderTable();}}
 function saveSettings(){settings.hidePerms=toggleState.perms;renderTable();showToast('✅ Impostazioni salvate!');goTo('sc-filemanager');}
  
+// ============================================================
+//  GIOCHI SCRATCH (MODIFICATI CON I NOMI RICHIESTI)
+// ============================================================
+const myGames = [
+  { id: '1106495237', title: 'Gioco Cruciverba' },
+  { id: '1029670413', title: 'Gioco delle Operazioni' },
+  { id: '1029672290', title: 'Il mio viaggio in Slovenia e Trieste' },
+  { id: '1149996939', title: 'Ecco a voi: Civitavecchia!' },
+  { id: '1136611287', title: 'Super Pong' }
+];
+
+let currentGameId = null;
+let currentGameTitle = null;
+
+function openGames() {
+  const modal = document.getElementById('games-modal');
+  const content = document.getElementById('games-content');
+  modal.style.display = 'flex';
+  document.getElementById('modal-title').innerHTML = "🎮 I Miei Giochi Scratch";
+  
+  let html = `<div class="games-grid">`;
+  myGames.forEach(g => {
+    html += `
+      <div class="game-card" onclick="playGame('${g.id}', '${g.title}')">
+        <div class="game-thumb">🕹️</div>
+        <div class="game-title">${g.title}</div>
+      </div>`;
+  });
+  html += `</div>`;
+  content.innerHTML = html;
+  currentGameId = null;
+  currentGameTitle = null;
+}
+
+function playGame(id, title) {
+  const content = document.getElementById('games-content');
+  currentGameId = id;
+  currentGameTitle = title;
+  document.getElementById('modal-title').innerHTML = "🎮 Giocando a: " + title + " <span style='font-size:12px;background:#2563c0;padding:2px 8px;border-radius:20px;margin-left:10px'>🔄 Aggiorna pagina per ricaricare</span>";
+  const timestamp = Date.now();
+  content.innerHTML = `
+    <div style="padding:15px; display:flex; gap:10px; flex-wrap:wrap;">
+      <button class="tbtn tbtn-dark" onclick="openGames()" style="background:#0f2d5c">⬅️ Torna alla lista</button>
+      <button class="tbtn tbtn-dark" onclick="refreshCurrentGame()" style="background:#059669">🔄 Ricarica gioco (F5)</button>
+      <div style="margin-left:auto; font-size:12px; color:#94a3b8;">💡 Se hai modificato il progetto su Scratch, premi "Ricarica gioco"</div>
+    </div>
+    <iframe src="https://scratch.mit.edu/projects/${id}/embed?t=${timestamp}" allowtransparency="true" width="100%" height="85%" frameborder="0" scrolling="no" allowfullscreen style="min-height:500px"></iframe>
+  `;
+}
+
+function refreshCurrentGame() {
+  if (currentGameId) {
+    const content = document.getElementById('games-content');
+    const timestamp = Date.now();
+    const currentIframe = content.querySelector('iframe');
+    if (currentIframe) {
+      const src = `https://scratch.mit.edu/projects/${currentGameId}/embed?t=${timestamp}`;
+      currentIframe.src = src;
+      showToast('🔄 Gioco ricaricato! Ora vedi l\'ultima versione', '#059669');
+    } else {
+      playGame(currentGameId, currentGameTitle);
+    }
+  } else {
+    showToast('⚠️ Nessun gioco aperto', '#92400e');
+  }
+}
+
+function closeGames() {
+  document.getElementById('games-modal').style.display = 'none';
+}
+
 // Close dialogs on overlay click
 ['dialog-overlay','edit-overlay'].forEach(id=>{document.getElementById(id).addEventListener('click',function(e){if(e.target===this)this.style.display='none';});});
  
@@ -978,4 +1058,4 @@ function saveSettings(){settings.hidePerms=toggleState.perms;renderTable();showT
 window.addEventListener('load', loadSavedCreds);
 </script>
 </body>
-</html>
+<html>
