@@ -437,7 +437,22 @@ td{padding:10px 16px;font-size:13px;color:#374151}
 </div>
  
 <div id="toast">✅ <span id="toast-msg"></span></div>
- 
+<div id="games-modal" class="modal-full">
+  <div class="modal-header">
+    <h2 id="modal-title" style="font-family:'Nunito'">I Miei Giochi Scratch</h2>
+    <button class="close-game" onclick="closeGames()">❌ Chiudi</button>
+  </div>
+  <div id="games-content" style="height: 100%; overflow-y: auto;"></div>
+</div>
+ /* AGGIUNTA GIOCHI SCRATCH */
+.games-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px; padding: 20px; }
+.game-card { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); cursor: pointer; transition: transform 0.2s; border: 2px solid #e2e8f0; text-align: center; }
+.game-card:hover { transform: translateY(-5px); border-color: #2563c0; }
+.game-thumb { width: 100%; height: 120px; background: #0f2d5c; display: flex; align-items: center; justify-content: center; font-size: 40px; }
+.game-title { padding: 10px; font-weight: 800; color: #1a4d8f; font-size: 14px; }
+.modal-full { position: fixed; inset: 0; background: rgba(0,0,0,0.85); display: none; flex-direction: column; z-index: 10000; }
+.modal-header { padding: 15px; display: flex; justify-content: space-between; color: #fff; align-items: center; }
+.close-game { background: #ef4444; color: #fff; border: none; padding: 8px 15px; border-radius: 8px; cursor: pointer; font-weight: bold; }
 <script>
 // ============================================================
 //  DATABASE UTENTI — salvato in localStorage del file HTML
@@ -449,7 +464,7 @@ const STORAGE_KEY = 'nicolascassese_users';
 // Carica utenti dal localStorage, o usa i default
 function loadUsers() {
   try {
-    const saved = localStorage.getItem(STORAGE_KEY);
+    const saved = localStorage.getItem(STORAGE_KEY);<button class="tbtn tbtn-dark" onclick="openGames()" style="background:#059669; margin-right:10px">🎮 I miei giochi</button>
     if (saved) return JSON.parse(saved);
   } catch(e) {}
   return [
@@ -977,5 +992,46 @@ function saveSettings(){settings.hidePerms=toggleState.perms;renderTable();showT
 // Load saved creds on startup
 window.addEventListener('load', loadSavedCreds);
 </script>
+// FUNZIONI GIOCHI SCRATCH
+const myGames = [
+  { id: '1106495237', title: 'Labirinto' },
+  { id: '1029670413', title: 'Space War' },
+  { id: '1029672290', title: 'Super Pong' },
+  { id: '1149996939', title: 'Adventure' },
+  { id: '1136611287', title: 'Clicker Pro' }
+];
+
+function openGames() {
+  const modal = document.getElementById('games-modal');
+  const content = document.getElementById('games-content');
+  modal.style.display = 'flex';
+  document.getElementById('modal-title').innerText = "🎮 I Miei Giochi Scratch";
+  
+  let html = `<div class="games-grid">`;
+  myGames.forEach(g => {
+    html += `
+      <div class="game-card" onclick="playGame('${g.id}', '${g.title}')">
+        <div class="game-thumb">🕹️</div>
+        <div class="game-title">${g.title}</div>
+      </div>`;
+  });
+  html += `</div>`;
+  content.innerHTML = html;
+}
+
+function playGame(id, title) {
+  const content = document.getElementById('games-content');
+  document.getElementById('modal-title').innerText = "Giocando a: " + title;
+  content.innerHTML = `
+    <div style="padding:10px">
+      <button class="tbtn tbtn-dark" onclick="openGames()">⬅️ Torna alla lista</button>
+    </div>
+    <iframe src="https://scratch.mit.edu/projects/${id}/embed" allowtransparency="true" width="100%" height="80%" frameborder="0" scrolling="no" allowfullscreen></iframe>
+  `;
+}
+
+function closeGames() {
+  document.getElementById('games-modal').style.display = 'none';
+}
 </body>
 </html>
