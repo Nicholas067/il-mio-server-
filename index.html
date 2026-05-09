@@ -119,6 +119,7 @@ body{font-family:'Nunito','Segoe UI',sans-serif;min-height:100vh;background:#f1f
 .tbtn-blue{background:#2563c0;color:#fff}
 .tbtn-dark{background:#0f2d5c;color:#fff}
 .tbtn-gray{background:#64748b;color:#fff}
+.tbtn-green{background:#059669;color:#fff}
 .breadcrumb{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#64748b;margin-bottom:14px;flex-wrap:wrap}
 .bc-item{color:#2563c0;cursor:pointer}.bc-item:hover{text-decoration:underline}.bc-current{color:#0f2d5c}
 .drop-zone{border:2.5px dashed #93c5fd;border-radius:14px;background:#eff6ff;padding:32px 20px;text-align:center;cursor:pointer;transition:all .2s;margin-bottom:16px}
@@ -171,7 +172,7 @@ td{padding:10px 16px;font-size:13px;color:#374151}
 .btn-save{background:#2563c0;color:#fff;border:none;border-radius:9px;padding:12px 28px;cursor:pointer;font-weight:800;font-size:14px;font-family:'Nunito',sans-serif;margin-top:22px;transition:all .2s}
 .btn-save:hover{background:#1a4d8f;transform:translateY(-1px)}
  
-/* ===== GIOCHI SCRATCH (AGGIUNTA) ===== */
+/* ===== GIOCHI SCRATCH ===== */
 .games-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; padding: 20px; }
 .game-card { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); cursor: pointer; transition: transform 0.2s; border: 2px solid #e2e8f0; text-align: center; }
 .game-card:hover { transform: translateY(-5px); border-color: #2563c0; }
@@ -184,6 +185,24 @@ td{padding:10px 16px;font-size:13px;color:#374151}
 .close-game:hover { background: #dc2626; }
 .refresh-game { background: #059669; color: #fff; border: none; padding: 8px 18px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 14px; margin-right: 10px; }
 .refresh-game:hover { background: #047857; }
+ 
+/* ===== NUOVO: UPLOAD TRAMITE LINK ===== */
+.upload-link-section { background: #fff; border-radius: 14px; padding: 20px; margin-bottom: 20px; border: 2px solid #e2e8f0; display: none; }
+.upload-link-section.active { display: block; animation: fadeUp .3s ease; }
+.upload-link-header { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; flex-wrap: wrap; }
+.upload-link-header h3 { color: #0f2d5c; font-size: 16px; margin: 0; }
+.link-input-group { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+.link-url-input { flex: 3; padding: 12px 15px; border: 2px solid #bfdbfe; border-radius: 10px; font-size: 14px; font-family: 'Nunito', sans-serif; outline: none; transition: all .2s; }
+.link-url-input:focus { border-color: #2563c0; box-shadow: 0 0 0 3px rgba(37,99,192,.1); }
+.link-name-input { flex: 2; padding: 12px 15px; border: 2px solid #bfdbfe; border-radius: 10px; font-size: 14px; font-family: 'Nunito', sans-serif; outline: none; }
+.link-name-input:focus { border-color: #2563c0; }
+.btn-upload-link { background: linear-gradient(135deg,#0f2d5c,#2563c0); color: #fff; border: none; border-radius: 10px; padding: 12px 24px; cursor: pointer; font-weight: 700; font-size: 14px; font-family: 'Nunito', sans-serif; transition: all .2s; display: flex; align-items: center; gap: 8px; }
+.btn-upload-link:hover { opacity: 0.9; transform: translateY(-1px); }
+.link-progress { background: #e2e8f0; border-radius: 20px; height: 6px; margin-top: 12px; display: none; overflow: hidden; }
+.link-progress.active { display: block; }
+.link-progress-bar { width: 0%; height: 100%; background: #10b981; border-radius: 20px; transition: width .3s; }
+.link-preview { background: #f8fafc; border-radius: 10px; padding: 12px; margin-top: 12px; font-size: 13px; color: #64748b; display: none; word-break: break-all; }
+.link-preview.active { display: block; }
  
 /* Dialogs */
 .dialog-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;z-index:9999}
@@ -332,6 +351,8 @@ td{padding:10px 16px;font-size:13px;color:#374151}
     <div style="flex:1"></div>
     <input class="fm-search" id="fm-search" placeholder="🔍 Cerca..." oninput="renderTable()"/>
     <input type="file" id="file-upload" multiple style="display:none" onchange="handleUpload(event)"/>
+    <!-- Pulsante per aprire il pannello Upload Link -->
+    <button class="tbtn tbtn-green" onclick="toggleUploadLinkPanel()" style="margin-right:5px">🔗 Carica da Link</button>
     <button class="tbtn tbtn-dark" onclick="openGames()" style="background:#059669; margin-right:10px">🎮 I miei giochi</button>
     <button class="tbtn tbtn-blue" onclick="document.getElementById('file-upload').click()">⬆️ Upload</button>
     <button class="tbtn tbtn-dark" id="btn-nuovo-top" onclick="showNewDialog()" style="display:none">➕ Nuovo</button>
@@ -352,6 +373,23 @@ td{padding:10px 16px;font-size:13px;color:#374151}
     </div>
   </div>
   <div class="fm-content">
+    <!-- NUOVO PANNELLO UPLOAD TRAMITE LINK -->
+    <div id="uploadLinkPanel" class="upload-link-section">
+      <div class="upload-link-header">
+        <h3>🔗 Carica file da URL esterno</h3>
+        <button class="tbtn tbtn-gray" onclick="toggleUploadLinkPanel()" style="padding:4px 12px;">✖️ Chiudi</button>
+      </div>
+      <div class="link-input-group">
+        <input type="text" id="linkUrl" class="link-url-input" placeholder="https://esempio.com/immagine.jpg" />
+        <input type="text" id="linkFileName" class="link-name-input" placeholder="Nome file (opzionale)" />
+        <button class="btn-upload-link" onclick="uploadFromLink()">📥 Scarica e Carica</button>
+      </div>
+      <div id="linkProgress" class="link-progress">
+        <div id="linkProgressBar" class="link-progress-bar"></div>
+      </div>
+      <div id="linkPreview" class="link-preview"></div>
+    </div>
+    
     <div class="breadcrumb" id="breadcrumb"></div>
     <div class="drop-zone" id="drop-zone" onclick="document.getElementById('file-upload').click()"
       ondragover="event.preventDefault();this.classList.add('drag-over')"
@@ -371,8 +409,7 @@ td{padding:10px 16px;font-size:13px;color:#374151}
           <th onclick="sortBy('size')">SIZE ↕</th>
           <th onclick="sortBy('modified')">MODIFIED ↕</th>
           <th id="th-perms">PERMS</th><th id="th-owner">OWNER</th><th>ACTIONS</th>
-         </tr>
-        </thead>
+        </tr></thead>
         <tbody id="fm-tbody"></tbody>
       </table>
     </div>
@@ -417,7 +454,7 @@ td{padding:10px 16px;font-size:13px;color:#374151}
   </div>
 </div>
  
-<!-- MODAL GIOCHI SCRATCH (AGGIUNTO) -->
+<!-- MODAL GIOCHI SCRATCH -->
 <div id="games-modal" class="modal-full">
   <div class="modal-header">
     <h2 id="modal-title">🎮 I Miei Giochi Scratch</h2>
@@ -850,6 +887,131 @@ function changeAvatar(e){
 function toggleAccordion(){const a=document.getElementById('accordion'),ar=document.getElementById('acc-arrow'),o=a.style.display==='none';a.style.display=o?'block':'none';ar.textContent=o?'▲':'▼';}
  
 // ============================================================
+//  NUOVO: UPLOAD TRAMITE LINK
+// ============================================================
+let linkUploadPanelOpen = false;
+function toggleUploadLinkPanel() {
+  const panel = document.getElementById('uploadLinkPanel');
+  if (linkUploadPanelOpen) {
+    panel.classList.remove('active');
+    linkUploadPanelOpen = false;
+  } else {
+    panel.classList.add('active');
+    linkUploadPanelOpen = true;
+    // Reset fields quando apro
+    document.getElementById('linkUrl').value = '';
+    document.getElementById('linkFileName').value = '';
+    document.getElementById('linkPreview').classList.remove('active');
+    document.getElementById('linkProgress').classList.remove('active');
+  }
+}
+ 
+async function uploadFromLink() {
+  const urlInput = document.getElementById('linkUrl').value.trim();
+  const customName = document.getElementById('linkFileName').value.trim();
+  
+  if (!urlInput) {
+    showToast('⚠️ Inserisci un URL valido!', '#92400e');
+    return;
+  }
+  
+  // Mostra progresso
+  const progressDiv = document.getElementById('linkProgress');
+  const progressBar = document.getElementById('linkProgressBar');
+  const previewDiv = document.getElementById('linkPreview');
+  
+  progressDiv.classList.add('active');
+  progressBar.style.width = '30%';
+  previewDiv.classList.remove('active');
+  
+  try {
+    // Estrai nome file dall'URL se non specificato
+    let fileName = customName;
+    if (!fileName) {
+      const urlParts = urlInput.split('/');
+      let lastPart = urlParts[urlParts.length - 1];
+      // Se l'ultima parte è vuota o non ha estensione, usa un nome generico
+      if (!lastPart || lastPart.length === 0 || !lastPart.includes('.')) {
+        lastPart = 'file_download';
+      }
+      fileName = decodeURIComponent(lastPart);
+    }
+    
+    progressBar.style.width = '50%';
+    
+    // Scarica il file tramite fetch (con CORS - funziona solo se il server lo permette)
+    // Nota: alcuni server potrebbero bloccare CORS, in quel caso usiamo un proxy
+    let response;
+    try {
+      response = await fetch(urlInput);
+    } catch (fetchError) {
+      // Tentativo con proxy CORS
+      progressBar.style.width = '30%';
+      const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(urlInput);
+      response = await fetch(proxyUrl);
+      if (!response.ok) throw new Error('Proxy failed');
+    }
+    
+    if (!response.ok) throw new Error('HTTP ' + response.status);
+    
+    progressBar.style.width = '70%';
+    
+    const blob = await response.blob();
+    const content = await blob.text();
+    const rawSize = blob.size;
+    
+    progressBar.style.width = '90%';
+    
+    // Salva nel filesystem
+    const fid = curFolderId();
+    const ext = fileName.split('.').pop().toLowerCase();
+    const type = ext === 'html' || ext === 'htm' ? 'html' :
+                 ext === 'php' ? 'php' :
+                 ext === 'css' ? 'css' :
+                 ext === 'js' ? 'js' :
+                 ext === 'txt' ? 'txt' : 'file';
+    
+    fs.push({
+      id: uid(),
+      name: fileName,
+      type: type,
+      parentId: fid,
+      rawSize: rawSize,
+      modified: new Date(),
+      perms: '0644',
+      owner: loggedUser ? loggedUser.username : 'guest',
+      content: content,
+      selected: false
+    });
+    
+    saveFs();
+    renderTable();
+    
+    progressBar.style.width = '100%';
+    setTimeout(() => {
+      progressDiv.classList.remove('active');
+      progressBar.style.width = '0%';
+    }, 1000);
+    
+    previewDiv.innerHTML = `✅ File <strong>${fileName}</strong> caricato con successo!<br>📦 Dimensione: ${fmtSize(rawSize)}`;
+    previewDiv.classList.add('active');
+    showToast(`✅ ${fileName} caricato da URL!`, '#059669');
+    
+    // Resetta campi
+    document.getElementById('linkUrl').value = '';
+    document.getElementById('linkFileName').value = '';
+    
+  } catch (error) {
+    console.error('Upload error:', error);
+    progressDiv.classList.remove('active');
+    previewDiv.innerHTML = `❌ Errore durante il download: ${error.message}<br>💡 Assicurati che l'URL sia pubblico e accessibile.`;
+    previewDiv.classList.add('active');
+    showToast('❌ Errore nel caricamento da URL', '#dc2626');
+    progressBar.style.width = '0%';
+  }
+}
+ 
+// ============================================================
 //  FILE MANAGER
 // ============================================================
 function curFolderId(){return currentPath[currentPath.length-1];}
@@ -981,13 +1143,13 @@ function toggleSetting(k){toggleState[k]=!toggleState[k];const b=document.getEle
 function saveSettings(){settings.hidePerms=toggleState.perms;renderTable();showToast('✅ Impostazioni salvate!');goTo('sc-filemanager');}
  
 // ============================================================
-//  GIOCHI SCRATCH (MODIFICATI CON I NOMI RICHIESTI)
+//  GIOCHI SCRATCH
 // ============================================================
 const myGames = [
   { id: '1106495237', title: 'Gioco Cruciverba' },
-  { id: '1029670413', title:  'labirinto'},
-  { id: '1029672290', title: 'Gioco delle Operazioni' },
-  { id: '1149996939', title:  'Il mio viaggio in Slovenia e Trieste'},
+  { id: '1029670413', title: 'labirinto' },
+  { id: '1029672290', title: 'il  gioco  delle   operazioni' },
+  { id: '1149996939', title: 'Il mio viaggio in Slovenia e Trieste' },
   { id: '1136611287', title: 'Ecco a voi: Civitavecchia!' }
 ];
 
@@ -1058,4 +1220,4 @@ function closeGames() {
 window.addEventListener('load', loadSavedCreds);
 </script>
 </body>
-<html>
+</html>
